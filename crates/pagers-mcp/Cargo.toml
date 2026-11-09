@@ -1,6 +1,6 @@
 [package]
 name = "pagers-mcp"
-version = "0.1.0"
+version = "0.0.1"
 edition = "2021"
 description = "MCP server exposing pagers as tools over stdio"
 license = "GPL-3.0"

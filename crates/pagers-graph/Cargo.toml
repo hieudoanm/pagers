@@ -1,6 +1,6 @@
 [package]
 name = "pagers-graph"
-version = "0.1.0"
+version = "0.0.1"
 edition = "2021"
 description = "Page-link graph extraction and rendering for pagers"
 license = "GPL-3.0"

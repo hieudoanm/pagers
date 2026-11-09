@@ -79,6 +79,17 @@ enum Command {
 }
 
 fn main() -> ExitCode {
+    // `--version`/`-V` print the crate version plus the build timestamp —
+    // intercepted before clap so the stamp is always shown.
+    let args: Vec<String> = std::env::args().skip(1).collect();
+    if args.iter().any(|a| a == "--version" || a == "-V") {
+        println!(
+            "pagers {} (build {})",
+            env!("CARGO_PKG_VERSION"),
+            env!("PAGERS_BUILD_TIME")
+        );
+        return ExitCode::SUCCESS;
+    }
     let cli = Cli::parse();
     let result = match cli.command {
         Command::Build { content, output } => {
