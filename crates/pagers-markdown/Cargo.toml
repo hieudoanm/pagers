@@ -7,4 +7,4 @@ license = "GPL-3.0"
 
 [dependencies]
 pagers-site = { path = "../pagers-site" }
-pulldown-cmark = { version = "0.13", default-features = false, features = ["html"] }
+pulldown-cmark = { version = "=0.13.6", default-features = false, features = ["html"] }
