@@ -1,0 +1,21 @@
+// Cerulean palette — the `md-cerulean` theme.
+
+@mixin palette {
+  --md-text: #17233a;
+  --md-text-muted: #64748b;
+  --md-border: #c9d4e4;
+  --md-code-bg: rgb(23 35 58 / 8%);
+  --md-code-block-bg: #f2f6fc;
+  --md-table-alt-bg: rgb(23 35 58 / 4%);
+  --md-quote-bg: rgb(23 35 58 / 4%);
+  --md-mark-bg: rgb(201 171 90 / 30%);
+  --md-primary: #2563eb;
+  --md-link: #2563eb;
+  --md-secondary: #6b8cbb;
+  --md-accent: #3b82f6;
+  --md-info: #0284c7;
+  --md-success: #16a34a;
+  --md-warning: #d97706;
+  --md-error: #dc2626;
+  --md-radius-box: 0.5rem;
+}

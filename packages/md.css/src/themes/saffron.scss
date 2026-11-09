@@ -1,0 +1,21 @@
+// Saffron palette — the `md-saffron` theme.
+
+@mixin palette {
+  --md-text: #33240e;
+  --md-text-muted: #8a7040;
+  --md-border: #e6d5ac;
+  --md-code-bg: rgb(51 36 14 / 8%);
+  --md-code-block-bg: #faf4e4;
+  --md-table-alt-bg: rgb(51 36 14 / 4%);
+  --md-quote-bg: rgb(51 36 14 / 4%);
+  --md-mark-bg: rgb(223 179 82 / 35%);
+  --md-primary: #cf9300;
+  --md-link: #2563eb;
+  --md-secondary: #b98d2e;
+  --md-accent: #e0a800;
+  --md-info: #0e76b5;
+  --md-success: #19824d;
+  --md-warning: #c07a06;
+  --md-error: #c23c3f;
+  --md-radius-box: 0.5rem;
+}

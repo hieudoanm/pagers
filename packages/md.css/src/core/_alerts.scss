@@ -1,0 +1,43 @@
+// Core rules — GitHub-style alert callouts.
+
+@mixin alerts {
+  .markdown-alert {
+    margin: 1em 0;
+    border-left: 4px solid var(--md-border);
+    border-radius: 0.35rem;
+    padding: 0.5em 1em;
+
+    > :first-child {
+      margin-top: 0;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  [data-markdown-alert='note'] {
+    border-left-color: var(--md-info);
+    background: color-mix(in oklab, var(--md-info) 8%, transparent);
+  }
+
+  [data-markdown-alert='tip'] {
+    border-left-color: var(--md-success);
+    background: color-mix(in oklab, var(--md-success) 8%, transparent);
+  }
+
+  [data-markdown-alert='important'] {
+    border-left-color: var(--md-accent);
+    background: color-mix(in oklab, var(--md-accent) 8%, transparent);
+  }
+
+  [data-markdown-alert='warning'] {
+    border-left-color: var(--md-warning);
+    background: color-mix(in oklab, var(--md-warning) 8%, transparent);
+  }
+
+  [data-markdown-alert='caution'] {
+    border-left-color: var(--md-error);
+    background: color-mix(in oklab, var(--md-error) 8%, transparent);
+  }
+}

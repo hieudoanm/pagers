@@ -1,0 +1,21 @@
+// Emerald palette — the `md-emerald` theme.
+
+@mixin palette {
+  --md-text: #10241a;
+  --md-text-muted: #5f7a6b;
+  --md-border: #bfd8c8;
+  --md-code-bg: rgb(16 36 26 / 8%);
+  --md-code-block-bg: #ecf6ef;
+  --md-table-alt-bg: rgb(16 36 26 / 4%);
+  --md-quote-bg: rgb(16 36 26 / 4%);
+  --md-mark-bg: rgb(182 201 96 / 30%);
+  --md-primary: #189a5c;
+  --md-link: #2563eb;
+  --md-secondary: #4faf7d;
+  --md-accent: #2baa6e;
+  --md-info: #0e84c6;
+  --md-success: #109649;
+  --md-warning: #cf9506;
+  --md-error: #d94b4f;
+  --md-radius-box: 0.5rem;
+}

@@ -1,0 +1,17 @@
+[package]
+name = "pagers-wiki"
+version = "0.0.1"
+edition = "2021"
+description = "Wikipedia article → clean Markdown converter"
+license = "GPL-3.0"
+
+[dependencies]
+htmd = "=0.5.6"
+markup5ever = "=0.38.0"
+markup5ever_rcdom = "=0.38.0"
+reqwest = { version = "=0.13.5", default-features = false, features = ["blocking", "rustls"] }
+scraper = "=0.29.0"
+serde = { version = "=1.0.229", features = ["derive"] }
+serde_json = "=1.0.154"
+thiserror = "=2.0.21"
+url = "=2.5.8"

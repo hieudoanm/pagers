@@ -1,0 +1,10 @@
+[package]
+name = "pagers-theme"
+version = "0.0.1"
+edition = "2021"
+description = "Embedded theme assets and page templates for pagers"
+license = "GPL-3.0"
+
+[dependencies]
+pagers-markdown = { path = "../pagers-markdown" }
+pagers-site = { path = "../pagers-site" }

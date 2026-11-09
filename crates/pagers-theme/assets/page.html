@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="{{LANG}}" data-theme="{{THEME}}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{TITLE}}</title>
+    {{DESCRIPTION}}
+    <link rel="stylesheet" href="{{ASSET_MD}}" />
+    <link rel="stylesheet" href="{{ASSET_CSS}}" />
+    <link rel="icon" href="{{ASSET_FAVICON}}" type="image/svg+xml" />
+    <link rel="icon" href="{{FAVICON_ICO_URL}}" sizes="32x32" />
+    <link
+      rel="icon"
+      href="{{ASSET_FAVICON_PNG}}"
+      type="image/png"
+      sizes="32x32" />
+    <link rel="apple-touch-icon" href="{{ASSET_APPLE}}" />
+    <link rel="manifest" href="{{MANIFEST_URL}}" />
+    <meta name="theme-color" content="{{THEME_COLOR}}" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="header">
+      <div class="header__bar">
+        {{NAV_TOGGLE}}<a class="header__title" href="{{HOME_URL}}"
+          >{{SITE_TITLE}}</a
+        >
+        <div class="header__actions">
+          <a class="header__graph" href="{{GRAPH_URL}}">Graph</a>
+          <button class="header__theme" type="button" data-theme-toggle>
+            <span class="visually-hidden">Toggle colour theme</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout{{LAYOUT_WIDE}}">
+      {{SIDEBAR}}
+      <main class="main" id="main">
+        <article class="markdown md{{MD_DARK}}">
+          <h1 id="page-title" class="markdown__title">{{PAGE_TITLE}}</h1>
+          {{LEDE}}{{BODY}}
+        </article>
+      </main>
+      {{OUTLINE}}
+    </div>
+
+    <footer class="footer">
+      <p>Built with pagers{{FOOTER}}</p>
+    </footer>
+
+    <script src="{{ASSET_JS}}" defer></script>
+  </body>
+</html>

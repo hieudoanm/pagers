@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Markdown Cheat Sheet</title>
+    <link rel="stylesheet" href="../../dist/md.css" />
+    <style>
+      :root {
+        color-scheme: dark;
+        --page-bg: #1b1b1f;
+      }
+      body {
+        margin: 0;
+        background: var(--page-bg, #ffffff);
+      }
+      .md {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 40px 32px 64px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="md md-crimson">
+      <h1 id="markdown-cheat-sheet">
+        <a class="anchor" href="#markdown-cheat-sheet" aria-hidden="true">#</a
+        >Markdown Cheat Sheet
+      </h1>
+      <p>
+        Thanks for visiting
+        <a href="https://www.markdownguide.org">The Markdown Guide</a>!
+      </p>
+      <p>
+        This Markdown cheat sheet provides a quick overview of all the Markdown
+        syntax elements. It can’t cover every edge case, so if you need more
+        information about any of these elements, refer to the reference guides
+        for
+        <a href="https://www.markdownguide.org/basic-syntax/">basic syntax</a>
+        and
+        <a href="https://www.markdownguide.org/extended-syntax/"
+          >extended syntax</a
+        >.
+      </p>
+      <h2 id="basic-syntax">
+        <a class="anchor" href="#basic-syntax" aria-hidden="true">#</a>Basic
+        Syntax
+      </h2>
+      <p>
+        These are the elements outlined in John Gruber’s original design
+        document. All Markdown applications support these elements.
+      </p>
+      <h3 id="heading">
+        <a class="anchor" href="#heading" aria-hidden="true">#</a>Heading
+      </h3>
+      <h1 id="h1"><a class="anchor" href="#h1" aria-hidden="true">#</a>H1</h1>
+      <h2 id="h2"><a class="anchor" href="#h2" aria-hidden="true">#</a>H2</h2>
+      <h3 id="h3"><a class="anchor" href="#h3" aria-hidden="true">#</a>H3</h3>
+      <h3 id="bold">
+        <a class="anchor" href="#bold" aria-hidden="true">#</a>Bold
+      </h3>
+      <p><strong>bold text</strong></p>
+      <h3 id="italic">
+        <a class="anchor" href="#italic" aria-hidden="true">#</a>Italic
+      </h3>
+      <p><em>italicized text</em></p>
+      <h3 id="blockquote">
+        <a class="anchor" href="#blockquote" aria-hidden="true">#</a>Blockquote
+      </h3>
+      <blockquote>
+        <p>blockquote</p>
+      </blockquote>
+      <h3 id="ordered-list">
+        <a class="anchor" href="#ordered-list" aria-hidden="true">#</a>Ordered
+        List
+      </h3>
+      <ol type="1">
+        <li>First item</li>
+        <li>Second item</li>
+        <li>Third item</li>
+      </ol>
+      <h3 id="unordered-list">
+        <a class="anchor" href="#unordered-list" aria-hidden="true">#</a
+        >Unordered List
+      </h3>
+      <ul>
+        <li>First item</li>
+        <li>Second item</li>
+        <li>Third item</li>
+      </ul>
+      <h3 id="code">
+        <a class="anchor" href="#code" aria-hidden="true">#</a>Code
+      </h3>
+      <p><code>code</code></p>
+      <h3 id="horizontal-rule">
+        <a class="anchor" href="#horizontal-rule" aria-hidden="true">#</a
+        >Horizontal Rule
+      </h3>
+      <hr />
+      <h3 id="link">
+        <a class="anchor" href="#link" aria-hidden="true">#</a>Link
+      </h3>
+      <p><a href="https://www.markdownguide.org">Markdown Guide</a></p>
+      <h3 id="image">
+        <a class="anchor" href="#image" aria-hidden="true">#</a>Image
+      </h3>
+      <p>
+        <img
+          src="https://www.markdownguide.org/assets/images/tux.png"
+          alt="alt text" />
+      </p>
+      <h2 id="extended-syntax">
+        <a class="anchor" href="#extended-syntax" aria-hidden="true">#</a
+        >Extended Syntax
+      </h2>
+      <p>
+        These elements extend the basic syntax by adding additional features.
+        Not all Markdown applications support these elements.
+      </p>
+      <h3 id="table">
+        <a class="anchor" href="#table" aria-hidden="true">#</a>Table
+      </h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Syntax</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Header</td>
+            <td>Title</td>
+          </tr>
+          <tr>
+            <td>Paragraph</td>
+            <td>Text</td>
+          </tr>
+        </tbody>
+      </table>
+      <h3 id="fenced-code-block">
+        <a class="anchor" href="#fenced-code-block" aria-hidden="true">#</a
+        >Fenced Code Block
+      </h3>
+      <pre><code class="hljs language-json">{
+  <span class="hljs-attribute">&quot;firstName&quot;</span>: <span class="hljs-string">&quot;John&quot;</span>,
+  <span class="hljs-attribute">&quot;lastName&quot;</span>: <span class="hljs-string">&quot;Smith&quot;</span>,
+  <span class="hljs-attribute">&quot;age&quot;</span>: <span class="hljs-number">25</span>
+}</code></pre>
+      <h3 id="footnote">
+        <a class="anchor" href="#footnote" aria-hidden="true">#</a>Footnote
+      </h3>
+      <p>
+        Here's a sentence with a footnote.
+        <sup id="fnref1" data-footnote-ref><a href="#fn1">1</a></sup>
+      </p>
+      <h3 id="heading-id">
+        <a class="anchor" href="#heading-id" aria-hidden="true">#</a>Heading ID
+      </h3>
+      <h3 id="custom-id">
+        <a class="anchor" href="#custom-id" aria-hidden="true">#</a>My Great
+        Heading
+      </h3>
+      <h3 id="definition-list">
+        <a class="anchor" href="#definition-list" aria-hidden="true">#</a
+        >Definition List
+      </h3>
+      <dl>
+        <dt>term</dt>
+        <dd>definition</dd>
+      </dl>
+      <h3 id="strikethrough">
+        <a class="anchor" href="#strikethrough" aria-hidden="true">#</a
+        >Strikethrough
+      </h3>
+      <p><del>The world is flat.</del></p>
+      <h3 id="task-list">
+        <a class="anchor" href="#task-list" aria-hidden="true">#</a>Task List
+      </h3>
+      <ul class="contains-task-list">
+        <li class="task-list-item">
+          <input type="checkbox" checked disabled="" />Write the press release
+        </li>
+        <li class="task-list-item">
+          <input type="checkbox" disabled="" />Update the website
+        </li>
+        <li class="task-list-item">
+          <input type="checkbox" disabled="" />Contact the media
+        </li>
+      </ul>
+      <h3 id="emoji">
+        <a class="anchor" href="#emoji" aria-hidden="true">#</a>Emoji
+      </h3>
+      <p>That is so funny! <span class="emoji" data-emoji="joy">😂</span></p>
+      <p>
+        (See also
+        <a
+          href="https://www.markdownguide.org/extended-syntax/#copying-and-pasting-emoji"
+          >Copying and Pasting Emoji</a
+        >)
+      </p>
+      <h3 id="highlight">
+        <a class="anchor" href="#highlight" aria-hidden="true">#</a>Highlight
+      </h3>
+      <p>I need to highlight these <mark>very important words</mark>.</p>
+      <h3 id="subscript">
+        <a class="anchor" href="#subscript" aria-hidden="true">#</a>Subscript
+      </h3>
+      <p>H<sub>2</sub>O</p>
+      <h3 id="superscript">
+        <a class="anchor" href="#superscript" aria-hidden="true">#</a
+        >Superscript
+      </h3>
+      <p>X<sup>2</sup></p>
+      <section
+        id="footnotes"
+        class="footnotes footnotes-end-of-document"
+        role="doc-endnotes">
+        <hr />
+        <ol>
+          <li id="fn1">
+            <p>
+              This is the footnote.<a
+                href="#fnref1"
+                data-footnote-backref
+                class="footnote-back"
+                role="doc-backlink"
+                >↩︎</a
+              >
+            </p>
+          </li>
+        </ol>
+      </section>
+    </div>
+  </body>
+</html>
