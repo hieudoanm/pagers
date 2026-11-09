@@ -162,8 +162,10 @@ body {
   width: 1rem;
   height: 1rem;
   margin: auto;
-  border-top: 2px solid var(--fg);
-  border-bottom: 2px solid var(--fg);
+  background:
+    linear-gradient(var(--fg), var(--fg)) top / 100% 2px no-repeat,
+    linear-gradient(var(--fg), var(--fg)) center / 100% 2px no-repeat,
+    linear-gradient(var(--fg), var(--fg)) bottom / 100% 2px no-repeat;
 }
 
 /* Layout */
