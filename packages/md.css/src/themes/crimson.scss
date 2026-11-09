@@ -1,0 +1,21 @@
+// Crimson palette — the `md-crimson` theme.
+
+@mixin palette {
+  --md-text: #f3e3e1;
+  --md-text-muted: #bea5a2;
+  --md-border: #5a3a3a;
+  --md-code-bg: rgb(243 227 225 / 10%);
+  --md-code-block-bg: #2c1a19;
+  --md-table-alt-bg: rgb(243 227 225 / 5%);
+  --md-quote-bg: rgb(243 227 225 / 5%);
+  --md-mark-bg: rgb(255 205 106 / 30%);
+  --md-primary: #e85d4a;
+  --md-link: #60a5fa;
+  --md-secondary: #eba49b;
+  --md-accent: #e07a9e;
+  --md-info: #5aa7f0;
+  --md-success: #55c27e;
+  --md-warning: #f0b43e;
+  --md-error: #ff6b6b;
+  --md-radius-box: 0.5rem;
+}

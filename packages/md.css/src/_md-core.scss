@@ -1,0 +1,36 @@
+// Markdown core rules — GitHub-flavoured typography scoped under `.md`.
+// Every colour and radius resolves through `--md-*` custom properties, so the
+// same ruleset is shared by every entry. Rules are grouped into fragments
+// under `core/` and assembled here.
+// Each entry (@use'd with `as core`, then `@include core.md-core;`) must
+// declare the full `--md-*` palette on `.md` first.
+
+@use 'core/base';
+@use 'core/headings';
+@use 'core/inline';
+@use 'core/lists';
+@use 'core/blockquote';
+@use 'core/code';
+@use 'core/tables';
+@use 'core/media';
+@use 'core/misc';
+@use 'core/footnotes';
+@use 'core/alerts';
+@use 'core/highlight';
+
+@mixin md-core {
+  .md {
+    @include base.base;
+    @include headings.headings;
+    @include inline.inline;
+    @include lists.lists;
+    @include blockquote.blockquote;
+    @include code.code;
+    @include tables.tables;
+    @include media.media;
+    @include misc.misc;
+    @include footnotes.footnotes;
+    @include alerts.alerts;
+    @include highlight.highlight;
+  }
+}

@@ -1,0 +1,18 @@
+[package]
+name = "pagers-cli"
+version = "0.1.0"
+edition = "2021"
+description = "Command-line interface for pagers: build, init, graph, serve"
+license = "GPL-3.0"
+
+[[bin]]
+name = "pagers"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
+pagers-build = { path = "../pagers-build" }
+pagers-graph = { path = "../pagers-graph" }
+pagers-site = { path = "../pagers-site" }
+pagers-wiki = { path = "../pagers-wiki" }
+serde_json = "1"

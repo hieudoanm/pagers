@@ -1,0 +1,56 @@
+// Core rules — highlight.js token colours.
+
+@mixin highlight {
+  .hljs {
+    // Inherit the `pre` surface.
+    background: transparent;
+    color: inherit;
+  }
+
+  .hljs-keyword,
+  .hljs-selector-tag,
+  .hljs-type {
+    color: var(--md-primary);
+  }
+
+  .hljs-string,
+  .hljs-regexp,
+  .hljs-addition {
+    color: var(--md-success);
+  }
+
+  .hljs-number,
+  .hljs-literal,
+  .hljs-attribute,
+  .hljs-symbol,
+  .hljs-bullet {
+    color: var(--md-info);
+  }
+
+  .hljs-comment,
+  .hljs-quote,
+  .hljs-deletion {
+    color: var(--md-text-muted);
+    font-style: italic;
+  }
+
+  .hljs-title,
+  .hljs-section,
+  .hljs-function .hljs-title {
+    color: var(--md-secondary);
+  }
+
+  .hljs-built_in,
+  .hljs-builtin-name,
+  .hljs-meta {
+    color: var(--md-accent);
+  }
+
+  .hljs-variable,
+  .hljs-template-variable,
+  .hljs-name,
+  .hljs-selector-id,
+  .hljs-selector-class {
+    color: var(--md-warning);
+  }
+}

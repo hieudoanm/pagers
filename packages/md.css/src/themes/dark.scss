@@ -1,0 +1,21 @@
+// Dark palette — the `md-dark` theme.
+
+@mixin palette {
+  --md-text: #e5e5e8;
+  --md-text-muted: #a3a3ab;
+  --md-border: #44444b;
+  --md-code-bg: rgb(229 229 232 / 10%);
+  --md-code-block-bg: #232327;
+  --md-table-alt-bg: rgb(229 229 232 / 5%);
+  --md-quote-bg: rgb(229 229 232 / 5%);
+  --md-mark-bg: rgb(251 191 36 / 30%);
+  --md-primary: #ff6c37;
+  --md-link: #60a5fa;
+  --md-secondary: #a78bfa;
+  --md-accent: #fb7185;
+  --md-info: #38bdf8;
+  --md-success: #4ade80;
+  --md-warning: #fbbf24;
+  --md-error: #f87171;
+  --md-radius-box: 0.5rem;
+}

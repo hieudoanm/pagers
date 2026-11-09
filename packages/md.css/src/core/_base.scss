@@ -1,0 +1,16 @@
+// Core rules — the `.md` scope itself.
+
+@mixin base {
+  color: var(--md-text);
+  font-size: 1rem;
+  line-height: 1.65;
+  overflow-wrap: break-word;
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}

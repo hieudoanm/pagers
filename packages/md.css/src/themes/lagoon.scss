@@ -1,0 +1,21 @@
+// Lagoon palette — the `md-lagoon` theme.
+
+@mixin palette {
+  --md-text: #d9f2f2;
+  --md-text-muted: #8fbab8;
+  --md-border: #3a5c5a;
+  --md-code-bg: rgb(217 242 242 / 10%);
+  --md-code-block-bg: #1d3735;
+  --md-table-alt-bg: rgb(217 242 242 / 5%);
+  --md-quote-bg: rgb(217 242 242 / 5%);
+  --md-mark-bg: rgb(255 205 106 / 30%);
+  --md-primary: #22d3ee;
+  --md-link: #60a5fa;
+  --md-secondary: #7de0e0;
+  --md-accent: #4fc3de;
+  --md-info: #38bdf8;
+  --md-success: #34d399;
+  --md-warning: #fbbf24;
+  --md-error: #f87171;
+  --md-radius-box: 0.5rem;
+}

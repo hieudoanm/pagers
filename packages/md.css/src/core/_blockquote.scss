@@ -1,0 +1,18 @@
+// Core rules — blockquotes.
+
+@mixin blockquote {
+  blockquote {
+    margin: 1em 0;
+    border-left: 4px solid var(--md-border);
+    background: var(--md-quote-bg);
+    padding: 0.5em 1em;
+  }
+
+  blockquote > :first-child {
+    margin-top: 0;
+  }
+
+  blockquote > :last-child {
+    margin-bottom: 0;
+  }
+}

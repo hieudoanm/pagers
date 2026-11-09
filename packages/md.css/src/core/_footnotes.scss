@@ -1,0 +1,25 @@
+// Core rules — footnote references and the footnotes section.
+
+@mixin footnotes {
+  sup a[data-footnote-ref] {
+    color: var(--md-link, var(--md-primary));
+    text-decoration: none;
+  }
+
+  .footnotes {
+    color: var(--md-text-muted);
+    margin-top: 2em;
+    border-top: 1px solid var(--md-border);
+    padding-top: 1em;
+    font-size: 0.875em;
+
+    ol {
+      padding-left: 1.5em;
+    }
+
+    [data-footnote-backref] {
+      color: var(--md-link, var(--md-primary));
+      text-decoration: none;
+    }
+  }
+}
