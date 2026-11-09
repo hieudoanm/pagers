@@ -7,7 +7,7 @@ license = "GPL-3.0"
 
 [dependencies]
 htmd = "0.5"
-markup5ever = "0.38"
+markup5ever = "0.40"
 markup5ever_rcdom = "0.38"
 reqwest = { version = "0.12", default-features = false, features = ["blocking", "rustls-tls"] }
 scraper = "0.29"
