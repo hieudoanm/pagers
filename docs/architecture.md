@@ -8,28 +8,77 @@ order: 10
 `pagers` is a Cargo workspace — a virtual root manifest plus one crate per
 concern. The dependency direction is acyclic:
 
-```text
-pagers-cli ──┐
-             ├─→ pagers-build ─→ pagers-markdown ─→ pagers-site
-pagers-mcp ──┘       │                ▲
-                     ├─→ pagers-theme ─┘
-                     └─→ pagers-graph ─→ pagers-markdown
+<svg viewBox="0 0 980 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="pagers crate dependency graph">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <style>
+    .box { fill: #f8fafc; stroke: #334155; stroke-width: 1.5; rx: 8; }
+    .bin { fill: #eff6ff; stroke: #2563eb; }
+    .core { fill: #f0fdf4; stroke: #16a34a; }
+    .ext  { fill: #fefce8; stroke: #ca8a04; stroke-dasharray: 6 4; }
+    .t { font: 600 14px system-ui, sans-serif; fill: #0f172a; text-anchor: middle; }
+    .s { font: 11px system-ui, sans-serif; fill: #64748b; text-anchor: middle; }
+    .e { stroke: #64748b; stroke-width: 1.5; fill: none; marker-end: url(#arrow); }
+  </style>
 
-pagers-wiki (standalone: reqwest + scraper + htmd)
-```
+  <!-- edges -->
+  <path class="e" d="M170,60 L490,116"/>
+  <path class="e" d="M810,60 L490,116"/>
+  <path class="e" d="M490,164 L145,248"/>
+  <path class="e" d="M490,164 L415,248"/>
+  <path class="e" d="M490,164 L685,248"/>
+  <path class="e" d="M330,276 L234,276"/>
+  <path class="e" d="M145,300 L330,368"/>
+  <path class="e" d="M415,300 L450,368"/>
+  <path class="e" d="M685,300 L540,368"/>
+  <path class="e" d="M640,318 C520,352 300,352 215,304"/>
+
+  <!-- binaries -->
+  <rect class="box bin" x="80" y="16" width="180" height="44" rx="8"/>
+  <text class="t" x="170" y="43">pagers-cli</text>
+  <rect class="box bin" x="720" y="16" width="180" height="44" rx="8"/>
+  <text class="t" x="810" y="43">pagers-mcp</text>
+
+  <!-- pipeline -->
+  <rect class="box" x="400" y="120" width="180" height="44" rx="8"/>
+  <text class="t" x="490" y="147">pagers-build</text>
+
+  <!-- libraries -->
+  <rect class="box" x="60" y="252" width="170" height="48" rx="8"/>
+  <text class="t" x="145" y="272">pagers-markdown</text>
+  <text class="s" x="145" y="290">pulldown-cmark</text>
+  <rect class="box" x="330" y="252" width="170" height="48" rx="8"/>
+  <text class="t" x="415" y="272">pagers-theme</text>
+  <text class="s" x="415" y="290">embedded assets</text>
+  <rect class="box" x="600" y="252" width="170" height="48" rx="8"/>
+  <text class="t" x="685" y="272">pagers-graph</text>
+  <text class="s" x="685" y="290">html / json / dot</text>
+
+  <!-- foundation -->
+  <rect class="box core" x="305" y="372" width="370" height="44" rx="8"/>
+  <text class="t" x="490" y="399">pagers-site — content model, zero deps</text>
+
+  <!-- standalone -->
+  <rect class="box ext" x="790" y="120" width="170" height="48" rx="8"/>
+  <text class="t" x="875" y="140">pagers-wiki</text>
+  <text class="s" x="875" y="158">reqwest · scraper · htmd</text>
+</svg>
 
 ## Crates
 
-| Crate           | Role                                                        | External deps          |
-| --------------- | ----------------------------------------------------------- | ---------------------- |
-| `pagers-cli`    | `pagers` binary: clap CLI, build/serve/init/wiki commands | clap, pagers-*         |
-| `pagers-mcp`    | `pagers-mcp` binary: stdio MCP server (rmcp)                | rmcp, serde, tokio     |
-| `pagers-build`  | Build pipeline: discover → render → write → copy → graph   | pagers-*               |
-| `pagers-site`   | Content model: discovery, frontmatter, config, URLs, nav, link resolution | **none**    |
-| `pagers-markdown` | Markdown → HTML (pulldown-cmark), outlines, alerts, link rewriting | pulldown-cmark |
-| `pagers-theme`  | Embedded `md.css`, site chrome, `page.html` template        | none                   |
-| `pagers-graph`  | Page-link graph extraction + HTML/JSON/DOT rendering        | pagers-markdown        |
-| `pagers-wiki`   | Wikipedia: URL parse → REST fetch → extract → convert → normalize | reqwest, scraper, htmd, … |
+| Crate             | Role                                                                      | External deps             |
+| ----------------- | ------------------------------------------------------------------------- | ------------------------- |
+| `pagers-cli`      | `pagers` binary: clap CLI, build/serve/init/wiki commands                 | clap, pagers-*            |
+| `pagers-mcp`      | `pagers-mcp` binary: stdio MCP server (rmcp)                              | rmcp, serde, tokio        |
+| `pagers-build`    | Build pipeline: discover → render → write → copy → graph                  | pagers-*                  |
+| `pagers-site`     | Content model: discovery, frontmatter, config, URLs, nav, link resolution | **none**                  |
+| `pagers-markdown` | Markdown → HTML (pulldown-cmark), outlines, alerts, link rewriting        | pulldown-cmark            |
+| `pagers-theme`    | Embedded `md.css`, site chrome, `page.html` template                      | none                      |
+| `pagers-graph`    | Page-link graph extraction + HTML/JSON/DOT rendering                      | pagers-markdown           |
+| `pagers-wiki`     | Wikipedia: URL parse → REST fetch → extract → convert → normalize         | reqwest, scraper, htmd, … |
 
 `pagers-build` exists so both the CLI and the MCP server share one pipeline;
 `pagers-wiki` is deliberately independent of the site crates — its stages
@@ -38,14 +87,44 @@ for other content sources.
 
 ## Build pipeline
 
-```text
-discover(content_dir)
-  → Vec<Page> + assets + frontmatter/config
-render each page (pagers-markdown → HTML + outline + link edges)
-  → write output_path_for_source() HTML files
-copy non-Markdown assets to output root
-emit graph.html/.json/.dot (pagers-graph)
-```
+<svg viewBox="0 0 1000 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="pagers build pipeline">
+  <defs>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <style>
+    .step { fill: #f8fafc; stroke: #334155; stroke-width: 1.5; }
+    .t { font: 600 13px system-ui, sans-serif; fill: #0f172a; text-anchor: middle; }
+    .s { font: 11px system-ui, sans-serif; fill: #64748b; text-anchor: middle; }
+    .a { stroke: #64748b; stroke-width: 1.5; fill: none; marker-end: url(#arrow2); }
+  </style>
+  <g>
+    <rect class="step" x="10"  y="24" width="170" height="64" rx="8"/>
+    <text class="t" x="95"  y="52">discover</text>
+    <text class="s" x="95"  y="72">pages + assets + config</text>
+    <path class="a" d="M184,56 L206,56"/>
+
+    <rect class="step" x="210" y="24" width="170" height="64" rx="8"/>
+    <text class="t" x="295" y="52">render</text>
+    <text class="s" x="295" y="72">markdown → html + edges</text>
+    <path class="a" d="M384,56 L406,56"/>
+
+    <rect class="step" x="410" y="24" width="170" height="64" rx="8"/>
+    <text class="t" x="495" y="52">write pages</text>
+    <text class="s" x="495" y="72">trailing-slash html</text>
+    <path class="a" d="M584,56 L606,56"/>
+
+    <rect class="step" x="610" y="24" width="170" height="64" rx="8"/>
+    <text class="t" x="695" y="52">copy assets</text>
+    <text class="s" x="695" y="72">non-markdown files</text>
+    <path class="a" d="M784,56 L806,56"/>
+
+    <rect class="step" x="810" y="24" width="180" height="64" rx="8"/>
+    <text class="t" x="900" y="52">emit graph</text>
+    <text class="s" x="900" y="72">graph.html · meta files</text>
+  </g>
+</svg>
 
 Everything is deterministic and offline — no network access during a build.
 
@@ -70,5 +149,5 @@ cargo fmt --check
 ```
 
 CI (`.github/workflows/ci.yaml`) runs fmt/clippy/tests on every push and PR,
-and on `main` additionally builds the site you are reading — the converted
+and on `master` additionally builds the site you are reading — the converted
 `README.md` plus `docs/` — and deploys it to GitHub Pages.

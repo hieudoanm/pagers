@@ -111,7 +111,11 @@ fn walk(root: &Path, dir: &Path, content: &mut Content) -> Result<(), String> {
         let path = entry.path();
         let is_dir = entry.file_type().map(|t| t.is_dir()).unwrap_or(false);
         if is_dir {
-            if name.starts_with('.') || SKIPPED_DIRS.contains(&name.as_str()) {
+            // `.well-known` is a standards directory (security.txt, app
+            // links) — the only dot-directory copied through.
+            if (name.starts_with('.') && name != ".well-known")
+                || SKIPPED_DIRS.contains(&name.as_str())
+            {
                 continue;
             }
             walk(root, &path, content)?;

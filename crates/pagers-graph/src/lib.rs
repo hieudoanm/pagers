@@ -90,6 +90,16 @@ pub fn from_pages(pages: &[Page], edges: &[Edge]) -> Graph {
     }
 }
 
+/// Rewrites node URLs through the site's `basePath` so the "Open page"
+/// links in `graph.html` resolve correctly under sub-path hosting.
+pub fn apply_base_path(graph: &mut Graph, config: &pagers_site::config::Config) {
+    for node in &mut graph.nodes {
+        if let Some(url) = node.url.take() {
+            node.url = Some(config.url(&url));
+        }
+    }
+}
+
 /// Serializes the graph to the JSON shape `graph.js` consumes.
 pub fn to_json(graph: &Graph) -> Value {
     json!({

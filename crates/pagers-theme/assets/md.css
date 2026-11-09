@@ -228,6 +228,826 @@
 .md var {
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
+.md pre:has(> code[class^=language-]) {
+  position: relative;
+  padding-top: 1.7rem;
+}
+.md pre:has(> code.language-shell) {
+  border-left: 3px solid #22c55e;
+  background: color-mix(in srgb, #22c55e 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-shell)::before {
+  content: "shell";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #22c55e;
+}
+.md pre:has(> code.language-bash) {
+  border-left: 3px solid #22c55e;
+  background: color-mix(in srgb, #22c55e 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-bash)::before {
+  content: "bash";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #22c55e;
+}
+.md pre:has(> code.language-sh) {
+  border-left: 3px solid #22c55e;
+  background: color-mix(in srgb, #22c55e 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-sh)::before {
+  content: "sh";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #22c55e;
+}
+.md pre:has(> code.language-zsh) {
+  border-left: 3px solid #22c55e;
+  background: color-mix(in srgb, #22c55e 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-zsh)::before {
+  content: "zsh";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #22c55e;
+}
+.md pre:has(> code.language-console) {
+  border-left: 3px solid #22c55e;
+  background: color-mix(in srgb, #22c55e 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-console)::before {
+  content: "console";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #22c55e;
+}
+.md pre:has(> code.language-shellsession) {
+  border-left: 3px solid #22c55e;
+  background: color-mix(in srgb, #22c55e 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-shellsession)::before {
+  content: "shellsession";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #22c55e;
+}
+.md pre:has(> code.language-yaml) {
+  border-left: 3px solid #ef4444;
+  background: color-mix(in srgb, #ef4444 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-yaml)::before {
+  content: "yaml";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ef4444;
+}
+.md pre:has(> code.language-yml) {
+  border-left: 3px solid #ef4444;
+  background: color-mix(in srgb, #ef4444 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-yml)::before {
+  content: "yml";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ef4444;
+}
+.md pre:has(> code.language-json) {
+  border-left: 3px solid #fbbf24;
+  background: color-mix(in srgb, #fbbf24 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-json)::before {
+  content: "json";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fbbf24;
+}
+.md pre:has(> code.language-jsonc) {
+  border-left: 3px solid #fbbf24;
+  background: color-mix(in srgb, #fbbf24 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-jsonc)::before {
+  content: "jsonc";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fbbf24;
+}
+.md pre:has(> code.language-json5) {
+  border-left: 3px solid #fbbf24;
+  background: color-mix(in srgb, #fbbf24 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-json5)::before {
+  content: "json5";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fbbf24;
+}
+.md pre:has(> code.language-javascript) {
+  border-left: 3px solid #eab308;
+  background: color-mix(in srgb, #eab308 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-javascript)::before {
+  content: "javascript";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #eab308;
+}
+.md pre:has(> code.language-js) {
+  border-left: 3px solid #eab308;
+  background: color-mix(in srgb, #eab308 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-js)::before {
+  content: "js";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #eab308;
+}
+.md pre:has(> code.language-node) {
+  border-left: 3px solid #eab308;
+  background: color-mix(in srgb, #eab308 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-node)::before {
+  content: "node";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #eab308;
+}
+.md pre:has(> code.language-mjs) {
+  border-left: 3px solid #eab308;
+  background: color-mix(in srgb, #eab308 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-mjs)::before {
+  content: "mjs";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #eab308;
+}
+.md pre:has(> code.language-cjs) {
+  border-left: 3px solid #eab308;
+  background: color-mix(in srgb, #eab308 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-cjs)::before {
+  content: "cjs";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #eab308;
+}
+.md pre:has(> code.language-typescript) {
+  border-left: 3px solid #0ea5e9;
+  background: color-mix(in srgb, #0ea5e9 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-typescript)::before {
+  content: "typescript";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0ea5e9;
+}
+.md pre:has(> code.language-ts) {
+  border-left: 3px solid #0ea5e9;
+  background: color-mix(in srgb, #0ea5e9 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-ts)::before {
+  content: "ts";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0ea5e9;
+}
+.md pre:has(> code.language-java) {
+  border-left: 3px solid #c2410c;
+  background: color-mix(in srgb, #c2410c 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-java)::before {
+  content: "java";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #c2410c;
+}
+.md pre:has(> code.language-kotlin) {
+  border-left: 3px solid #a855f7;
+  background: color-mix(in srgb, #a855f7 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-kotlin)::before {
+  content: "kotlin";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #a855f7;
+}
+.md pre:has(> code.language-kt) {
+  border-left: 3px solid #a855f7;
+  background: color-mix(in srgb, #a855f7 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-kt)::before {
+  content: "kt";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #a855f7;
+}
+.md pre:has(> code.language-swift) {
+  border-left: 3px solid #f43f5e;
+  background: color-mix(in srgb, #f43f5e 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-swift)::before {
+  content: "swift";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #f43f5e;
+}
+.md pre:has(> code.language-go) {
+  border-left: 3px solid #06b6d4;
+  background: color-mix(in srgb, #06b6d4 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-go)::before {
+  content: "go";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #06b6d4;
+}
+.md pre:has(> code.language-golang) {
+  border-left: 3px solid #06b6d4;
+  background: color-mix(in srgb, #06b6d4 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-golang)::before {
+  content: "golang";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #06b6d4;
+}
+.md pre:has(> code.language-rust) {
+  border-left: 3px solid #f97316;
+  background: color-mix(in srgb, #f97316 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-rust)::before {
+  content: "rust";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #f97316;
+}
+.md pre:has(> code.language-rs) {
+  border-left: 3px solid #f97316;
+  background: color-mix(in srgb, #f97316 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-rs)::before {
+  content: "rs";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #f97316;
+}
+.md pre:has(> code.language-php) {
+  border-left: 3px solid #6366f1;
+  background: color-mix(in srgb, #6366f1 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-php)::before {
+  content: "php";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6366f1;
+}
+.md pre:has(> code.language-python) {
+  border-left: 3px solid #3b82f6;
+  background: color-mix(in srgb, #3b82f6 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-python)::before {
+  content: "python";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #3b82f6;
+}
+.md pre:has(> code.language-py) {
+  border-left: 3px solid #3b82f6;
+  background: color-mix(in srgb, #3b82f6 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-py)::before {
+  content: "py";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #3b82f6;
+}
+.md pre:has(> code.language-c) {
+  border-left: 3px solid #94a3b8;
+  background: color-mix(in srgb, #94a3b8 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-c)::before {
+  content: "c";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+.md pre:has(> code.language-h) {
+  border-left: 3px solid #94a3b8;
+  background: color-mix(in srgb, #94a3b8 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-h)::before {
+  content: "h";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+.md pre:has(> code.language-cpp) {
+  border-left: 3px solid #94a3b8;
+  background: color-mix(in srgb, #94a3b8 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-cpp)::before {
+  content: "cpp";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+.md pre:has(> code.language-cxx) {
+  border-left: 3px solid #94a3b8;
+  background: color-mix(in srgb, #94a3b8 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-cxx)::before {
+  content: "cxx";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+.md pre:has(> code.language-hpp) {
+  border-left: 3px solid #94a3b8;
+  background: color-mix(in srgb, #94a3b8 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-hpp)::before {
+  content: "hpp";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+.md pre:has(> code.language-csharp) {
+  border-left: 3px solid #7c3aed;
+  background: color-mix(in srgb, #7c3aed 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-csharp)::before {
+  content: "csharp";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7c3aed;
+}
+.md pre:has(> code.language-cs) {
+  border-left: 3px solid #7c3aed;
+  background: color-mix(in srgb, #7c3aed 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-cs)::before {
+  content: "cs";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7c3aed;
+}
+.md pre:has(> code.language-css) {
+  border-left: 3px solid #0284c7;
+  background: color-mix(in srgb, #0284c7 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-css)::before {
+  content: "css";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0284c7;
+}
+.md pre:has(> code.language-html) {
+  border-left: 3px solid #ec4899;
+  background: color-mix(in srgb, #ec4899 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-html)::before {
+  content: "html";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ec4899;
+}
+.md pre:has(> code.language-htm) {
+  border-left: 3px solid #ec4899;
+  background: color-mix(in srgb, #ec4899 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-htm)::before {
+  content: "htm";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ec4899;
+}
+.md pre:has(> code.language-xml) {
+  border-left: 3px solid #ec4899;
+  background: color-mix(in srgb, #ec4899 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-xml)::before {
+  content: "xml";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ec4899;
+}
+.md pre:has(> code.language-svg) {
+  border-left: 3px solid #ec4899;
+  background: color-mix(in srgb, #ec4899 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-svg)::before {
+  content: "svg";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ec4899;
+}
+.md pre:has(> code.language-sql) {
+  border-left: 3px solid #0d9488;
+  background: color-mix(in srgb, #0d9488 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-sql)::before {
+  content: "sql";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0d9488;
+}
+.md pre:has(> code.language-toml) {
+  border-left: 3px solid #b45309;
+  background: color-mix(in srgb, #b45309 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-toml)::before {
+  content: "toml";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #b45309;
+}
+.md pre:has(> code.language-ruby) {
+  border-left: 3px solid #dc2626;
+  background: color-mix(in srgb, #dc2626 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-ruby)::before {
+  content: "ruby";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #dc2626;
+}
+.md pre:has(> code.language-rb) {
+  border-left: 3px solid #dc2626;
+  background: color-mix(in srgb, #dc2626 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-rb)::before {
+  content: "rb";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #dc2626;
+}
+.md pre:has(> code.language-docker) {
+  border-left: 3px solid #1d4ed8;
+  background: color-mix(in srgb, #1d4ed8 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-docker)::before {
+  content: "docker";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1d4ed8;
+}
+.md pre:has(> code.language-dockerfile) {
+  border-left: 3px solid #1d4ed8;
+  background: color-mix(in srgb, #1d4ed8 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-dockerfile)::before {
+  content: "dockerfile";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1d4ed8;
+}
+.md pre:has(> code.language-markdown) {
+  border-left: 3px solid #1e40af;
+  background: color-mix(in srgb, #1e40af 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-markdown)::before {
+  content: "markdown";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1e40af;
+}
+.md pre:has(> code.language-md) {
+  border-left: 3px solid #1e40af;
+  background: color-mix(in srgb, #1e40af 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-md)::before {
+  content: "md";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1e40af;
+}
+.md pre:has(> code.language-makefile) {
+  border-left: 3px solid #6b7280;
+  background: color-mix(in srgb, #6b7280 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-makefile)::before {
+  content: "makefile";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+.md pre:has(> code.language-make) {
+  border-left: 3px solid #6b7280;
+  background: color-mix(in srgb, #6b7280 7%, var(--md-code-block-bg));
+}
+.md pre:has(> code.language-make)::before {
+  content: "make";
+  position: absolute;
+  top: 0.45rem;
+  right: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
 .md table {
   display: block;
   width: max-content;
@@ -536,3 +1356,4 @@
   --md-radius-box: 0.5rem;
 }
 
+/*# sourceMappingURL=md.css.map */
