@@ -259,13 +259,18 @@ body {
   padding: 0.45rem 0.6rem;
 }
 
-/* Outline (on this page) */
+/* Outline (on this page) — right rail on wide screens, stacked on top
+   of the article on narrow ones. */
 .outline {
-  margin-top: 3rem;
-  padding: 1rem 1.25rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--bg-raised);
+  flex: 0 0 14rem;
+  margin-top: 0;
+  padding: 0.5rem 0 0.5rem 1.25rem;
+  border-left: 1px solid var(--border);
+  position: sticky;
+  top: 3.5rem;
+  align-self: flex-start;
+  max-height: calc(100vh - 3.5rem);
+  overflow-y: auto;
 }
 .outline__title {
   font-size: 0.8rem;
@@ -374,5 +379,21 @@ body {
   .layout--wide .main {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+  }
+  .layout {
+    flex-direction: column;
+  }
+  .outline {
+    order: -1;
+    flex: none;
+    position: static;
+    max-height: none;
+    overflow: visible;
+    margin: 0 1.25rem 1rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-raised);
   }
 }

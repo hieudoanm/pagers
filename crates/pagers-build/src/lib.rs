@@ -57,7 +57,8 @@ pub fn build(content_dir: &str, output_dir: &str) -> Result<Stats, String> {
     )?;
 
     let edges: Vec<markdown::Edge> = rendered.iter().flat_map(|r| r.edges.clone()).collect();
-    let graph = pagers_graph::from_pages(&content.pages, &edges);
+    let mut graph = pagers_graph::from_pages(&content.pages, &edges);
+    pagers_graph::apply_base_path(&mut graph, &config);
     let graph_title = format!("{} — Graph", config.title);
     let graph_html = pagers_graph::render_html(&graph, &graph_title, &config.theme);
     write_file(output_dir, "graph.html", graph_html.as_bytes())?;

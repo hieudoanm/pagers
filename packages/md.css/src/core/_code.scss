@@ -47,4 +47,67 @@ $code-font:
   var {
     font-family: $code-font;
   }
+
+  // Per-language accent colours for fenced code blocks. These are
+  // language brand colours (not theme tokens) applied as a left border
+  // plus a faint tint; browsers without :has() or color-mix() fall back
+  // to the default block style.
+  $lang-colors: (
+    'shell': #22c55e, 'bash': #22c55e, 'sh': #22c55e, 'zsh': #22c55e,
+    'console': #22c55e, 'shellsession': #22c55e,
+    'yaml': #ef4444, 'yml': #ef4444,
+    'json': #fbbf24, 'jsonc': #fbbf24, 'json5': #fbbf24,
+    'javascript': #eab308, 'js': #eab308, 'node': #eab308, 'mjs': #eab308,
+    'cjs': #eab308,
+    'typescript': #0ea5e9, 'ts': #0ea5e9,
+    'java': #c2410c,
+    'kotlin': #a855f7, 'kt': #a855f7,
+    'swift': #f43f5e,
+    'go': #06b6d4, 'golang': #06b6d4,
+    'rust': #f97316, 'rs': #f97316,
+    'php': #6366f1,
+    'python': #3b82f6, 'py': #3b82f6,
+    'c': #94a3b8, 'h': #94a3b8, 'cpp': #94a3b8, 'cxx': #94a3b8,
+    'hpp': #94a3b8,
+    'csharp': #7c3aed, 'cs': #7c3aed,
+    'css': #0284c7,
+    'html': #ec4899, 'htm': #ec4899, 'xml': #ec4899, 'svg': #ec4899,
+    'sql': #0d9488,
+    'toml': #b45309,
+    'ruby': #dc2626, 'rb': #dc2626,
+    'docker': #1d4ed8, 'dockerfile': #1d4ed8,
+    'markdown': #1e40af, 'md': #1e40af,
+    'makefile': #6b7280, 'make': #6b7280,
+  );
+
+  // Language label + accent. Labeled blocks get extra top padding so the
+  // label never overlaps the first line of code.
+  $unlabeled: 'text', 'txt', 'plain', 'output';
+
+  pre:has(> code[class^='language-']) {
+    position: relative;
+    padding-top: 1.7rem;
+  }
+
+  @each $lang, $color in $lang-colors {
+    pre:has(> code.language-#{$lang}) {
+      border-left: 3px solid #{$color};
+      background: color-mix(in srgb, #{$color} 7%, var(--md-code-block-bg));
+
+      @if not index($unlabeled, $lang) {
+        &::before {
+          content: '#{$lang}';
+          position: absolute;
+          top: 0.45rem;
+          right: 0.75rem;
+          font-family: system-ui, -apple-system, sans-serif;
+          font-size: 0.68rem;
+          font-weight: 600;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          color: #{$color};
+        }
+      }
+    }
+  }
 }

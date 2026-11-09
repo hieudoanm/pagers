@@ -145,7 +145,10 @@ fn run_graph(
     format: Option<&str>,
     title: &str,
 ) -> Result<(), String> {
-    let graph = pagers_graph::scan(content)?;
+    let mut graph = pagers_graph::scan(content)?;
+    if let Ok(config) = pagers_site::config::load_for_dir(content) {
+        pagers_graph::apply_base_path(&mut graph, &config);
+    }
     let totals = format!(
         "{} files, {} links, {} broken links",
         graph.stats.nodes, graph.stats.edges, graph.stats.broken
