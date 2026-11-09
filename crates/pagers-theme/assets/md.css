@@ -240,7 +240,7 @@
   content: "shell";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -256,7 +256,7 @@
   content: "bash";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -272,7 +272,7 @@
   content: "sh";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -288,7 +288,7 @@
   content: "zsh";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -304,7 +304,7 @@
   content: "console";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -320,7 +320,7 @@
   content: "shellsession";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -336,7 +336,7 @@
   content: "yaml";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -352,7 +352,7 @@
   content: "yml";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -368,7 +368,7 @@
   content: "json";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -384,7 +384,7 @@
   content: "jsonc";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -400,7 +400,7 @@
   content: "json5";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -416,7 +416,7 @@
   content: "javascript";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -432,7 +432,7 @@
   content: "js";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -448,7 +448,7 @@
   content: "node";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -464,7 +464,7 @@
   content: "mjs";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -480,7 +480,7 @@
   content: "cjs";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -496,7 +496,7 @@
   content: "typescript";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -512,7 +512,7 @@
   content: "ts";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -528,7 +528,7 @@
   content: "java";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -544,7 +544,7 @@
   content: "kotlin";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -560,7 +560,7 @@
   content: "kt";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -576,7 +576,7 @@
   content: "swift";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -592,7 +592,7 @@
   content: "go";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -608,7 +608,7 @@
   content: "golang";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -624,7 +624,7 @@
   content: "rust";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -640,7 +640,7 @@
   content: "rs";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -656,7 +656,7 @@
   content: "php";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -672,7 +672,7 @@
   content: "python";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -688,7 +688,7 @@
   content: "py";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -704,7 +704,7 @@
   content: "c";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -720,7 +720,7 @@
   content: "h";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -736,7 +736,7 @@
   content: "cpp";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -752,7 +752,7 @@
   content: "cxx";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -768,7 +768,7 @@
   content: "hpp";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -784,7 +784,7 @@
   content: "csharp";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -800,7 +800,7 @@
   content: "cs";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -816,7 +816,7 @@
   content: "css";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -832,7 +832,7 @@
   content: "html";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -848,7 +848,7 @@
   content: "htm";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -864,7 +864,7 @@
   content: "xml";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -880,7 +880,7 @@
   content: "svg";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -896,7 +896,7 @@
   content: "sql";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -912,7 +912,7 @@
   content: "toml";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -928,7 +928,7 @@
   content: "ruby";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -944,7 +944,7 @@
   content: "rb";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -960,7 +960,7 @@
   content: "docker";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -976,7 +976,7 @@
   content: "dockerfile";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -992,7 +992,7 @@
   content: "markdown";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -1008,7 +1008,7 @@
   content: "md";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -1024,7 +1024,7 @@
   content: "makefile";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
@@ -1040,7 +1040,7 @@
   content: "make";
   position: absolute;
   top: 0.45rem;
-  right: 0.75rem;
+  left: 0.75rem;
   font-family: system-ui, -apple-system, sans-serif;
   font-size: 0.68rem;
   font-weight: 600;
