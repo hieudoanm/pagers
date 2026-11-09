@@ -1,0 +1,23 @@
+// Core rules — horizontal rules and disclosure widgets.
+
+@mixin misc {
+  hr {
+    height: 1px;
+    margin: 2em 0;
+    border: 0;
+    background: var(--md-border);
+  }
+
+  details {
+    margin: 1em 0;
+    border: 1px solid var(--md-border);
+    border-radius: var(--md-radius-box);
+    background: var(--md-code-block-bg);
+    padding: 0.5em 1em;
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+  }
+}

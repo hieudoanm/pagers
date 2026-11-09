@@ -1,0 +1,21 @@
+// Fuchsia palette — the `md-fuchsia` theme.
+
+@mixin palette {
+  --md-text: #f2e0f0;
+  --md-text-muted: #c4a3bd;
+  --md-border: #5c3a52;
+  --md-code-bg: rgb(242 224 240 / 10%);
+  --md-code-block-bg: #2e1829;
+  --md-table-alt-bg: rgb(242 224 240 / 5%);
+  --md-quote-bg: rgb(242 224 240 / 5%);
+  --md-mark-bg: rgb(255 205 106 / 30%);
+  --md-primary: #e04aa0;
+  --md-link: #60a5fa;
+  --md-secondary: #c77ac2;
+  --md-accent: #e07ad0;
+  --md-info: #b06ad6;
+  --md-success: #4ac07a;
+  --md-warning: #f0b43e;
+  --md-error: #ff6b8a;
+  --md-radius-box: 0.5rem;
+}

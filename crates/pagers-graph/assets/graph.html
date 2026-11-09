@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" data-theme="{{THEME}}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{TITLE}}</title>
+    <style>{{CSS}}</style>
+  </head>
+  <body>
+    <div class="graph-shell">
+      <header class="graph-header">
+        <div>
+          <h1>{{TITLE}}</h1>
+          <p class="graph-header__summary">
+            <span data-stat-nodes>{{NODES}}</span> pages ·
+            <span data-stat-edges>{{EDGES}}</span> links
+          </p>
+        </div>
+        <button class="graph-theme" type="button" data-theme-toggle>Theme</button>
+      </header>
+      <div class="graph-body">
+        <canvas id="graph-canvas" aria-label="Page link graph"></canvas>
+        <aside class="graph-details" id="graph-details" hidden>
+          <button class="graph-details__close" id="graph-details-close" aria-label="Close">×</button>
+          <h2 data-detail-name></h2>
+          <p class="graph-details__path" data-detail-path></p>
+          <dl>
+            <div><dt>Connections</dt><dd data-detail-degree></dd></div>
+          </dl>
+          <a class="graph-details__open" data-detail-open href="#">Open page</a>
+        </aside>
+      </div>
+      <footer class="graph-footer">Drag nodes to rearrange · Click a node for details</footer>
+    </div>
+    <script>
+      window.__GRAPH_DATA__ = {{DATA}};
+    </script>
+    <script>{{JS}}</script>
+  </body>
+</html>

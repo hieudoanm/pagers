@@ -1,0 +1,41 @@
+// Core rules — ordered/unordered lists and GitHub task lists.
+
+@mixin lists {
+  ul,
+  ol {
+    margin: 0 0 1em;
+    padding-left: 2em;
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  li {
+    margin: 0.25em 0;
+  }
+
+  li > ul,
+  li > ol {
+    margin: 0.25em 0;
+  }
+
+  .contains-task-list {
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .task-list-item {
+    list-style: none;
+  }
+
+  .task-list-item input[type='checkbox'] {
+    margin: 0 0.4em 0.1em -1.6em;
+    vertical-align: middle;
+    accent-color: var(--md-success);
+  }
+}

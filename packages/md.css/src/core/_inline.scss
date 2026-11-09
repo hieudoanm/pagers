@@ -1,0 +1,62 @@
+// Core rules — paragraphs and inline text runs.
+
+@mixin inline {
+  p {
+    margin: 0.9em 0;
+  }
+
+  a {
+    color: var(--md-link, var(--md-primary));
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  del {
+    text-decoration: line-through;
+  }
+
+  ins {
+    text-decoration: underline;
+  }
+
+  mark {
+    background: var(--md-mark-bg);
+    border-radius: 0.2em;
+    padding: 0.1em 0.2em;
+    color: inherit;
+  }
+
+  sub,
+  sup {
+    font-size: 75%;
+  }
+
+  small {
+    color: var(--md-text-muted);
+    font-size: 0.875em;
+  }
+
+  q::before {
+    content: '\201C';
+  }
+
+  q::after {
+    content: '\201D';
+  }
+
+  abbr {
+    cursor: help;
+    text-decoration: underline dotted;
+  }
+}

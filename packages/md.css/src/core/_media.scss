@@ -1,0 +1,20 @@
+// Core rules — media: images, figures, and captions.
+
+@mixin media {
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--md-radius-box);
+  }
+
+  figure {
+    margin: 1em 0;
+  }
+
+  figcaption {
+    color: var(--md-text-muted);
+    margin-top: 0.5em;
+    font-size: 0.875em;
+    text-align: center;
+  }
+}

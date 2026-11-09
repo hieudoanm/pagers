@@ -1,0 +1,10 @@
+[package]
+name = "pagers-markdown"
+version = "0.1.0"
+edition = "2021"
+description = "Markdown rendering for pagers: HTML, outlines, alerts, link rewriting"
+license = "GPL-3.0"
+
+[dependencies]
+pagers-site = { path = "../pagers-site" }
+pulldown-cmark = { version = "0.13", default-features = false, features = ["html"] }

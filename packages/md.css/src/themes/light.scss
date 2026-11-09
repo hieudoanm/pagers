@@ -1,0 +1,21 @@
+// Light palette — the default theme used by `.md` (and `.md.md-light`).
+
+@mixin palette {
+  --md-text: #1b1b1f;
+  --md-text-muted: #6d7175;
+  --md-border: #e2e2e6;
+  --md-code-bg: rgb(27 27 31 / 8%);
+  --md-code-block-bg: #f6f6f8;
+  --md-table-alt-bg: rgb(27 27 31 / 4%);
+  --md-quote-bg: rgb(27 27 31 / 4%);
+  --md-mark-bg: rgb(217 119 6 / 30%);
+  --md-primary: #ff6c37;
+  --md-link: #2563eb;
+  --md-secondary: #7347c1;
+  --md-accent: #f43f5e;
+  --md-info: #2563eb;
+  --md-success: #16a34a;
+  --md-warning: #d97706;
+  --md-error: #dc2626;
+  --md-radius-box: 0.5rem;
+}

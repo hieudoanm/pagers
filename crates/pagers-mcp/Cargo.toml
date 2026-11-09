@@ -1,0 +1,20 @@
+[package]
+name = "pagers-mcp"
+version = "0.1.0"
+edition = "2021"
+description = "MCP server exposing pagers as tools over stdio"
+license = "GPL-3.0"
+
+[[bin]]
+name = "pagers-mcp"
+path = "src/main.rs"
+
+[dependencies]
+pagers-build = { path = "../pagers-build" }
+pagers-graph = { path = "../pagers-graph" }
+pagers-markdown = { path = "../pagers-markdown" }
+pagers-site = { path = "../pagers-site" }
+rmcp = { version = "3.8", features = ["server", "schemars", "transport-io"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }

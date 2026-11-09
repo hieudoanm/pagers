@@ -1,0 +1,6 @@
+[package]
+name = "pagers-site"
+version = "0.1.0"
+edition = "2021"
+description = "Content discovery, navigation and link resolution for pagers"
+license = "GPL-3.0"

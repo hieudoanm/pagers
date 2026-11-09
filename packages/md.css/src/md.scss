@@ -1,0 +1,56 @@
+// Single-entry Markdown build.
+//
+// Usage:
+//   <div class="md">…</div>          → default light theme
+//   <div class="md md-dark">…</div>  → any other theme by appending its class
+//
+// The `.md` rules are shared across every theme; palette tokens live on
+// `.md.md-<theme>` and override the default (light) values by specificity.
+
+@use 'md-core';
+@use 'themes/light';
+@use 'themes/dark';
+@use 'themes/crimson';
+@use 'themes/cerulean';
+@use 'themes/emerald';
+@use 'themes/saffron';
+@use 'themes/lagoon';
+@use 'themes/fuchsia';
+
+.md {
+  @include light.palette;
+}
+
+@include md-core.md-core;
+
+.md.md-light {
+  @include light.palette;
+}
+
+.md.md-dark {
+  @include dark.palette;
+}
+
+.md.md-crimson {
+  @include crimson.palette;
+}
+
+.md.md-cerulean {
+  @include cerulean.palette;
+}
+
+.md.md-emerald {
+  @include emerald.palette;
+}
+
+.md.md-saffron {
+  @include saffron.palette;
+}
+
+.md.md-lagoon {
+  @include lagoon.palette;
+}
+
+.md.md-fuchsia {
+  @include fuchsia.palette;
+}
