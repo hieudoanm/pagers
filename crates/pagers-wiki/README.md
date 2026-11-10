@@ -9,7 +9,7 @@ URL → validate → MediaWiki REST (HTML + metadata)
 ```
 
 Part of the [pagers](../../README.md) workspace; see
-[Wikipedia](../../docs/wiki.md). Powers `pagers wiki convert|info` and is
+[Wikipedia](../../packages/landing/docs/wiki.md). Powers `pagers wiki convert|info` and is
 deliberately independent of the site crates — the stages can serve other
 content sources later.
 

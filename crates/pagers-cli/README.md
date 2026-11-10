@@ -5,7 +5,7 @@ library crates together: `build`, `init`, `serve`, `graph`, and the
 `wiki convert`/`wiki info` commands.
 
 Part of the [pagers](../../README.md) workspace; see the
-[documentation](../../docs/) for the user-facing guide.
+[documentation](../../packages/landing/docs/) for the user-facing guide.
 
 ## Commands
 

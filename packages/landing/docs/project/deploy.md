@@ -11,17 +11,43 @@ are served.
 
 ## GitHub Pages (recommended)
 
-This repo ships a ready-made workflow at
-[`.github/workflows/ci.yaml`](https://github.com/hieudoanm/pagers/blob/main/.github/workflows/ci.yaml):
-it runs fmt/clippy/tests, builds `pagers` from source, builds your docs
-with that binary, and deploys the result on every push to `main`.
+A `pagers`-built site deploys to GitHub Pages with a small workflow:
+check out, build the release binary, run `pagers build`, and hand the
+output directory to `upload-pages-artifact` + `deploy-pages`:
 
-To use it in your own repo:
+```yaml
+name: ci
+on:
+  push:
+    branches: [master]
+  pull_request:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+jobs:
+  pages:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo build --release -p pagers-cli
+      - run: ./target/release/pagers build docs --output dist
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: dist
+      - uses: actions/deploy-pages@v5
+```
 
-1. Copy `.github/workflows/ci.yaml` into your repo.
-2. Enable **Settings → Pages → Source: GitHub Actions**.
-3. Push — the workflow stages `README.md` + `docs/` into `.page/`, runs
-   `pagers build .page --output _site`, and deploys `_site/`.
+Then enable **Settings → Pages → Source: GitHub Actions** and push.
+
+> This repository's own site (`pagers` + these docs) is deployed from
+> [`packages/landing`](https://github.com/hieudoanm/pagers/tree/master/packages/landing) —
+> a Next.js static export that renders the Markdown docs at `/docs` —
+but the workflow above is the generic flow for any `pagers` site.
 
 For a project site (`https://<user>.github.io/<repo>/`), set `basePath` to
 the repo name so every URL is prefixed correctly:

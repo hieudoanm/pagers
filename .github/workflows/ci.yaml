@@ -48,26 +48,29 @@ jobs:
         run: cargo build --release -p pagers-cli
 
       # The deploy steps only run on pushes to master; PRs stop after the build.
-      - name: Stage site content
+      - name: Setup pnpm
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: |
-          mkdir -p .page
-          cp README.md .page/
-          cp -R docs .page/docs
-          owner="${GITHUB_REPOSITORY%%/*}"
-          repo="${GITHUB_REPOSITORY##*/}"
-          if [[ "$GITHUB_REPOSITORY" == *.github.io ]]; then
-            base="/"
-            url="https://${owner}.github.io"
-          else
-            base="/${repo}"
-            url="https://${owner}.github.io${base}"
-          fi
-          printf 'title: pagers\nbasePath: %s\nurl: %s\n' "$base" "$url" > .page/pagers.yaml
+        uses: pnpm/action-setup@v6.1.1
+        with:
+          version: 12.18.0
 
-      - name: Build site with pagers
+      - name: Setup Node.js
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: ./target/release/pagers build .page --output _site
+        uses: actions/setup-node@v7.1.0
+        with:
+          node-version: 26.13.0
+          cache: pnpm
+          cache-dependency-path: packages/landing/pnpm-lock.yaml
+
+      - name: Install landing dependencies
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        working-directory: packages/landing
+        run: pnpm install --frozen-lockfile
+
+      - name: Build landing (Next.js static export)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        working-directory: packages/landing
+        run: pnpm run build
 
       - name: Configure GitHub Pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
@@ -77,7 +80,7 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         uses: actions/upload-pages-artifact@v5.0.0
         with:
-          path: _site
+          path: packages/landing/out
 
       - name: Deploy to GitHub Pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'

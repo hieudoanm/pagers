@@ -1,6 +1,6 @@
 # pagers-wiki — Agent Guide
 
-Back to the [workspace README](../../README.md) · [Wikipedia docs](../../docs/wiki.md).
+Back to the [workspace README](../../README.md) · [Wikipedia docs](../../packages/landing/docs/wiki.md).
 
 ## Conventions
 

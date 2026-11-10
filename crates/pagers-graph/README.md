@@ -4,7 +4,7 @@ Page-link graph extraction and rendering. Turns the edges collected during
 Markdown rendering (or a standalone directory scan) into an interactive
 HTML viewer, JSON data, or Graphviz DOT.
 
-Part of the [pagers](../../README.md) workspace; see [Graph](../../docs/graph.md).
+Part of the [pagers](../../README.md) workspace; see [Graph](../../packages/landing/docs/graph.md).
 
 ## API
 

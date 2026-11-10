@@ -5,7 +5,7 @@ event stream produces the page HTML **and** the metadata the rest of the
 site needs: heading outline, resolved page links, and graph edges.
 
 Part of the [pagers](../../README.md) workspace; see
-[Markdown features](../../docs/markdown.md).
+[Markdown features](../../packages/landing/docs/markdown.md).
 
 ## API
 

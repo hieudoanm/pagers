@@ -136,6 +136,7 @@ cargo clippy --workspace --all-targets -- -D warnings
 cargo fmt --check
 ```
 
-CI (`.github/workflows/ci.yaml`) runs fmt/clippy/tests on every push and PR,
-and on `master` additionally builds the site you are reading — the converted
-`README.md` plus `docs/` — and deploys it to GitHub Pages.
+CI (`.github/workflows/ci.yaml`) runs fmt/clippy/tests on every push and PR.
+On `master` it also builds the release binary, builds the landing site in
+`packages/landing` (Next.js static export rendering these docs at `/docs`),
+deploys it to GitHub Pages, and publishes the rolling `latest` release.

@@ -28,7 +28,7 @@ curl -fsSL https://raw.githubusercontent.com/hieudoanm/pagers/main/scripts/insta
 ```
 
 Downloads the source, builds it, and installs the binaries — same result as
-the local script. See [Scripts](scripts.md) for `PAGERS_REF`, `PAGERS_REPO`
+the local script. See [Scripts](../project/scripts.md) for `PAGERS_REF`, `PAGERS_REPO`
 and `PREFIX` options.
 
 ### With Cargo
@@ -72,4 +72,4 @@ build and serve it on `localhost:8080`.
 
 - [Commands](commands.md) — the full CLI surface.
 - [Configuration](configuration.md) — titles, ordering, drafts, `basePath`.
-- [Markdown](markdown.md) — what the renderer supports.
+- [Markdown](../content/markdown.md) — what the renderer supports.

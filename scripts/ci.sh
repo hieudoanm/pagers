@@ -30,28 +30,11 @@ echo "==> cargo build --release -p pagers-cli"
 cargo build --release -p pagers-cli
 
 if [[ "$DEPLOY" -eq 1 ]]; then
-  echo "==> stage site content (.page/)"
-  rm -rf .page _site
-  mkdir -p .page
-  cp README.md .page/
-  cp -R docs .page/docs
-
-  # Mirror ci.yaml: project sites get /<repo>, *.github.io user sites get /.
-  owner="${GITHUB_REPOSITORY%%/*}"
-  repo="${GITHUB_REPOSITORY##*/}"
-  if [[ "${GITHUB_REPOSITORY:-}" == *.github.io ]]; then
-    base="/"
-    url="https://${owner}.github.io"
-  else
-    repo="${repo:-pagers}"
-    base="/${repo}"
-    url="https://${owner:-hieudoanm}.github.io${base}"
-  fi
-  printf 'title: pagers\nbasePath: %s\nurl: %s\n' "$base" "$url" > .page/pagers.yaml
-  echo "    basePath=$base url=$url"
-
-  echo "==> build site with pagers"
-  ./target/release/pagers build .page --output _site
+  echo "==> build landing site (packages/landing → out/)"
+  rm -rf _site
+  pnpm -C packages/landing install --frozen-lockfile
+  pnpm -C packages/landing build
+  cp -R packages/landing/out _site
   echo "==> done — _site/ is ready for Pages upload (configure-pages/deploy-pages are CI-only)"
 else
   echo "==> all checks passed"

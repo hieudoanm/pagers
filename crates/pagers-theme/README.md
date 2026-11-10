@@ -5,7 +5,7 @@ chrome (`styles.css`, `script.js`, `favicon.svg`), the `page.html` Handlebars-
 style template, and `render_page()` which fills it per page.
 
 Part of the [pagers](../../README.md) workspace; see
-[Theming](../../docs/theming.md).
+[Theming](../../packages/landing/docs/theming.md).
 
 ## API
 
@@ -27,5 +27,5 @@ pub fn escape(text: &str) -> String
 ## Assets
 
 `assets/` is embedded via `include_str!` — no runtime file lookups. `md.css`
-is a **compiled copy** of `packages/md.css` (`pnpm run build` there, then
+is a **compiled copy** of `packages/md.scss` (`pnpm run build` there, then
 copy `dist/md.css` → `crates/pagers-theme/assets/md.css`).

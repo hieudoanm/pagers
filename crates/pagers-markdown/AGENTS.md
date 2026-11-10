@@ -1,6 +1,6 @@
 # pagers-markdown — Agent Guide
 
-Back to the [workspace README](../../README.md) · [Markdown docs](../../docs/markdown.md).
+Back to the [workspace README](../../README.md) · [Markdown docs](../../packages/landing/docs/markdown.md).
 
 ## Conventions
 
@@ -10,7 +10,7 @@ Back to the [workspace README](../../README.md) · [Markdown docs](../../docs/ma
 - Link rewriting goes through `pagers_site::resolve::Resolver` — never
   string-replace URLs; resolution must match `url_for_source` semantics.
 - Alert markup must stay `.markdown-alert`-compatible with `md.css`
-  (`packages/md.css`); check `src/core/_alerts.scss` before changing the
+  (`packages/md.scss`); check `src/core/_alerts.scss` before changing the
   emitted classes.
 - Heading ids: auto-slug + `{#custom-id}` — keep ids stable, they're public
   anchor links.

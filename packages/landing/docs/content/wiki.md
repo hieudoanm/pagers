@@ -83,5 +83,5 @@ messages, tracking parameters, reference markers (unless requested).
 
 Invalid URL, unsupported domain, missing article, rate limiting, timeouts
 and empty content all exit non-zero with a descriptive `pagers wiki:` error.
-Be polite: the [examples.sh crawler](scripts.md#examplessh--wikipedia-crawler--demo-site)
+Be polite: the [examples.sh crawler](../project/scripts.md#examplessh--wikipedia-crawler--demo-site)
 spaces requests 1s apart by default.

@@ -1,6 +1,6 @@
 # md.css
 
-> Lives in the [`pagers`](../..) repository at `packages/md.css`. It is a
+> Lives in the [`pagers`](../..) repository at `packages/md.scss`. It is a
 > standalone pnpm project — the Cargo workspace ignores it. `pagers` embeds
 > a compiled copy at `crates/pagers-theme/assets/md.css`; after changing
 > styles here, run `pnpm run build` and copy `dist/md.css` there to ship the

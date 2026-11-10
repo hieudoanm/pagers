@@ -1,6 +1,6 @@
 # pagers-graph — Agent Guide
 
-Back to the [workspace README](../../README.md) · [Graph docs](../../docs/graph.md).
+Back to the [workspace README](../../README.md) · [Graph docs](../../packages/landing/docs/graph.md).
 
 ## Conventions
 

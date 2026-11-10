@@ -1,0 +1,168 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --color-bg: #ffffff;
+  --color-bg-alt: #f9fafb;
+  --color-surface: #ffffff;
+  --color-border: #e5e7eb;
+  --color-border-strong: #d1d5db;
+  --color-text: #111827;
+  --color-text-muted: #6b7280;
+  --color-text-tertiary: #9ca3af;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-accent-active: #1e40af;
+  --color-accent-soft: #dbeafe;
+  --color-accent-bright: #3b82f6;
+  --color-terminal-bg: #111827;
+  --color-terminal-bar: #0b1220;
+  --color-terminal-line: #262626;
+  --color-terminal-text: #e8e8e8;
+  --color-terminal-dim: #8b93a3;
+  --font-sans:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+  --radius-card: 14px;
+  --container-landing: 72rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ---------- component classes (utilities composed via @apply) ---------- */
+
+@layer components {
+  .btn {
+    @apply inline-flex cursor-pointer items-center justify-center rounded-lg border border-transparent px-5 py-2.5 text-[0.9375rem] font-semibold no-underline transition-colors;
+  }
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
+  .btn-sm {
+    @apply px-3.5 py-1.5 text-sm;
+  }
+  .btn-primary {
+    @apply bg-accent text-white hover:bg-accent-hover;
+  }
+  .btn-ghost {
+    @apply border-border-strong bg-surface text-text hover:border-text-tertiary;
+  }
+
+  .terminal {
+    @apply my-0 overflow-hidden rounded-[var(--radius-card)] border border-terminal-line bg-terminal-bg shadow-[0_12px_40px_rgb(17_24_39/0.14)];
+  }
+  .terminal figcaption {
+    @apply border-terminal-line bg-terminal-bar border-b px-3.5 pt-2 pb-2.5 text-[0.8125rem] text-terminal-dim;
+  }
+  .terminal pre {
+    @apply m-0 overflow-x-auto px-5 py-4 font-mono text-[0.8125rem] leading-[1.7] whitespace-pre text-terminal-text tabular-nums;
+  }
+  .terminal code {
+    @apply font-mono;
+  }
+  .prompt {
+    @apply text-accent-bright select-none;
+  }
+
+  /* terminal syntax tokens */
+  .tk-cmd {
+    @apply font-semibold text-sky-300;
+  }
+  .tk-flag {
+    @apply text-amber-400;
+  }
+  .tk-str {
+    @apply text-green-300;
+  }
+  .tk-key {
+    @apply text-violet-300;
+  }
+  .tk-url {
+    @apply text-cyan-300;
+  }
+  .tk-dim {
+    @apply text-terminal-dim;
+  }
+  .tk-ok {
+    @apply text-terminal-text;
+  }
+  .tk-err {
+    @apply text-red-400;
+  }
+  .terminal pre .tk-line {
+    @apply block min-h-[1.7em];
+  }
+
+  /* inline code */
+  code {
+    @apply rounded border border-border bg-bg-alt px-1.5 py-0.5 font-mono text-[0.875em];
+  }
+}
+
+/* ---------- docs prose (Tailwind Typography, themed via tokens) ---------- */
+
+.prose {
+  --tw-prose-body: var(--color-text);
+  --tw-prose-headings: var(--color-text);
+  --tw-prose-lead: var(--color-text-muted);
+  --tw-prose-links: var(--color-accent);
+  --tw-prose-bold: var(--color-text);
+  --tw-prose-counters: var(--color-text-muted);
+  --tw-prose-bullets: var(--color-border-strong);
+  --tw-prose-hr: var(--color-border);
+  --tw-prose-quotes: var(--color-text-muted);
+  --tw-prose-quote-borders: var(--color-accent);
+  --tw-prose-captions: var(--color-text-muted);
+  --tw-prose-code: var(--color-text);
+  --tw-prose-pre-code: var(--color-terminal-text);
+  --tw-prose-pre-bg: var(--color-terminal-bg);
+  --tw-prose-th-borders: var(--color-border);
+  --tw-prose-td-borders: var(--color-border);
+}
+
+/* generated HTML can't take utilities — frame raw SVG diagrams */
+.prose svg {
+  @apply border-border bg-bg-alt my-4 rounded-[var(--radius-card)] border p-4;
+  max-width: 100%;
+  height: auto;
+}
+
+/* pagers alert boxes (from `> [!KIND]` blockquotes) */
+.docs-alert {
+  @apply border-border bg-bg-alt my-4 rounded-r-lg border border-l-[3px] px-4 py-3 text-[0.9375rem];
+}
+.docs-alert p {
+  @apply my-1;
+}
+.docs-alert-note {
+  @apply border-l-[#2563eb] bg-[#eff6ff];
+}
+.docs-alert-tip {
+  @apply border-l-[#16a34a] bg-[#f0fdf4];
+}
+.docs-alert-important {
+  @apply border-l-[#7c3aed] bg-[#f5f3ff];
+}
+.docs-alert-warning {
+  @apply border-l-[#d97706] bg-[#fffbeb];
+}
+.docs-alert-caution {
+  @apply border-l-[#dc2626] bg-[#fef2f2];
+}

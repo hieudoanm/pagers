@@ -58,7 +58,7 @@ pagers graph ./docs
 ## `pagers wiki convert <url>`
 
 Fetch a Wikipedia article through the MediaWiki REST API and print clean
-Markdown. See [Wikipedia](wiki.md) for the full pipeline.
+Markdown. See [Wikipedia](../content/wiki.md) for the full pipeline.
 
 ```bash
 pagers wiki convert "https://en.wikipedia.org/wiki/Rust_(programming_language)"

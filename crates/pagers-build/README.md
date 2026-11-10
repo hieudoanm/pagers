@@ -8,7 +8,7 @@ discover → render pages → write HTML → copy assets → emit graph
 ```
 
 Part of the [pagers](../../README.md) workspace; see
-[Architecture](../../docs/architecture.md).
+[Architecture](../../packages/landing/docs/architecture.md).
 
 ## API
 

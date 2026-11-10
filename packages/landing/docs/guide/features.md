@@ -43,21 +43,21 @@ page without deleting it. See [Configuration](configuration.md#frontmatter).
 Tables, task lists, footnotes, strikethrough, code blocks, raw HTML — plus
 heading `{#custom-ids}` and GitHub-style alerts (`> [!NOTE]`). Internal
 `.md` links are rewritten to clean URLs at build time; broken links stay
-visible. See [Markdown](markdown.md).
+visible. See [Markdown](../content/markdown.md).
 
 ## Themes out of the box
 
 Eight palettes ship inside the binary — light, dark, crimson, cerulean,
 emerald, saffron, lagoon, fuchsia — plus a light/dark toggle that persists
 in `localStorage` and respects `prefers-color-scheme`. No CDN, no runtime
-fetches: built sites are fully self-contained. See [Theming](theming.md).
+fetches: built sites are fully self-contained. See [Theming](../content/theming.md).
 
 ## The graph page
 
 Every build writes an interactive `graph.html`: a force-directed map of how
 every page links to every other, with node details and theme support. It's
 linked from every page's header, and `pagers graph` emits the same data as
-standalone HTML, JSON or Graphviz DOT. See [Graph](graph.md).
+standalone HTML, JSON or Graphviz DOT. See [Graph](../content/graph.md).
 
 ## `basePath` for sub-path hosting
 
@@ -73,17 +73,17 @@ Markdown through the MediaWiki REST API — metadata, references, MathML,
 internal links rewritten to local `.md` filenames. `pagers wiki info`
 returns title, description, revision id and timestamp as JSON.
 `scripts/examples.sh` crawls a whole link graph from a seed article. See
-[Wikipedia](wiki.md) and [Scripts](scripts.md).
+[Wikipedia](../content/wiki.md) and [Scripts](../project/scripts.md).
 
 ## MCP server
 
 `pagers-mcp` speaks the Model Context Protocol over stdio, exposing
 `pagers_build`, `pagers_list_pages`, `pagers_render_markdown`,
 `pagers_site_graph` and `pagers_site_config` — so AI agents can build and
-inspect sites directly. See [MCP server](mcp.md).
+inspect sites directly. See [MCP server](../project/mcp.md).
 
 ## One binary, no runtime
 
 Rust, std-heavy dependencies, fully static output. `cargo install`, a curl
 installer, or `cargo build --release` — then it runs anywhere a static
-server does. See [Architecture](architecture.md).
+server does. See [Architecture](../project/architecture.md).

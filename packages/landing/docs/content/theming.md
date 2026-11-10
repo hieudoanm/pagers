@@ -6,7 +6,7 @@ order: 5
 # Theming
 
 Markdown typography and palettes come from **md.css** — a single-entry
-Sass module migrated into this repo at `packages/md.css`. The compiled
+Sass module migrated into this repo at `packages/md.scss`. The compiled
 stylesheet is embedded in the `pagers` binary, so built sites are fully
 self-contained (no CDN, no runtime fetches).
 
@@ -27,7 +27,7 @@ One class switches themes: plain `.md` is the light default; appending
 | fuchsia  | `.md.md-fuchsia`   | dark   |
 
 Every colour and radius resolves through `--md-*` custom properties — see
-`packages/md.css/README.md` for the full token list and `AGENTS.md` for how
+`packages/md.scss/README.md` for the full token list and `AGENTS.md` for how
 to add a theme.
 
 ## Light / dark toggle
@@ -40,7 +40,7 @@ The header toggle:
 - respects `prefers-color-scheme` on first visit.
 
 Set the initial theme with the `theme` site field (`light` or `dark`) — see
-[Configuration](configuration.md).
+[Configuration](../guide/configuration.md).
 
 ## Site chrome
 
@@ -50,10 +50,10 @@ content always agree.
 
 ## Rebuilding md.css
 
-`packages/md.css` is a standalone pnpm project:
+`packages/md.scss` is a standalone pnpm project:
 
 ```bash
-cd packages/md.css
+cd packages/md.scss
 pnpm install
 pnpm run build      # → dist/md.css + dist/md.min.css (+ source maps)
 pnpm run examples   # regenerate themed cheat-sheet HTML/PNG examples

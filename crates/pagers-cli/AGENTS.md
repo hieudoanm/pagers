@@ -1,6 +1,6 @@
 # pagers-cli — Agent Guide
 
-Back to the [workspace README](../../README.md) · [docs](../../docs/).
+Back to the [workspace README](../../README.md) · [docs](../../packages/landing/docs/).
 
 ## Conventions
 

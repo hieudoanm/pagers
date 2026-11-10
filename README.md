@@ -36,7 +36,7 @@ No configuration, no Node.js, no runtime dependencies — one Rust binary.
   Markdown; `scripts/examples.sh` crawls whole link graphs.
 - **MCP server** — `pagers-mcp` exposes build/inspect tools to AI agents.
 
-See the full list in [docs/features.md](docs/features.md).
+See the full list in [features](packages/landing/docs/features.md).
 
 ## pagers vs docsify
 
@@ -150,20 +150,20 @@ JSON or Graphviz DOT.
 
 ## Documentation
 
-The full docs live in [`docs/`](docs/) and are deployed to GitHub Pages:
+The full docs live in [`packages/landing/docs/`](packages/landing/docs/) and are deployed to GitHub Pages:
 
-- [Features](docs/features.md) · [Getting started](docs/getting-started.md) ·
-  [Commands](docs/commands.md) · [Configuration](docs/configuration.md)
-- [Markdown](docs/markdown.md) · [Theming](docs/theming.md) ·
-  [Graph](docs/graph.md) · [Wikipedia](docs/wiki.md)
-- [MCP server](docs/mcp.md) · [Scripts](docs/scripts.md) ·
-  [Deploy](docs/deploy.md) · [Architecture](docs/architecture.md)
+- [Features](packages/landing/docs/features.md) · [Getting started](packages/landing/docs/getting-started.md) ·
+  [Commands](packages/landing/docs/commands.md) · [Configuration](packages/landing/docs/configuration.md)
+- [Markdown](packages/landing/docs/markdown.md) · [Theming](packages/landing/docs/theming.md) ·
+  [Graph](packages/landing/docs/graph.md) · [Wikipedia](packages/landing/docs/wiki.md)
+- [MCP server](packages/landing/docs/mcp.md) · [Scripts](packages/landing/docs/scripts.md) ·
+  [Deploy](packages/landing/docs/deploy.md) · [Architecture](packages/landing/docs/architecture.md)
 
 ## Theming
 
 Markdown typography and its palettes come from
-[`md.css`](https://github.com/hieudoanm/pagers/tree/main/packages/md.css) —
-the Sass module migrated into this repo at `packages/md.css` (light default,
+[`md.css`](https://github.com/hieudoanm/pagers/tree/main/packages/md.scss) —
+the Sass module migrated into this repo at `packages/md.scss` (light default,
 `md-dark`, plus six colour themes), with the compiled stylesheet embedded in
 the binary.
 The site chrome has its own light/dark tokens. The theme toggle persists in

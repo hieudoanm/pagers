@@ -6,8 +6,8 @@ frontmatter, `pagers.yaml` config, URL/output mapping, navigation trees and
 internal link resolution.
 
 Part of the [pagers](../../README.md) workspace; see
-[Configuration](../../docs/configuration.md) and
-[Markdown → links](../../docs/markdown.md).
+[Configuration](../../packages/landing/docs/configuration.md) and
+[Markdown → links](../../packages/landing/docs/markdown.md).
 
 ## Modules
 

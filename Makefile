@@ -6,7 +6,7 @@ PAGERS ?= $(CARGO) run --release -p pagers-cli --
 PORT ?= 8080
 
 .PHONY: help build release run serve docs test lint fmt fmt-check clippy \
-        ci examples clean install
+        ci examples clean install landing
 
 help: ## Show this help
 	@grep -E '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | \
@@ -21,11 +21,14 @@ release: ## Release build of the pagers CLI
 run: release ## Run pagers CLI: make run -- build docs --output dist
 	./target/release/pagers $(ARGS)
 
-serve: release ## Build docs/ and serve on :$(PORT) (PORT=3000 to override)
-	./target/release/pagers serve docs --port $(PORT)
+serve: release ## Serve the docs content with pagers on :$(PORT)
+	./target/release/pagers serve packages/landing/docs --port $(PORT)
 
-docs: release ## Build docs/ into dist/
-	./target/release/pagers build docs --output dist
+landing: ## Build the landing site (Next.js static export) → packages/landing/out
+	pnpm -C packages/landing install --frozen-lockfile
+	pnpm -C packages/landing build
+
+docs: landing ## Alias for landing
 
 test: ## Run workspace tests
 	$(CARGO) test --workspace

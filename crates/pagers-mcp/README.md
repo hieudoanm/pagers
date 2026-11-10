@@ -5,7 +5,7 @@ server (built on `rmcp`) that exposes pagers' operations as tools so MCP
 clients can build sites and inspect content programmatically.
 
 Part of the [pagers](../../README.md) workspace; see
-[MCP server](../../docs/mcp.md) for client configuration.
+[MCP server](../../packages/landing/docs/mcp.md) for client configuration.
 
 ## Tools
 

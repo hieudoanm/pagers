@@ -1,6 +1,6 @@
 # pagers-mcp — Agent Guide
 
-Back to the [workspace README](../../README.md) · [MCP docs](../../docs/mcp.md).
+Back to the [workspace README](../../README.md) · [MCP docs](../../packages/landing/docs/mcp.md).
 
 ## Conventions
 

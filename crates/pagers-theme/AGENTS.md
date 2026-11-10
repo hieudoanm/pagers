@@ -1,6 +1,6 @@
 # pagers-theme — Agent Guide
 
-Back to the [workspace README](../../README.md) · [Theming docs](../../docs/theming.md).
+Back to the [workspace README](../../README.md) · [Theming docs](../../packages/landing/docs/theming.md).
 
 ## Conventions
 
@@ -12,7 +12,7 @@ Back to the [workspace README](../../README.md) · [Theming docs](../../docs/the
   `<html>`, `md-dark` on the content element, theme toggle button) — the
   light/dark machinery lives in JS, not the template.
 - `md.css` is generated — **don't hand-edit** `assets/md.css`; edit
-  `packages/md.css/src/**`, rebuild, copy `dist/md.css` over.
+  `packages/md.scss/src/**`, rebuild, copy `dist/md.css` over.
 - Chrome styles live in `assets/styles.css` with light/dark custom
   properties mirroring `--md-*` tokens — keep the two palettes in sync
   when adding theme colours.

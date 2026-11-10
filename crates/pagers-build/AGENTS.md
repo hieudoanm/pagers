@@ -1,6 +1,6 @@
 # pagers-build — Agent Guide
 
-Back to the [workspace README](../../README.md) · [Architecture](../../docs/architecture.md).
+Back to the [workspace README](../../README.md) · [Architecture](../../packages/landing/docs/architecture.md).
 
 ## Conventions
 
