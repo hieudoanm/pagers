@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{ self.config.site.description }}" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="{{ self.config.theme.primary }}" />
+    <title>{{ self.config.site.name }}</title>
+    
+    <meta property="og:title" content="{{ self.og.title }}" />
+    <meta property="og:description" content="{{ self.og.description }}" />
+    <meta property="og:type" content="{{ self.og.og_type }}" />
+    <meta property="og:site_name" content="{{ self.og.site_name }}" />
+    {%- if !self.og.url.is_empty() %}
+    <meta property="og:url" content="{{ self.og.url }}" />
+    {%- endif %}
+    {%- if !self.og.image.is_empty() %}
+    <meta property="og:image" content="{{ self.og.image }}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {%- endif %}
+    {%- if !self.og.image_alt.is_empty() %}
+    <meta property="og:image:alt" content="{{ self.og.image_alt }}" />
+    {%- endif %}
+    <meta name="twitter:card" content="{{ self.og.twitter_card }}" />
+    {%- if !self.og.image.is_empty() %}
+    <meta name="twitter:image" content="{{ self.og.image }}" />
+    {%- endif %}
+
+    <style>
+      :root {
+{{ self.theme_css|safe }}      }
+    </style>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    {% include "partials/header.html" %}
+
+    <main id="top">
+      <section class="hero">
+        <div>
+          {% if !self.config.hero.badge.is_empty() %}<span class="badge">{{ self.config.hero.badge }}</span>{% endif %}
+          <h1>{{ self.config.hero.headline }}</h1>
+          <p class="lead">{{ self.config.hero.subheadline }}</p>
+          <div class="event-meta">
+            <span>📅 {{ self.config.event.date }}</span>
+            {% if !self.config.event.time.is_empty() %}<span>🕒 {{ self.config.event.time }}</span>{% endif %}
+            <span>📍 {{ self.config.event.venue.name }}{% if !self.config.event.venue.city.is_empty() %}, {{ self.config.event.venue.city }}{% endif %}</span>
+          </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="{{ self.config.event.primary.href }}">{{ self.config.event.primary.label }}</a>
+            {% if !self.config.hero.secondary.href.is_empty() %}<a class="btn btn-ghost" href="{{ self.config.hero.secondary.href }}">{{ self.config.hero.secondary.label }}</a>{% endif %}
+          </div>
+        </div>
+      </section>
+
+      <section id="agenda" class="block">
+        <div class="block-head">
+          <h2>{{ self.config.features.heading }}</h2>
+          <p class="sub">{{ self.config.features.sub }}</p>
+        </div>
+        <ul class="agenda">
+          {% for item1 in self.config.event.agenda %}
+          <li>
+            <span class="time">{{ item1.time }}</span>
+            <div>
+              <h3>{{ item1.title }}</h3>
+              {% if !item1.speaker.is_empty() %}<p class="who">{{ item1.speaker }}</p>{% endif %}
+              {% if !item1.body.is_empty() %}<p>{{ item1.body }}</p>{% endif %}
+            </div>
+          </li>
+          {% endfor %}
+        </ul>
+      </section>
+
+      {% if !self.config.event.speakers_heading.is_empty() %}
+      <section id="speakers" class="block">
+        <div class="block-head">
+          <h2>{{ self.config.event.speakers_heading }}</h2>
+          {% if !self.config.event.speakers_sub.is_empty() %}<p class="sub">{{ self.config.event.speakers_sub }}</p>{% endif %}
+        </div>
+        <div class="speakers">
+          {% for item2 in self.config.event.speakers %}
+          <div class="speaker">
+            {% if !item2.avatar.is_empty() %}<span class="avatar">{{ item2.avatar }}</span>{% endif %}
+            <h3>{{ item2.name }}</h3>
+            <p class="role">{{ item2.role }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      {% if !self.config.cta.heading.is_empty() %}
+      <section id="cta" class="block">
+        <div class="cta">
+          <span class="icon" aria-hidden="true">{{ self.config.cta.icon }}</span>
+          <h2>{{ self.config.cta.heading }}</h2>
+          <p>{{ self.config.cta.body }}</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="{{ self.config.cta.button.href }}">{{ self.config.cta.button.label }}</a>
+          </div>
+        </div>
+      </section>
+      {% endif %}
+
+      {% include "partials/footer.html" %}
+    </main>
+  </body>
+</html>

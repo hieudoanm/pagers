@@ -1,0 +1,106 @@
+# landify.yaml — the single content source for your landing page.
+#
+#   landify validate   # check that this file is valid
+#   landify build      # generate index.html from this file
+#
+# Every field below has placeholder text and a short "what to do" hint.
+# Attributes like mark, badge, and icon are emoji; keep them quoted so the
+# intent is explicit. All fields marked "required" must be non-empty for
+# `landify validate` to pass.
+#
+# Type: the "linktree" layout is a compact profile page — one name, a column
+# of big link cards, and optional social links. It is the only layout without
+# a hero section: the profile block (avatar, heading, sub) replaces it.
+#
+# Media: this layout ships no media — no hero image, no demo video. If you
+# switch the type, regenerate with `landify new -t <type>` for the matching
+# example.
+#
+# Open Graph: the optional site.og block fills the <head> so a shared link
+# renders a card. title, description and site_name fall back to the site
+# values, and url and image only appear when you set them. `landify build`
+# also writes a 1200 x 630 og/og.svg from the card copy and the theme above:
+# kicker becomes the small line above the title, tags the chips in the right
+# panel, and site.name the monogram. Convert it to the PNG that image points
+# at, e.g. rsvg-convert -o og/og.png og/og.svg
+#
+# Colors: theme is the only design input. List the eight base colors (and,
+# optionally, the corner radius); every other CSS token the page uses —
+# surfaces (base-100/200/300, base-content), accent shades and tints
+# (primary-dark/soft/content, secondary-content), and hairlines derived from
+# neutral (neutral-faint, border, border-soft) — is calculated from them.
+# Values below are the defaults; any field left empty keeps its default.
+
+type: linktree           # linktree | faq | team | status | product (default) | waitlist | event | download | app | pricing | portfolio | docs
+
+theme:
+  base: "#f7f8fa"         #   backgrounds and surface family
+  primary: "#0d9488"      #   brand accent
+  secondary: "#7c3aed"    #   secondary accent
+  neutral: "#555f6e"      #   muted text and hairline base
+  info: "#2563eb"
+  warning: "#d97706"
+  success: "#16a34a"
+  error: "#dc2626"
+  radius: "10px"          #   corner radius (not a color)
+
+site:                     # used in the navbar, <title>, and meta description
+  name: "Ana @ the foxes"  # [required] your product or site name
+  mark: "🦊"              # [optional] emoji shown next to the name
+  description: >-          # [required] one sentence used for <meta name="description">
+    Every link to Ana Ruiz in one place.
+  nav:                     # [required] links shown in the top navbar
+    - label: Links
+      href: "#links"
+
+  og:                        # [optional] social card: build writes og/og.svg and the <head> tags
+    title: Your page in one link   #   og:title — defaults to site.name
+    description: >-          #   og:description — defaults to site.description
+      One sentence a link preview can show.
+    image: "https://example.com/og/og.png"   #   og:image — omit to emit no image tags (1200 × 630)
+    image_alt: ""            #   og:image:alt — describe the card for screen readers
+    url: "https://example.com"   #   og:url — the canonical address of this page
+    type: "website"          #   og:type — defaults to website
+    site_name: ""            #   og:site_name — defaults to site.name
+    twitter_card: ""         #   twitter:card — defaults to summary_large_image
+    kicker: "One file, one page"   #   card only: the small line above the title
+    tags:                    #   card only: chips in the right panel, first 4 shown
+      - "Zero build step"
+      - "12 layouts"
+      - "HTML + CSS only"
+
+linktree:                 # the profile block and link cards
+  avatar: "🦊"            # [optional] emoji shown as the profile picture
+  heading: "@anaruiz"     # [optional] your name or handle
+  sub: >-                 # [optional] one short line beneath the heading
+    Design engineer making flat pages and tiny tools.
+  cards:                  # [required] the link cards, top to bottom
+    - icon: "🛠️"         # [optional] emoji on the left of the card
+      title: Landify      # [required] visible link text
+      note: flat landing pages   # [optional] small hint on the right
+      href: https://example.com/landify   # [required] link target
+    - icon: "📄"
+      title: My writing
+      note: notes on design systems
+      href: https://example.com/writing
+    - icon: "🎙️"
+      title: Podcast
+      note: new episode Fridays
+      href: https://example.com/podcast
+    - icon: "💌"
+      title: Say hello
+      note: replies within a day
+      href: mailto:ana@example.com
+  social:                 # [optional] pill links under the cards
+    - label: "𝕏"
+      href: https://twitter.com
+    - label: GitHub
+      href: https://github.com
+    - label: LinkedIn
+      href: https://linkedin.com
+
+footer:                   # the simple footer row
+  copyright: "© 2026 Ana Ruiz"   # [required] shown first in the footer
+  links:                  # [optional] footer links; use the same items as nav
+    - label: Links
+      href: "#links"

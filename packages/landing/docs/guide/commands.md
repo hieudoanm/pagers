@@ -5,7 +5,7 @@ order: 2
 
 # Commands
 
-`pagers` has six top-level commands. Run `pagers <command> --help` for the
+`pagers` has seven top-level commands. Run `pagers <command> --help` for the
 authoritative flag list.
 
 ## `pagers build [content]`
@@ -79,6 +79,35 @@ timestamp) without converting. `--format json` for machine-readable output.
 ```bash
 pagers wiki info "https://en.wikipedia.org/wiki/Rust_(programming_language)"
 ```
+
+## `pagers landing`
+
+Generate a single-page static site from one `landify.yaml` — no build
+step, no JavaScript, theme derived from eight colors. Subcommands:
+
+| Command                   | Does                                                     |
+| ------------------------- | -------------------------------------------------------- |
+| `pagers landing new`      | Scaffold an annotated `landify.yaml` (`-t` picks a type) |
+| `pagers landing validate` | Strictly validate the YAML schema                        |
+| `pagers landing build`    | Render the site files described below                    |
+| `pagers landing themes`   | List the 64 built-in theme presets                       |
+| `pagers landing preview`  | Serve the output directory over HTTP                     |
+
+```bash
+pagers landing new --type product
+pagers landing validate -f landify.yaml
+pagers landing build -f landify.yaml -o public/index.html --theme ocean
+pagers landing preview --dir public --port 8080
+```
+
+Twelve page types: `product` (default), `waitlist`, `event`, `download`,
+`app`, `pricing`, `portfolio`, `docs`, `faq`, `team`, `status`, `linktree`.
+`--theme` overrides the YAML `theme:` section with a built-in preset; see
+`pagers landing themes` for all 64 names.
+
+Page types, theming, the `landify.yaml` schema, and the full build output
+(`index.html`, `styles.css`, `og/og.svg`, and the site metadata files)
+are covered in [Landing pages](landing.md).
 
 ## Exit codes
 

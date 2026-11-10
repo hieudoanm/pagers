@@ -1,30 +1,37 @@
 #!/usr/bin/env bash
 # Demo pipeline: optionally crawl Wikipedia articles into
 # examples/wiki/<lang>/, then build them into a demo pagers site at
-# examples/demo/ and optionally serve it.
+# examples/demo/. --landing additionally exercises `pagers landing`
+# against examples/landing/landify.yaml (index.html is gitignored).
 #
 #   ./scripts/examples.sh --crawl            # crawl + build
 #   ./scripts/examples.sh --serve            # build existing files + serve :8080
 #   ./scripts/examples.sh --crawl --serve    # crawl + build + serve
+#   ./scripts/examples.sh --landing          # validate + build the landing demo
+#   ./scripts/examples.sh --landing --serve  # build site + landing, serve landing
 #   MAX_PAGES=10 DELAY=2 ./scripts/examples.sh --crawl
 #
 # Env: MAX_PAGES (default 100 new pages per crawl), DELAY (seconds between
-#      requests, default 1), PAGERS (binary override), PORT (default 8080)
+#      requests, default 1), PAGERS (binary override), PORT (default 8080),
+#      LANDING_DIR (default examples/landing)
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 WIKI_DIR="$ROOT/examples/wiki"
 SITE_DIR="$ROOT/examples/demo"
+LANDING_DIR="${LANDING_DIR:-$ROOT/examples/landing}"
 MAX_PAGES="${MAX_PAGES:-100}"
 DELAY="${DELAY:-1}"
 PORT="${PORT:-8080}"
 CRAWL=0
 SERVE=0
+LANDING=0
 
 while [ $# -gt 0 ]; do
   case "$1" in
     --crawl|-c)    CRAWL=1; shift ;;
     --serve|-s)    SERVE=1; shift ;;
+    --landing|-l)  LANDING=1; shift ;;
     --port)        PORT="$2"; shift 2 ;;
     *) echo "unknown arg: $1" >&2; exit 2 ;;
   esac
@@ -141,10 +148,38 @@ build() {
 
 serve_site() {
   log "Serving on http://localhost:$PORT (Ctrl+C to stop)"
+  if [ "$LANDING" -eq 1 ]; then
+    exec "$PAGERS_BIN" landing preview --dir "$LANDING_DIR" --port "$PORT"
+  fi
   exec "$PAGERS_BIN" serve "$WIKI_DIR" --output "$SITE_DIR" --port "$PORT"
 }
 
+# --- Landing page demo: scaffold a landify.yaml when missing, then run the
+# same validate → build pipeline a user would. Output stays in
+# examples/landing/ (index.html is gitignored; landify.yaml is tracked).
+landing() {
+  local yaml="$LANDING_DIR/landify.yaml"
+  mkdir -p "$LANDING_DIR"
+  if [ ! -f "$yaml" ]; then
+    log "Scaffolding $yaml"
+    "$PAGERS_BIN" landing new --file "$yaml" --type docs
+  fi
+  log "Validating $yaml"
+  "$PAGERS_BIN" landing validate --file "$yaml"
+  log "Building landing page → $LANDING_DIR/index.html"
+  "$PAGERS_BIN" landing build --file "$yaml" --output "$LANDING_DIR/index.html"
+}
+
 [ "$CRAWL" -eq 1 ] && crawl
-build
+if [ "$LANDING" -eq 1 ] && [ "$CRAWL" -eq 0 ]; then
+  landing
+else
+  build
+  [ "$LANDING" -eq 1 ] && landing
+fi
 [ "$SERVE" -eq 1 ] && serve_site
-log "Done. Serve with: $PAGERS_BIN serve $WIKI_DIR --output $SITE_DIR --port $PORT"
+if [ "$LANDING" -eq 1 ] && [ "$CRAWL" -eq 0 ]; then
+  log "Done. Preview with: $PAGERS_BIN landing preview --dir $LANDING_DIR --port $PORT"
+else
+  log "Done. Serve with: $PAGERS_BIN serve $WIKI_DIR --output $SITE_DIR --port $PORT"
+fi

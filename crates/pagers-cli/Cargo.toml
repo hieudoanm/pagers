@@ -13,6 +13,7 @@ path = "src/main.rs"
 clap = { version = "=4.6.7", features = ["derive"] }
 pagers-build = { path = "../pagers-build" }
 pagers-graph = { path = "../pagers-graph" }
+pagers-landing = { path = "../pagers-landing" }
 pagers-site = { path = "../pagers-site" }
 pagers-wiki = { path = "../pagers-wiki" }
 serde_json = "=1.0.154"

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{ self.config.site.description }}" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="{{ self.config.theme.primary }}" />
+    <title>{{ self.config.site.name }}</title>
+    
+    <meta property="og:title" content="{{ self.og.title }}" />
+    <meta property="og:description" content="{{ self.og.description }}" />
+    <meta property="og:type" content="{{ self.og.og_type }}" />
+    <meta property="og:site_name" content="{{ self.og.site_name }}" />
+    {%- if !self.og.url.is_empty() %}
+    <meta property="og:url" content="{{ self.og.url }}" />
+    {%- endif %}
+    {%- if !self.og.image.is_empty() %}
+    <meta property="og:image" content="{{ self.og.image }}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {%- endif %}
+    {%- if !self.og.image_alt.is_empty() %}
+    <meta property="og:image:alt" content="{{ self.og.image_alt }}" />
+    {%- endif %}
+    <meta name="twitter:card" content="{{ self.og.twitter_card }}" />
+    {%- if !self.og.image.is_empty() %}
+    <meta name="twitter:image" content="{{ self.og.image }}" />
+    {%- endif %}
+
+    <style>
+      :root {
+{{ self.theme_css|safe }}      }
+    </style>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    {% include "partials/header.html" %}
+
+    <main id="top">
+      <section class="hero">
+        <div>
+          {% if !self.config.hero.badge.is_empty() %}<span class="badge">{{ self.config.hero.badge }}</span>{% endif %}
+          <h1>{{ self.config.hero.headline }}</h1>
+          <p class="lead">{{ self.config.hero.subheadline }}</p>
+          {% if (!self.config.hero.primary.href.is_empty() || !self.config.hero.secondary.href.is_empty()) %}
+          <div class="hero-actions">
+            {% if !self.config.hero.primary.href.is_empty() %}<a class="btn btn-primary" href="{{ self.config.hero.primary.href }}">{{ self.config.hero.primary.label }}</a>{% endif %}
+            {% if !self.config.hero.secondary.href.is_empty() %}<a class="btn btn-ghost" href="{{ self.config.hero.secondary.href }}">{{ self.config.hero.secondary.label }}</a>{% endif %}
+          </div>
+          {% endif %}
+        </div>
+      </section>
+
+      <section id="docs" class="block">
+        {% if (!self.config.docs.heading.is_empty() || !self.config.docs.sub.is_empty()) %}
+        <div class="block-head">
+          <h2>{{ self.config.docs.heading }}</h2>
+          {% if !self.config.docs.sub.is_empty() %}<p class="sub">{{ self.config.docs.sub }}</p>{% endif %}
+        </div>
+        {% endif %}
+        <div class="docs-grid">
+          {% for item1 in self.config.docs.packages %}
+          <a class="doc-card" href="{{ item1.href }}">
+            <span class="icon" aria-hidden="true">{{ item1.icon }}</span>
+            <h3>{{ item1.title }}</h3>
+            <p>{{ item1.body }}</p>
+          </a>
+          {% endfor %}
+        </div>
+        {% if !self.config.docs.sample.is_empty() %}
+        <div class="docs-sample install-block">
+          <pre><code>{{ self.config.docs.sample }}</code></pre>
+        </div>
+        {% endif %}
+      </section>{% if !self.config.demo.video.src.is_empty() %}
+
+      <section id="demo" class="block">
+        {% if (!self.config.demo.heading.is_empty() || !self.config.demo.sub.is_empty()) %}
+        <div class="block-head">
+          <h2>{{ self.config.demo.heading }}</h2>
+          {% if !self.config.demo.sub.is_empty() %}<p class="sub">{{ self.config.demo.sub }}</p>{% endif %}
+        </div>
+        {% endif %}
+        <video class="demo-media" controls preload="metadata"{% if !self.config.demo.video.poster.is_empty() %} poster="{{ self.config.demo.video.poster }}"{% endif %}>
+          <source src="{{ self.config.demo.video.src }}" type="video/mp4" />
+          {% if !self.config.demo.video.track.is_empty() %}<track kind="descriptions" label="English descriptions" srclang="en" src="{{ self.config.demo.video.track }}" default />{% endif %}
+          Your browser does not support the video tag.
+        </video>
+      </section>{% endif %}
+
+      {% if !self.config.cta.heading.is_empty() %}
+      <section id="cta" class="block">
+        <div class="cta">
+          <span class="icon" aria-hidden="true">{{ self.config.cta.icon }}</span>
+          <h2>{{ self.config.cta.heading }}</h2>
+          <p>{{ self.config.cta.body }}</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="{{ self.config.cta.button.href }}">{{ self.config.cta.button.label }}</a>
+          </div>
+        </div>
+      </section>
+      {% endif %}
+
+      {% include "partials/footer.html" %}
+    </main>
+  </body>
+</html>

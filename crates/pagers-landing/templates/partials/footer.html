@@ -1,0 +1,8 @@
+<footer class="footer">
+  <div class="container footer-inner">
+    <span>{{ self.config.footer.copyright }}</span>
+    <span>
+      {% for item1 in self.config.footer.links %}<a href="{{ item1.href }}">{{ item1.label }}</a>{% if !loop.last %} · {% endif %}{% endfor %}
+    </span>
+  </div>
+</footer>

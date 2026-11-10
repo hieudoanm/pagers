@@ -59,6 +59,16 @@ every page links to every other, with node details and theme support. It's
 linked from every page's header, and `pagers graph` emits the same data as
 standalone HTML, JSON or Graphviz DOT. See [Graph](../content/graph.md).
 
+## Landing pages
+
+`pagers landing` builds a complete single-page site — marketing page,
+waitlist, docs hub, linktree — from one `landify.yaml`. Twelve page
+types, 64 themes (or eight explicit colors expanded into a full
+contrast-checked token set), an OG social card, and a full metadata set
+(`styles.css`, favicon, robots, sitemap, humans, manifest, llms.txt).
+Pure static HTML + CSS, zero JavaScript. See
+[Landing pages](landing.md).
+
 ## `basePath` for sub-path hosting
 
 One field (`basePath: /pagers`) prefixes every generated URL — links,

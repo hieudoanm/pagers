@@ -36,7 +36,7 @@ No configuration, no Node.js, no runtime dependencies — one Rust binary.
   Markdown; `scripts/examples.sh` crawls whole link graphs.
 - **MCP server** — `pagers-mcp` exposes build/inspect tools to AI agents.
 
-See the full list in [features](packages/landing/docs/features.md).
+See the full list in [features](packages/landing/docs/guide/features.md).
 
 ## pagers vs docsify
 
@@ -74,6 +74,7 @@ cargo build --release && cp target/release/pagers ~/.local/bin/
 | `pagers graph [content]`    | Write the link graph standalone (`graph.html`/`.json`/`.dot`) |
 | `pagers wiki convert <url>` | Convert a Wikipedia article to Markdown                       |
 | `pagers wiki info <url>`    | Show article metadata                                         |
+| `pagers landing …`          | Build a single-file landing page from `landify.yaml`          |
 
 ```bash
 pagers init my-site
@@ -152,12 +153,12 @@ JSON or Graphviz DOT.
 
 The full docs live in [`packages/landing/docs/`](packages/landing/docs/) and are deployed to GitHub Pages:
 
-- [Features](packages/landing/docs/features.md) · [Getting started](packages/landing/docs/getting-started.md) ·
-  [Commands](packages/landing/docs/commands.md) · [Configuration](packages/landing/docs/configuration.md)
-- [Markdown](packages/landing/docs/markdown.md) · [Theming](packages/landing/docs/theming.md) ·
-  [Graph](packages/landing/docs/graph.md) · [Wikipedia](packages/landing/docs/wiki.md)
-- [MCP server](packages/landing/docs/mcp.md) · [Scripts](packages/landing/docs/scripts.md) ·
-  [Deploy](packages/landing/docs/deploy.md) · [Architecture](packages/landing/docs/architecture.md)
+- [Features](packages/landing/docs/guide/features.md) · [Getting started](packages/landing/docs/guide/getting-started.md) ·
+  [Commands](packages/landing/docs/guide/commands.md) · [Configuration](packages/landing/docs/guide/configuration.md)
+- [Markdown](packages/landing/docs/content/markdown.md) · [Theming](packages/landing/docs/content/theming.md) ·
+  [Graph](packages/landing/docs/content/graph.md) · [Wikipedia](packages/landing/docs/content/wiki.md)
+- [MCP server](packages/landing/docs/project/mcp.md) · [Scripts](packages/landing/docs/project/scripts.md) ·
+  [Deploy](packages/landing/docs/project/deploy.md) · [Architecture](packages/landing/docs/project/architecture.md)
 
 ## Theming
 

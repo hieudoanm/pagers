@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{ self.config.site.description }}" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="{{ self.config.theme.primary }}" />
+    <title>{{ self.config.site.name }}</title>
+    
+    <meta property="og:title" content="{{ self.og.title }}" />
+    <meta property="og:description" content="{{ self.og.description }}" />
+    <meta property="og:type" content="{{ self.og.og_type }}" />
+    <meta property="og:site_name" content="{{ self.og.site_name }}" />
+    {%- if !self.og.url.is_empty() %}
+    <meta property="og:url" content="{{ self.og.url }}" />
+    {%- endif %}
+    {%- if !self.og.image.is_empty() %}
+    <meta property="og:image" content="{{ self.og.image }}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {%- endif %}
+    {%- if !self.og.image_alt.is_empty() %}
+    <meta property="og:image:alt" content="{{ self.og.image_alt }}" />
+    {%- endif %}
+    <meta name="twitter:card" content="{{ self.og.twitter_card }}" />
+    {%- if !self.og.image.is_empty() %}
+    <meta name="twitter:image" content="{{ self.og.image }}" />
+    {%- endif %}
+
+    <style>
+      :root {
+{{ self.theme_css|safe }}      }
+    </style>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    {% include "partials/header.html" %}
+
+    <main id="top">
+      <section class="pfolio">
+        {% if !self.config.portfolio.avatar.is_empty() %}<span class="avatar-lg" aria-hidden="true">{{ self.config.portfolio.avatar }}</span>{% endif %}
+        <h1>{{ self.config.portfolio.name }}</h1>
+        <p class="role">{{ self.config.portfolio.role }}</p>
+        {% if !self.config.portfolio.location.is_empty() %}<span class="loc">📍 {{ self.config.portfolio.location }}</span>{% endif %}
+        <p class="about">{{ self.config.portfolio.about }}</p>
+        {% if !self.config.portfolio.skills.is_empty() %}
+        <div class="skills">
+          {% for item1 in self.config.portfolio.skills %}<span class="skill">{{ item1 }}</span>{% endfor %}
+        </div>
+        {% endif %}
+      </section>
+
+      <section id="work" class="block">
+        {% if (!self.config.features.heading.is_empty() || !self.config.features.sub.is_empty()) %}
+        <div class="block-head">
+          <h2>{{ self.config.features.heading }}</h2>
+          {% if !self.config.features.sub.is_empty() %}<p class="sub">{{ self.config.features.sub }}</p>{% endif %}
+        </div>
+        {% endif %}
+        <div class="projects">
+          {% for item2 in self.config.portfolio.projects %}
+          <a class="project" href="{{ item2.href }}">
+            <span class="icon" aria-hidden="true">{{ item2.icon }}</span>
+            <h3>{{ item2.title }}</h3>
+            <p>{{ item2.body }}</p>
+          </a>
+          {% endfor %}
+        </div>
+      </section>
+
+      {% if !self.config.cta.heading.is_empty() %}
+      <section id="cta" class="block">
+        <div class="cta">
+          <span class="icon" aria-hidden="true">{{ self.config.cta.icon }}</span>
+          <h2>{{ self.config.cta.heading }}</h2>
+          <p>{{ self.config.cta.body }}</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="{{ self.config.cta.button.href }}">{{ self.config.cta.button.label }}</a>
+          </div>
+        </div>
+      </section>
+      {% endif %}
+
+      {% include "partials/footer.html" %}
+    </main>
+  </body>
+</html>

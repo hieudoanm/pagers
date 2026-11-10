@@ -1,0 +1,97 @@
+# landify.yaml — the single content source for your landing page.
+#
+#   landify validate   # check that this file is valid
+#   landify build      # generate index.html from this file
+#
+# Every field below has placeholder text and a short "what to do" hint.
+# Attributes like mark, badge, and icon are emoji; keep them quoted so the
+# intent is explicit. All fields marked "required" must be non-empty for
+# `landify validate` to pass.
+#
+# Type: the "waitlist" layout swaps the product hero/demo for an email-capture
+# panel: a launches line, a signup form, and optional social links. No media
+# files or video are required; waitlist.form.action must be a real form URL.
+#
+# Open Graph: the optional site.og block fills the <head> so a shared link
+# renders a card. title, description and site_name fall back to the site
+# values, and url and image only appear when you set them. `landify build`
+# also writes a 1200 x 630 og/og.svg from the card copy and the theme above:
+# kicker becomes the small line above the title, tags the chips in the right
+# panel, and site.name the monogram. Convert it to the PNG that image points
+# at, e.g. rsvg-convert -o og/og.png og/og.svg
+#
+# Colors: theme is the only design input. List the eight base colors (and,
+# optionally, the corner radius); every other CSS token the page uses —
+# surfaces (base-100/200/300, base-content), accent shades and tints
+# (primary-dark/soft/content, secondary-content), and hairlines derived from
+# neutral (neutral-faint, border, border-soft) — is calculated from them.
+# Values below are the defaults; any field left empty keeps its default.
+
+type: waitlist            # waitlist | event | download | app | pricing | portfolio | docs | faq | team | status | linktree
+
+theme:
+  base: "#f7f8fa"         #   backgrounds and surface family
+  primary: "#0d9488"      #   brand accent
+  secondary: "#7c3aed"    #   secondary accent
+  neutral: "#555f6e"      #   muted text and hairline base
+  info: "#2563eb"
+  warning: "#d97706"
+  success: "#16a34a"
+  error: "#dc2626"
+  radius: "10px"          #   corner radius (not a color)
+
+site:                     # used in the navbar, <title>, and meta description
+  name: Landify            # [required] your product or site name
+  mark: "🌄"               # [optional] emoji shown next to the name
+  description: >-          # [required] one sentence used for <meta name="description">
+    A flat, dependency-free landing page generated from a single YAML file.
+  nav:                     # [required] links shown in the top navbar
+    - label: Join         #   visible link text
+      href: "#join"       #   link target: "#section" or a full URL
+    - label: Social
+      href: "#social"
+
+  og:                        # [optional] social card: build writes og/og.svg and the <head> tags
+    title: Your page in one link   #   og:title — defaults to site.name
+    description: >-          #   og:description — defaults to site.description
+      One sentence a link preview can show.
+    image: "https://example.com/og/og.png"   #   og:image — omit to emit no image tags (1200 × 630)
+    image_alt: ""            #   og:image:alt — describe the card for screen readers
+    url: "https://example.com"   #   og:url — the canonical address of this page
+    type: "website"          #   og:type — defaults to website
+    site_name: ""            #   og:site_name — defaults to site.name
+    twitter_card: ""         #   twitter:card — defaults to summary_large_image
+    kicker: "One file, one page"   #   card only: the small line above the title
+    tags:                    #   card only: chips in the right panel, first 4 shown
+      - "Zero build step"
+      - "12 layouts"
+      - "HTML + CSS only"
+
+hero:                     # the first thing visitors see
+  badge: "🪄 Now building" # [optional] small pill above the headline
+  headline: Something special is coming.   # [required] the big title
+  subheadline: >-          # [required] one or two sentences of supporting text
+    Describe what you offer in one or two sentences. Keep it short and clear.
+
+waitlist:                 # the email-capture panel
+  launches: "🧡 Open to the first 1,000 on November 1"   # [required] launch date or countdown hook
+  heading: Join the waitlist.   # [required]
+  body: >-                 # [required] what subscribers get
+    Leave your email and we will send one note when seats open — nothing else.
+  form:                    # the signup form
+    action: "https://forms.example.com/signup"   # [required] form endpoint
+    placeholder: "you@example.com"               # [optional] input hint
+    button: Notify me                            # [required] submit label
+  social:                  # [optional] links shown under the form
+    - label: "𝕏"          #   link text or emoji
+      href: "https://twitter.com"
+    - label: "🎮"
+      href: "https://discord.example.com"
+
+footer:                    # the simple footer row
+  copyright: "© 2026 Landify"   # [required] shown first in the footer
+  links:                   # [required] footer links; use the same items as nav
+    - label: Join
+      href: "#join"
+    - label: Social
+      href: "#social"

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{ self.config.site.description }}" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="{{ self.config.theme.primary }}" />
+    <title>{{ self.config.site.name }}</title>
+    
+    <meta property="og:title" content="{{ self.og.title }}" />
+    <meta property="og:description" content="{{ self.og.description }}" />
+    <meta property="og:type" content="{{ self.og.og_type }}" />
+    <meta property="og:site_name" content="{{ self.og.site_name }}" />
+    {%- if !self.og.url.is_empty() %}
+    <meta property="og:url" content="{{ self.og.url }}" />
+    {%- endif %}
+    {%- if !self.og.image.is_empty() %}
+    <meta property="og:image" content="{{ self.og.image }}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {%- endif %}
+    {%- if !self.og.image_alt.is_empty() %}
+    <meta property="og:image:alt" content="{{ self.og.image_alt }}" />
+    {%- endif %}
+    <meta name="twitter:card" content="{{ self.og.twitter_card }}" />
+    {%- if !self.og.image.is_empty() %}
+    <meta name="twitter:image" content="{{ self.og.image }}" />
+    {%- endif %}
+
+    <style>
+      :root {
+{{ self.theme_css|safe }}      }
+    </style>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    {% include "partials/header.html" %}
+
+    <main id="top">
+      <section class="lt-profile">
+        {% if !self.config.linktree.avatar.is_empty() %}<span class="lt-avatar" aria-hidden="true">{{ self.config.linktree.avatar }}</span>{% endif %}
+        {% if !self.config.linktree.heading.is_empty() %}<h1>{{ self.config.linktree.heading }}</h1>{% endif %}
+        {% if !self.config.linktree.sub.is_empty() %}<p class="lt-sub">{{ self.config.linktree.sub }}</p>{% endif %}
+      </section>
+
+      <section id="links" class="lt-cards">
+        {% for item1 in self.config.linktree.cards %}
+        <a class="lt-card" href="{{ item1.href }}">
+          {% if !item1.icon.is_empty() %}<span class="icon" aria-hidden="true">{{ item1.icon }}</span>{% endif %}
+          <span class="lt-card-title">{{ item1.title }}</span>
+          {% if !item1.note.is_empty() %}<span class="lt-card-note">{{ item1.note }}</span>{% endif %}
+        </a>
+        {% endfor %}
+      </section>
+
+      {% if !self.config.linktree.social.is_empty() %}
+      <nav class="lt-social" aria-label="Social links">
+        {% for item2 in self.config.linktree.social %}<a class="lt-social-link" href="{{ item2.href }}">{{ item2.label }}</a>{% endfor %}
+      </nav>
+      {% endif %}
+
+      {% include "partials/footer.html" %}
+    </main>
+  </body>
+</html>

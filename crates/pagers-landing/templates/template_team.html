@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{ self.config.site.description }}" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="{{ self.config.theme.primary }}" />
+    <title>{{ self.config.site.name }}</title>
+    
+    <meta property="og:title" content="{{ self.og.title }}" />
+    <meta property="og:description" content="{{ self.og.description }}" />
+    <meta property="og:type" content="{{ self.og.og_type }}" />
+    <meta property="og:site_name" content="{{ self.og.site_name }}" />
+    {%- if !self.og.url.is_empty() %}
+    <meta property="og:url" content="{{ self.og.url }}" />
+    {%- endif %}
+    {%- if !self.og.image.is_empty() %}
+    <meta property="og:image" content="{{ self.og.image }}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {%- endif %}
+    {%- if !self.og.image_alt.is_empty() %}
+    <meta property="og:image:alt" content="{{ self.og.image_alt }}" />
+    {%- endif %}
+    <meta name="twitter:card" content="{{ self.og.twitter_card }}" />
+    {%- if !self.og.image.is_empty() %}
+    <meta name="twitter:image" content="{{ self.og.image }}" />
+    {%- endif %}
+
+    <style>
+      :root {
+{{ self.theme_css|safe }}      }
+    </style>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    {% include "partials/header.html" %}
+
+    <main id="top">
+      <section class="hero">
+        <div>
+          {% if !self.config.hero.badge.is_empty() %}<span class="badge">{{ self.config.hero.badge }}</span>{% endif %}
+          <h1>{{ self.config.hero.headline }}</h1>
+          <p class="lead">{{ self.config.hero.subheadline }}</p>
+        </div>
+      </section>
+
+      {% if !self.config.team.values.is_empty() %}
+      <section id="values" class="block">
+        {% if (!self.config.features.heading.is_empty() || !self.config.features.sub.is_empty()) %}
+        <div class="block-head">
+          <h2>{{ self.config.features.heading }}</h2>
+          {% if !self.config.features.sub.is_empty() %}<p class="sub">{{ self.config.features.sub }}</p>{% endif %}
+        </div>
+        {% endif %}
+        <div class="values">
+          {% for item1 in self.config.team.values %}
+          <div class="value">
+            <span class="icon" aria-hidden="true">{{ item1.icon }}</span>
+            <h3>{{ item1.title }}</h3>
+            <p>{{ item1.body }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+      {% endif %}
+
+      <section id="team" class="block">
+        {% if (!self.config.team.heading.is_empty() || !self.config.team.sub.is_empty()) %}
+        <div class="block-head">
+          <h2>{{ self.config.team.heading }}</h2>
+          {% if !self.config.team.sub.is_empty() %}<p class="sub">{{ self.config.team.sub }}</p>{% endif %}
+        </div>
+        {% endif %}
+        <div class="members">
+          {% for item2 in self.config.team.members %}
+          <div class="member">
+            {% if !item2.avatar.is_empty() %}<span class="avatar" aria-hidden="true">{{ item2.avatar }}</span>{% endif %}
+            <h3>{{ item2.name }}</h3>
+            <p class="role">{{ item2.role }}</p>
+            {% if !item2.bio.is_empty() %}<p class="bio">{{ item2.bio }}</p>{% endif %}
+          </div>
+          {% endfor %}
+        </div>
+      </section>
+
+      {% if !self.config.cta.heading.is_empty() %}
+      <section id="cta" class="block">
+        <div class="cta">
+          <span class="icon" aria-hidden="true">{{ self.config.cta.icon }}</span>
+          <h2>{{ self.config.cta.heading }}</h2>
+          <p>{{ self.config.cta.body }}</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="{{ self.config.cta.button.href }}">{{ self.config.cta.button.label }}</a>
+          </div>
+        </div>
+      </section>
+      {% endif %}
+
+      {% include "partials/footer.html" %}
+    </main>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+# landify.yaml — the single content source for your landing page.
+#
+#   landify validate   # check that this file is valid
+#   landify build      # generate index.html from this file
+#
+# Every field below has placeholder text and a short "what to do" hint.
+# Attributes like mark, badge, and icon are emoji; keep them quoted so the
+# intent is explicit. All fields marked "required" must be non-empty for
+# `landify validate` to pass.
+#
+# Type: the "download" layout ships a release — version/license badges, per-OS
+# download buttons, an install snippet, plus the reusable features grid and
+# closing CTA. Required: download.version, download.repo, at least one
+# download.platform (name + href), features.items (title + body), and the cta
+# block (heading, body, button.label, button.href).
+#
+# Open Graph: the optional site.og block fills the <head> so a shared link
+# renders a card. title, description and site_name fall back to the site
+# values, and url and image only appear when you set them. `landify build`
+# also writes a 1200 x 630 og/og.svg from the card copy and the theme above:
+# kicker becomes the small line above the title, tags the chips in the right
+# panel, and site.name the monogram. Convert it to the PNG that image points
+# at, e.g. rsvg-convert -o og/og.png og/og.svg
+#
+# Colors: theme is the only design input. List the eight base colors (and,
+# optionally, the corner radius); every other CSS token the page uses —
+# surfaces (base-100/200/300, base-content), accent shades and tints
+# (primary-dark/soft/content, secondary-content), and hairlines derived from
+# neutral (neutral-faint, border, border-soft) — is calculated from them.
+# Values below are the defaults; any field left empty keeps its default.
+
+type: download            # waitlist | event | download | app | pricing | portfolio | docs | faq | team | status | linktree
+
+theme:
+  base: "#f7f8fa"         #   backgrounds and surface family
+  primary: "#0d9488"      #   brand accent
+  secondary: "#7c3aed"    #   secondary accent
+  neutral: "#555f6e"      #   muted text and hairline base
+  info: "#2563eb"
+  warning: "#d97706"
+  success: "#16a34a"
+  error: "#dc2626"
+  radius: "10px"          #   corner radius (not a color)
+
+site:                     # used in the navbar, <title>, and meta description
+  name: Landify            # [required] your product or site name
+  mark: "🌄"               # [optional] emoji shown next to the name
+  description: >-          # [required] one sentence used for <meta name="description">
+    A flat, dependency-free landing page generated from a single YAML file.
+  nav:                     # [required] links shown in the top navbar
+    - label: Features     #   visible link text
+      href: "#features"   #   link target: "#section" or a full URL
+    - label: Source
+      href: "https://github.com/hieudoanm/hieudoanm.github.io"
+
+  og:                        # [optional] social card: build writes og/og.svg and the <head> tags
+    title: Your page in one link   #   og:title — defaults to site.name
+    description: >-          #   og:description — defaults to site.description
+      One sentence a link preview can show.
+    image: "https://example.com/og/og.png"   #   og:image — omit to emit no image tags (1200 × 630)
+    image_alt: ""            #   og:image:alt — describe the card for screen readers
+    url: "https://example.com"   #   og:url — the canonical address of this page
+    type: "website"          #   og:type — defaults to website
+    site_name: ""            #   og:site_name — defaults to site.name
+    twitter_card: ""         #   twitter:card — defaults to summary_large_image
+    kicker: "One file, one page"   #   card only: the small line above the title
+    tags:                    #   card only: chips in the right panel, first 4 shown
+      - "Zero build step"
+      - "12 layouts"
+      - "HTML + CSS only"
+
+hero:                     # the first thing visitors see
+  badge: "📦 Release"     # [optional] small pill above the headline
+  headline: Your release headline.   # [required] the big title
+  subheadline: >-          # [required] one or two sentences of supporting text
+    Describe the release in one or two sentences. Keep it short and clear.
+  secondary:               # [optional] secondary call to action
+    label: Changelog
+    href: "https://example.com/changelog"
+
+download:                  # the release details
+  version: "0.4.2"         # [required] the version shown in the badge
+  license: MIT             # [optional]
+  repo: "https://github.com/hieudoanm/hieudoanm.github.io"   # [required] source link
+  install: "brew install landify"   # [optional] shown as an install snippet
+  platforms:               # [required] at least one download button
+    - name: macOS          #   [required]
+      icon: "🍎"           #   [optional] emoji icon
+      href: "https://example.com/landify.dmg"   #   [required]
+    - name: Linux
+      icon: "🐧"
+      href: "https://example.com/landify-linux.tar.gz"
+    - name: Windows
+      icon: "🪟"
+      href: "https://example.com/landify.exe"
+
+features:                 # [required] the feature grid; add or remove items freely
+  heading: Why landify
+  sub: The smallest possible footprint, fully offline.
+  items:
+    - icon: "📄"          # [optional] emoji shown as the card icon
+      title: One flat file        # [required] feature title
+      body: >-            # [required] short description
+        HTML and CSS only, ready to drop anywhere.
+    - icon: "⚡"
+      title: Instant build
+      body: >-
+        No network, no dependencies, no build step.
+
+cta:                       # the closing call to action
+  icon: "🚀"               # [optional] emoji above the heading
+  heading: Get started.   # [required]
+  body: >-                 # [required]
+    Download and build your first page.
+  button:                  # [required] the single main action
+    label: Download now
+    href: "https://example.com/landify.dmg"
+
+footer:                    # the simple footer row
+  copyright: "© 2026 Landify"   # [required] shown first in the footer
+  links:                   # [required] footer links; use the same items as nav
+    - label: Features
+      href: "#features"
+    - label: Source
+      href: "https://github.com/hieudoanm/hieudoanm.github.io"

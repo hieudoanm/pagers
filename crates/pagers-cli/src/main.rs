@@ -9,6 +9,7 @@
 
 use pagers_build as build;
 mod init;
+mod landing;
 mod serve;
 mod wiki;
 
@@ -60,6 +61,11 @@ enum Command {
         #[arg(long, default_value = "File Graph")]
         title: String,
     },
+    /// Build a single-file landing page from landify.yaml.
+    Landing {
+        #[command(subcommand)]
+        command: landing::LandingCommand,
+    },
     /// Convert a Wikipedia article URL to Markdown.
     Wiki {
         #[command(subcommand)]
@@ -106,6 +112,7 @@ fn main() -> ExitCode {
             let content = content.unwrap_or_else(|| DEFAULT_CONTENT.to_string());
             run_graph(&content, output.as_deref(), format.as_deref(), &title)
         }
+        Command::Landing { command } => return landing::run(command),
         Command::Wiki { command } => return wiki::run(command),
         Command::Serve {
             content,

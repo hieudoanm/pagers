@@ -24,6 +24,30 @@ const CONTENT_TYPES: &[(&str, &str)] = &[
     ("wasm", "application/wasm"),
 ];
 
+/// Serves `dir` on `host:port` until interrupted — the plain static file
+/// server behind `pagers landing preview`.
+pub fn serve_dir(dir: &str, host: &str, port: u16) -> Result<(), String> {
+    let root = PathBuf::from(dir);
+    if !root.is_dir() {
+        return Err(format!("directory {dir} does not exist"));
+    }
+    let listener =
+        TcpListener::bind((host, port)).map_err(|e| format!("bind {host}:{port}: {e}"))?;
+    eprintln!("Serving {} at http://{host}:{port}/", root.display());
+    for stream in listener.incoming() {
+        match stream {
+            Ok(stream) => {
+                let root = root.clone();
+                std::thread::spawn(move || {
+                    let _ = handle(stream, &root, "");
+                });
+            }
+            Err(e) => eprintln!("accept: {e}"),
+        }
+    }
+    Ok(())
+}
+
 /// Serves `dir` on `127.0.0.1:port` until interrupted. `base_path` is the
 /// site's configured base path (e.g. `/docs`): request paths are stripped of
 /// it so prefixed links resolve to the unprefixed files on disk.

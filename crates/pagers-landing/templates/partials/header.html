@@ -1,0 +1,11 @@
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#top">
+      {% if !self.config.site.mark.is_empty() %}<span class="mark">{{ self.config.site.mark }}</span>{% endif %}
+      <span>{{ self.config.site.name }}</span>
+    </a>
+    <nav class="nav-links">
+      {% for item1 in self.config.site.nav %}<a href="{{ item1.href }}">{{ item1.label }}</a>{% endfor %}
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ self.card.frame.width }}" height="{{ self.card.frame.height }}" viewBox="0 0 {{ self.card.frame.width }} {{ self.card.frame.height }}" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+  <title>{{ self.card.title }}</title>
+  <desc>{{ self.card.desc }}</desc>
+  <defs>
+    <linearGradient id="og-base" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="{{ self.card.colors.base }}" />
+      <stop offset="1" stop-color="{{ self.card.colors.base_alt }}" />
+    </linearGradient>
+    <radialGradient id="og-glow" cx="0.88" cy="0.04" r="0.58">
+      <stop offset="0" stop-color="{{ self.card.colors.glow }}" stop-opacity="0.17" />
+      <stop offset="1" stop-color="{{ self.card.colors.glow }}" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="og-accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="{{ self.card.colors.accent }}" />
+      <stop offset="1" stop-color="{{ self.card.colors.accent_deep }}" />
+    </linearGradient>
+    <filter id="og-shadow" x="-20%" y="-20%" width="150%" height="150%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#000000" flood-opacity="0.16" />
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="{{ self.card.frame.width }}" height="{{ self.card.frame.height }}" fill="url(#og-base)" />
+  <rect x="0" y="0" width="{{ self.card.frame.width }}" height="{{ self.card.frame.height }}" fill="url(#og-glow)" />
+  <rect x="0" y="0" width="{{ self.card.frame.rail }}" height="{{ self.card.frame.height }}" fill="url(#og-accent)" />
+
+  <g>
+    <rect x="{{ self.card.frame.pad }}" y="{{ self.card.frame.head_y }}" width="{{ self.card.frame.tile }}" height="{{ self.card.frame.tile }}" rx="{{ self.card.frame.tile_radius }}" fill="url(#og-accent)" />
+    <text x="{{ self.card.frame.monogram_x }}" y="{{ self.card.frame.baseline }}" text-anchor="middle" font-size="{{ self.card.frame.monogram_size }}" font-weight="800" fill="{{ self.card.colors.accent_on_dark }}">{{ self.card.monogram }}</text>
+    <text x="{{ self.card.frame.name_x }}" y="{{ self.card.frame.baseline }}" font-size="{{ self.card.og_type.name }}" font-weight="600" fill="{{ self.card.colors.ink }}">{{ self.card.site }}</text>
+    {% if !self.card.host.is_empty() %}
+    <text x="{{ self.card.frame.edge }}" y="{{ self.card.frame.host_baseline }}" text-anchor="end" font-size="{{ self.card.og_type.host }}" fill="{{ self.card.colors.muted }}">{{ self.card.host }}</text>
+    {% endif %}
+  </g>
+  <line x1="{{ self.card.frame.pad }}" y1="{{ self.card.frame.rule_y }}" x2="{{ self.card.frame.edge }}" y2="{{ self.card.frame.rule_y }}" stroke="{{ self.card.colors.hairline }}" stroke-width="2" />
+
+  <g font-size="{{ self.card.og_type.kicker }}" font-weight="700" letter-spacing="0.16em" fill="{{ self.card.colors.accent_ink }}">
+    {% if !self.card.kicker.is_empty() %}
+    <text x="{{ self.card.frame.pad }}" y="{{ self.card.og_type.kicker_y }}">{{ self.card.kicker }}</text>
+    {% endif %}
+  </g>
+  <g font-size="{{ self.card.og_type.title }}" font-weight="800" fill="{{ self.card.colors.ink }}" letter-spacing="-0.022em">{% for run in self.card.lines %}
+  <text x="{{ self.card.frame.pad }}" y="{{ run.y }}">{{ run.text }}</text>{% endfor %}
+  </g>
+  <g font-size="{{ self.card.og_type.description }}" fill="{{ self.card.colors.muted }}">{% for run in self.card.desc_runs %}
+  <text x="{{ self.card.frame.pad }}" y="{{ run.y }}">{{ run.text }}</text>{% endfor %}
+  </g>
+
+  <g>
+    <rect x="{{ self.card.panel.x }}" y="{{ self.card.panel.y }}" width="{{ self.card.panel.w }}" height="{{ self.card.panel.h }}" rx="{{ self.card.panel.radius }}" fill="{{ self.card.colors.panel }}" stroke="{{ self.card.colors.panel_line }}" stroke-width="1.5" filter="url(#og-shadow)" />
+    <rect x="{{ self.card.panel.tile_x }}" y="{{ self.card.panel.tile_y }}" width="{{ self.card.panel.tile }}" height="{{ self.card.panel.tile }}" rx="{{ self.card.panel.tile_radius }}" fill="url(#og-accent)" />
+    <text x="{{ self.card.panel.monogram_x }}" y="{{ self.card.panel.monogram_y }}" text-anchor="middle" font-size="{{ self.card.panel.monogram }}" font-weight="800" fill="{{ self.card.colors.accent_on_dark }}">{{ self.card.monogram }}</text>
+    {% for pill in self.card.pills %}
+    <rect x="{{ pill.x }}" y="{{ pill.y }}" width="{{ pill.w }}" height="{{ pill.h }}" rx="{{ pill.radius }}" fill="{{ self.card.colors.pill }}" />
+    <circle cx="{{ pill.dot_x }}" cy="{{ pill.dot_y }}" r="{{ pill.dot_r }}" fill="{{ self.card.colors.accent }}" />
+    <text x="{{ pill.text_x }}" y="{{ pill.text_y }}" font-size="{{ self.card.panel.pill_size }}" font-weight="500" fill="{{ self.card.colors.ink }}">{{ pill.label }}</text>
+    {% endfor %}
+  </g>
+</svg>
