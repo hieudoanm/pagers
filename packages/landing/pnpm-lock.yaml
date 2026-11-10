@@ -186,7 +186,7 @@ importers:
         specifier: 4.3.5
         version: 4.3.5
       '@tailwindcss/typography':
-        specifier: ^0.5.20
+        specifier: 0.5.20
         version: 0.5.20(tailwindcss@4.3.5)
       '@types/node':
         specifier: 26.6.6
