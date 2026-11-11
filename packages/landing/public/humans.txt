@@ -1,0 +1,9 @@
+/* TEAM */
+Project: pagers — static site generator for Markdown docs
+Site: https://hieudoanm.github.io/pagers/
+Source: https://github.com/hieudoanm/pagers
+
+/* SITE */
+Last update: 2026/11/11
+Language: English
+Doctype: HTML5
