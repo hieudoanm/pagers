@@ -1,5 +1,8 @@
 # pagers
 
+[![CI](https://github.com/hieudoanm/pagers/actions/workflows/ci.yaml/badge.svg?branch=master)](https://github.com/hieudoanm/pagers/actions/workflows/ci.yaml?branch=master)  [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+
 > Write Markdown. Run one command. Get a website — and a map of how it links together.
 
 `pagers` is a static site generator for documentation, inspired by
