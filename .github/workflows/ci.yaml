@@ -1,9 +1,11 @@
-name: ci
+name: CI
 
 on:
   push:
     branches: [master]
   pull_request:
+    branches: [master]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -14,7 +16,7 @@ concurrency:
 
 jobs:
   ci:
-    name: ci
+    name: CI
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -55,7 +57,7 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         uses: actions/setup-node@v7.1.0
         with:
-          node-version: 26.13.0
+          node-version-file: .nvmrc
           cache: pnpm
           cache-dependency-path: packages/landing/pnpm-lock.yaml
 
