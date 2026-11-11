@@ -20,8 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pages: write
-      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v7.0.1
@@ -46,46 +44,6 @@ jobs:
       - name: Build pagers binary (release)
         run: cargo build --release -p pagers-cli
 
-      # The deploy steps only run on pushes to master; PRs stop after the build.
-      - name: Setup pnpm
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        uses: pnpm/action-setup@v6.1.1
-        with:
-          version: 12.18.0
-
-      - name: Setup Node.js
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        uses: actions/setup-node@v7.1.0
-        with:
-          node-version-file: .nvmrc
-          cache: pnpm
-          cache-dependency-path: packages/landing/pnpm-lock.yaml
-
-      - name: Install landing dependencies
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        working-directory: packages/landing
-        run: pnpm install --frozen-lockfile
-
-      - name: Build landing (Next.js static export)
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        working-directory: packages/landing
-        run: pnpm run build
-
-      - name: Configure GitHub Pages
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        uses: actions/configure-pages@v6.0.0
-
-      - name: Upload Pages artifact
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        uses: actions/upload-pages-artifact@v5.0.0
-        with:
-          path: packages/landing/out
-
-      - name: Deploy to GitHub Pages
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        id: deployment
-        uses: actions/deploy-pages@v5.0.1
-
       - name: Publish rolling release
         if: github.event_name == 'push' && github.ref == 'refs/heads/master'
         env:
@@ -98,3 +56,49 @@ jobs:
             --notes-file README.md \
             --target "$GITHUB_SHA" \
             target/release/pagers
+
+  landing-build:
+    name: Landing - Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7.0.1
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6.1.1
+        with:
+          version: 12.18.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+          cache-dependency-path: packages/landing/pnpm-lock.yaml
+
+      - name: Install landing dependencies
+        working-directory: packages/landing
+        run: pnpm install --frozen-lockfile
+
+      - name: Build landing (Next.js static export)
+        working-directory: packages/landing
+        run: pnpm run build
+
+      - name: Upload Pages artifact
+        if: github.ref == 'refs/heads/master'
+        uses: actions/upload-pages-artifact@v5.0.0
+        with:
+          path: packages/landing/out
+
+  landing-deploy:
+    name: Landing - Deploy
+    needs: landing-build
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v5.0.1
