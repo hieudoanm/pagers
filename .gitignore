@@ -2,3 +2,6 @@ _site/
 .page/
 dist/
 target/
+
+# macOS
+.DS_Store
