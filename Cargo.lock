@@ -1225,7 +1225,7 @@ name = "pagers-wiki"
 version = "0.0.1"
 dependencies = [
  "htmd",
- "markup5ever 0.38.0",
+ "markup5ever 0.40.0",
  "markup5ever_rcdom",
  "reqwest",
  "scraper",
