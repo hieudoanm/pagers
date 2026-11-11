@@ -40,6 +40,31 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--color-text);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 0 0 0.5em;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+  }
+
+  h2 {
+    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -59,20 +84,20 @@ body {
     @apply px-3.5 py-1.5 text-sm;
   }
   .btn-primary {
-    @apply bg-accent text-white hover:bg-accent-hover;
+    @apply bg-accent hover:bg-accent-hover text-white;
   }
   .btn-ghost {
     @apply border-border-strong bg-surface text-text hover:border-text-tertiary;
   }
 
   .terminal {
-    @apply my-0 overflow-hidden rounded-[var(--radius-card)] border border-terminal-line bg-terminal-bg shadow-[0_12px_40px_rgb(17_24_39/0.14)];
+    @apply border-terminal-line bg-terminal-bg my-0 overflow-hidden rounded-[var(--radius-card)] border shadow-[0_12px_40px_rgb(17_24_39/0.14)];
   }
   .terminal figcaption {
-    @apply border-terminal-line bg-terminal-bar border-b px-3.5 pt-2 pb-2.5 text-[0.8125rem] text-terminal-dim;
+    @apply border-terminal-line bg-terminal-bar text-terminal-dim border-b px-3.5 pt-2 pb-2.5 text-[0.8125rem];
   }
   .terminal pre {
-    @apply m-0 overflow-x-auto px-5 py-4 font-mono text-[0.8125rem] leading-[1.7] whitespace-pre text-terminal-text tabular-nums;
+    @apply text-terminal-text m-0 overflow-x-auto px-5 py-4 font-mono text-[0.8125rem] leading-[1.7] whitespace-pre tabular-nums;
   }
   .terminal code {
     @apply font-mono;
@@ -110,9 +135,14 @@ body {
     @apply block min-h-[1.7em];
   }
 
-  /* inline code */
+  /* inline code — never inside <pre> blocks */
   code {
-    @apply rounded border border-border bg-bg-alt px-1.5 py-0.5 font-mono text-[0.875em];
+    @apply border-border bg-bg-alt rounded border px-1.5 py-0.5 font-mono text-[0.875em];
+  }
+  pre code,
+  .terminal code,
+  .prose pre code {
+    @apply border-0 bg-transparent p-0 text-[1em];
   }
 }
 

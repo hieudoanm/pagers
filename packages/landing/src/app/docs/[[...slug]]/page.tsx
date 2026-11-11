@@ -64,8 +64,8 @@ const DocsPage = async ({ params }: DocsPageProps): Promise<JSX.Element> => {
       </header>
 
       <div className='mx-auto w-full max-w-[72rem] px-5 py-10'>
-        <div className='docs-layout grid grid-cols-[16rem_1fr] gap-10'>
-          <aside className='docs-sidebar'>
+        <div className='docs-layout grid grid-cols-1 gap-10 md:grid-cols-[16rem_1fr]'>
+          <aside className='docs-sidebar md:sticky md:top-24 md:self-start'>
             <Link href='/docs/' className='text-text text-sm font-bold no-underline'>
               Documentation
             </Link>
@@ -74,7 +74,7 @@ const DocsPage = async ({ params }: DocsPageProps): Promise<JSX.Element> => {
                 href='/docs/'
                 className={`mt-2 block rounded-lg px-3 py-1.5 text-sm no-underline ${
                   doc.slug === ''
-                    ? 'bg-accent-soft font-semibold text-accent'
+                    ? 'bg-accent-soft text-accent font-semibold'
                     : 'text-text-muted hover:bg-bg-alt hover:text-text'
                 }`}>
                 {overview.title}
@@ -94,7 +94,7 @@ const DocsPage = async ({ params }: DocsPageProps): Promise<JSX.Element> => {
                       href={`/docs/${p.slug}/`}
                       className={`block rounded-lg px-3 py-1.5 text-sm no-underline ${
                         p.slug === doc.slug
-                          ? 'bg-accent-soft font-semibold text-accent'
+                          ? 'bg-accent-soft text-accent font-semibold'
                           : 'text-text-muted hover:bg-bg-alt hover:text-text'
                       }`}>
                       {p.title}

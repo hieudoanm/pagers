@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: { absolute: 'pagers — static site generator for Markdown docs' },
 };
 
-const LOGO = process.env.NODE_ENV === 'production' ? '/pagers/logo.svg' : '/logo.svg';
+const LOGO = process.env.NODE_ENV === 'production' ? '/pagers/logo.png' : '/logo.png';
 const GITHUB = 'https://github.com/hieudoanm/pagers';
 
 const FEATURES: { title: string; body: string; href: string }[] = [
@@ -44,7 +44,11 @@ const FEATURES: { title: string; body: string; href: string }[] = [
 ];
 
 const COMPARISON: { feature: string; pagers: string; docsify: string }[] = [
-  { feature: 'Rendering', pagers: 'Ahead of time → static HTML', docsify: 'In the browser at runtime' },
+  {
+    feature: 'Rendering',
+    pagers: 'Ahead of time → static HTML',
+    docsify: 'In the browser at runtime',
+  },
   { feature: 'JavaScript required', pagers: 'None for content', docsify: 'Required' },
   { feature: 'Hosting', pagers: 'Any static host', docsify: 'Needs correct SPA fallback' },
   { feature: 'Offline / cacheable', pagers: 'Fully', docsify: 'Only the shell' },
@@ -67,11 +71,7 @@ const LandingPage = (): JSX.Element => (
           <a href='#features' className='text-text-muted hover:text-text no-underline'>
             Features
           </a>
-          <a
-            href={GITHUB}
-            target='_blank'
-            rel='noreferrer'
-            className='btn btn-primary btn-sm'>
+          <a href={GITHUB} target='_blank' rel='noreferrer' className='btn btn-primary btn-sm'>
             GitHub
           </a>
         </nav>
@@ -81,8 +81,8 @@ const LandingPage = (): JSX.Element => (
     {/* Hero */}
     <section className='mx-auto w-full max-w-[72rem] px-5 pt-20 pb-16 text-center'>
       <h1 className='mx-auto max-w-3xl'>
-        Markdown docs,{" "}
-        <span className='text-accent'>compiled to static HTML</span> — in one Rust binary
+        Markdown docs, <span className='text-accent'>compiled to static HTML</span> — in one Rust
+        binary
       </h1>
       <p className='text-text-muted mx-auto mt-6 max-w-2xl text-lg'>
         pagers turns a folder of <code>.md</code> files into a fast, self-contained static site:
@@ -102,8 +102,8 @@ const LandingPage = (): JSX.Element => (
         <pre>
           <code>
             <span className='prompt'>$</span> <span className='tk-cmd'>pagers</span>{' '}
-            <span className='tk-flag'>build</span> ./docs{' '}
-            <span className='tk-flag'>--output</span> dist
+            <span className='tk-flag'>build</span> ./docs <span className='tk-flag'>--output</span>{' '}
+            dist
             {'\n'}
             <span className='tk-dim'>Built 13 pages and 8 assets into dist in 6.8ms</span>
           </code>
@@ -167,8 +167,8 @@ const LandingPage = (): JSX.Element => (
       <div className='mx-auto w-full max-w-[72rem] px-5 py-20 text-center'>
         <h2>Ship your docs anywhere</h2>
         <p className='text-text-muted mx-auto mt-4 max-w-xl'>
-          One binary, one <code>pagers build</code>, one static folder — ready for GitHub Pages,
-          any CDN, or a plain web server.
+          One binary, one <code>pagers build</code>, one static folder — ready for GitHub Pages, any
+          CDN, or a plain web server.
         </p>
         <div className='mt-8 flex items-center justify-center gap-3'>
           <Link href='/docs/deploy/' className='btn btn-primary btn-lg'>
