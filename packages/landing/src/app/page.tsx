@@ -4,6 +4,7 @@ import Link from 'next/link';
 import type { FC, JSX } from 'react';
 import Footer from '@/components/Footer';
 import Features, { type Feature } from '@/components/Features';
+import Hero from '@/components/Hero';
 import CTA from '@/components/CTA';
 import {
   LuBot,
@@ -166,42 +167,33 @@ const LandingPage = (): JSX.Element => (
 
     <main id='top'>
       {/* hero */}
-      <section className='pt-20 pb-16'>
-        <div className='mx-auto grid w-full max-w-6xl items-center gap-12 px-5 text-left lg:grid-cols-[1.05fr_1fr]'>
-          <div>
-            <h1 className='m-0 mb-2 text-3xl md:text-5xl leading-tight font-bold tracking-tight text-gray-900'>
-              Markdown docs, <span className='text-primary'>compiled to static HTML</span> — in one
-              Rust binary
-            </h1>
-            <p className='text-gray-500 mt-6 max-w-xl text-xl'>
-              pagers turns a folder of <code className='rounded border border-gray-200 bg-gray-50 px-1.5 py-0.5 font-mono text-sm'>.md</code> files into a fast, self-contained static
-              site: navigation, themes, clean URLs and a page graph included. No Node, no runtime,
-              no server.
-            </p>
-            <div className='mt-8 flex flex-wrap justify-start gap-3'>
-              <Link href='/docs/getting-started/' className='btn btn-primary btn-lg'>
-                Get started
-              </Link>
-              <a href={GITHUB} target='_blank' rel='noreferrer' className='btn btn-outline btn-lg'>
-                View on GitHub
-              </a>
-            </div>
-            <dl className='mt-10 grid grid-cols-3 gap-6'>
-              <div>
-                <dt className='text-2xl font-bold tabular-nums'>1</dt>
-                <dd className='text-gray-500 m-0 text-sm'>Rust binary</dd>
-              </div>
-              <div>
-                <dt className='text-2xl font-bold tabular-nums'>8</dt>
-                <dd className='text-gray-500 m-0 text-sm'>built-in themes</dd>
-              </div>
-              <div>
-                <dt className='text-2xl font-bold tabular-nums'>0</dt>
-                <dd className='text-gray-500 m-0 text-sm'>JavaScript required</dd>
-              </div>
-            </dl>
-          </div>
-          <Term
+      <Hero
+        title={
+          <>
+            Markdown docs,{' '}
+            <span className='text-primary'>compiled to static HTML</span> — in
+            one Rust binary
+          </>
+        }
+        description={
+          <>
+            pagers turns a folder of{' '}
+            <code className='rounded border border-base-300 bg-base-200 px-1.5 py-0.5 font-mono text-sm'>
+              .md
+            </code>{' '}
+            files into a fast, self-contained static site: navigation, themes,
+            clean URLs and a page graph included. No Node, no runtime, no
+            server.
+          </>
+        }
+        primary={{ label: 'Get started', href: '/docs/getting-started/' }}
+        secondary={{ label: 'View on GitHub', href: GITHUB, external: true }}
+        stats={[
+          { value: '1', label: 'Rust binary' },
+          { value: '8', label: 'built-in themes' },
+          { value: '0', label: 'JavaScript required' },
+        ]}>
+                  <Term
             caption='first build'
             lines={[
               [
@@ -229,8 +221,7 @@ const LandingPage = (): JSX.Element => (
               ],
             ]}
           />
-        </div>
-      </section>
+      </Hero>
 
       {/* features */}
       <Features
