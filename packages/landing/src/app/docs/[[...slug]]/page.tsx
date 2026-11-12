@@ -38,19 +38,19 @@ const DocsPage = async ({ params }: DocsPageProps): Promise<JSX.Element> => {
 
   return (
     <>
-      <header className='border-border bg-bg/90 sticky top-0 z-50 border-b backdrop-blur'>
-        <div className='mx-auto flex h-16 w-full max-w-[72rem] items-center gap-6 px-5'>
+      <header className='border-gray-200 bg-white/90 sticky top-0 z-50 border-b backdrop-blur'>
+        <div className='mx-auto flex h-16 w-full max-w-6xl items-center gap-6 px-5'>
           <Link
             href='/'
-            className='text-text flex items-center gap-2 text-lg font-bold no-underline'>
+            className='text-gray-900 flex items-center gap-2 text-lg font-bold no-underline'>
             <Image src={LOGO} alt='' width={28} height={28} className='rounded-md' />
             <span>pagers</span>
           </Link>
-          <nav className='ml-auto flex items-center gap-5 text-[0.9375rem]'>
-            <Link href='/' className='text-text-muted hover:text-text no-underline'>
+          <nav className='ml-auto flex items-center gap-5 text-sm'>
+            <Link href='/' className='text-gray-500 hover:text-gray-900 no-underline'>
               Home
             </Link>
-            <Link href='/docs/' className='text-accent font-semibold no-underline'>
+            <Link href='/docs/' className='text-primary font-semibold no-underline'>
               Docs
             </Link>
             <Link
@@ -64,10 +64,10 @@ const DocsPage = async ({ params }: DocsPageProps): Promise<JSX.Element> => {
         </div>
       </header>
 
-      <div className='mx-auto w-full max-w-[72rem] px-5 py-10'>
-        <div className='docs-layout grid grid-cols-1 gap-10 md:grid-cols-[16rem_1fr]'>
-          <aside className='docs-sidebar md:sticky md:top-24 md:self-start'>
-            <Link href='/docs/' className='text-text text-sm font-bold no-underline'>
+      <div className='mx-auto w-full max-w-6xl px-5 py-10'>
+        <div className='grid grid-cols-1 gap-10 md:grid-cols-[16rem_1fr]'>
+          <aside className='hidden md:sticky md:top-24 md:block md:self-start'>
+            <Link href='/docs/' className='text-gray-900 text-sm font-bold no-underline'>
               Documentation
             </Link>
             {overview && (
@@ -75,8 +75,8 @@ const DocsPage = async ({ params }: DocsPageProps): Promise<JSX.Element> => {
                 href='/docs/'
                 className={`mt-2 block rounded-lg px-3 py-1.5 text-sm no-underline ${
                   doc.slug === ''
-                    ? 'bg-accent-soft text-accent font-semibold'
-                    : 'text-text-muted hover:bg-bg-alt hover:text-text'
+                    ? 'bg-primary/10 text-primary font-semibold'
+                    : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900'
                 }`}>
                 {overview.title}
               </Link>
@@ -86,7 +86,7 @@ const DocsPage = async ({ params }: DocsPageProps): Promise<JSX.Element> => {
               if (items.length === 0) return null;
               return (
                 <div key={s.id}>
-                  <div className='text-text-tertiary mt-5 mb-1.5 text-[0.75rem] font-semibold tracking-wider uppercase'>
+                  <div className='text-gray-400 mt-5 mb-1.5 text-xs font-semibold tracking-wider uppercase'>
                     {s.label}
                   </div>
                   {items.map((p) => (
@@ -95,8 +95,8 @@ const DocsPage = async ({ params }: DocsPageProps): Promise<JSX.Element> => {
                       href={`/docs/${p.slug}/`}
                       className={`block rounded-lg px-3 py-1.5 text-sm no-underline ${
                         p.slug === doc.slug
-                          ? 'bg-accent-soft text-accent font-semibold'
-                          : 'text-text-muted hover:bg-bg-alt hover:text-text'
+                          ? 'bg-primary/10 text-primary font-semibold'
+                          : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900'
                       }`}>
                       {p.title}
                     </Link>

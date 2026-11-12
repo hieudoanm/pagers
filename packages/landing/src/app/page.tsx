@@ -3,8 +3,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { FC, JSX } from 'react';
 import Footer from '@/components/Footer';
-import Features from '@/components/Features';
+import Features, { type Feature } from '@/components/Features';
 import CTA from '@/components/CTA';
+import {
+  LuBot,
+  LuFileText,
+  LuGlobe,
+  LuLayoutTemplate,
+  LuPalette,
+  LuWorkflow,
+  LuZap,
+} from 'react-icons/lu';
 
 export const metadata: Metadata = {
   title: { absolute: 'pagers — static site generator for Markdown docs' },
@@ -39,16 +48,23 @@ interface Tok {
 }
 
 const TK: Record<TokKind, string> = {
-  prompt: 'prompt',
-  cmd: 'tk-cmd',
-  flag: 'tk-flag',
-  str: 'tk-str',
-  key: 'tk-key',
-  url: 'tk-url',
-  dim: 'tk-dim',
-  ok: 'tk-ok',
-  err: 'tk-err',
+  prompt: 'text-accent select-none',
+  cmd: 'font-semibold text-sky-300',
+  flag: 'text-amber-400',
+  str: 'text-green-300',
+  key: 'text-violet-300',
+  url: 'text-cyan-300',
+  dim: 'text-slate-400',
+  ok: 'text-gray-200',
+  err: 'text-red-400',
 };
+
+const TERM_FIGURE =
+  'm-0 overflow-hidden rounded-2xl border border-gray-800 bg-gray-900 shadow-xl';
+const TERM_CAPTION =
+  'border-b border-gray-800 bg-slate-950 px-3.5 pt-2 pb-2.5 text-xs text-slate-400';
+const TERM_PRE =
+  'm-0 overflow-x-auto px-5 py-4 font-mono text-xs leading-relaxed text-gray-200 whitespace-pre tabular-nums';
 
 interface TermProps {
   caption: string;
@@ -56,11 +72,11 @@ interface TermProps {
 }
 
 const Term: FC<TermProps> = ({ caption, lines }) => (
-  <figure className='terminal'>
-    <figcaption>{caption}</figcaption>
-    <pre>
+  <figure className={TERM_FIGURE}>
+    <figcaption className={TERM_CAPTION}>{caption}</figcaption>
+    <pre className={TERM_PRE}>
       {lines.map((line, i) => (
-        <span key={i} className='tk-line'>
+        <span key={i} className='block min-h-[1.7em]'>
           {line.map((tok, j) => (
             <span key={j} className={TK[tok.c ?? 'ok']}>
               {tok.t}
@@ -72,35 +88,73 @@ const Term: FC<TermProps> = ({ caption, lines }) => (
   </figure>
 );
 
+const FEATURES: Feature[] = [
+  {
+    icon: LuZap,
+    title: 'Zero configuration',
+    body: 'Point pagers at a folder of Markdown and it builds a complete site — sidebar navigation, clean trailing-slash URLs, and an "On this page" outline are generated for you.',
+  },
+  {
+    icon: LuFileText,
+    title: 'GitHub-flavoured Markdown',
+    body: 'Tables, task lists, footnotes, alerts, fenced code with per-language accents, and {#custom-ids} — rendered by pulldown-cmark, no JavaScript required.',
+  },
+  {
+    icon: LuPalette,
+    title: 'Eight themes, light & dark',
+    body: 'A compiled md.css with light, dark and six colour palettes. Theme follows the OS by default, with a one-click toggle persisted in localStorage.',
+  },
+  {
+    icon: LuWorkflow,
+    title: 'Built-in page graph',
+    body: 'Every build emits graph.html — an interactive map of how your pages link to each other — plus graph.json and Graphviz DOT for further analysis.',
+  },
+  {
+    icon: LuLayoutTemplate,
+    title: 'Landing pages too',
+    body: 'pagers landing builds a whole single-page site — marketing, waitlist, docs hub, linktree — from one landify.yaml, with 12 layouts and 64 themes.',
+  },
+  {
+    icon: LuGlobe,
+    title: 'Wikipedia importer',
+    body: 'pagers wiki convert turns any Wikipedia article into clean local Markdown, rewriting internal links to filenames so whole wikis become browsable sites.',
+  },
+  {
+    icon: LuBot,
+    title: 'MCP server',
+    body: 'pagers-mcp exposes build, serve and site inspection as MCP tools — let your editor or agent work with the docs directly.',
+  },
+];
+
 const LandingPage = (): JSX.Element => (
   <>
-    <header className='border-border bg-bg/90 sticky top-0 z-50 border-b backdrop-blur'>
-      <div className='mx-auto flex h-16 w-full max-w-[72rem] items-center gap-6 px-5'>
+    <header className='border-gray-200 bg-white/90 sticky top-0 z-50 border-b backdrop-blur'>
+      <div className='mx-auto flex h-16 w-full max-w-6xl items-center gap-6 px-5'>
         <Link
           href='#top'
-          className='text-text flex items-center gap-2 text-lg font-bold no-underline'>
+          className='text-gray-900 flex items-center gap-2 text-lg font-bold no-underline'>
           <Image src={LOGO} alt='' width={28} height={28} className='rounded-md' />
           <span>pagers</span>
         </Link>
         <nav className='ml-auto hidden items-center gap-5 lg:flex'>
           <a
             href='#features'
-            className='text-text-muted hover:text-text text-[0.9375rem] no-underline'>
+            className='text-gray-500 hover:text-gray-900 text-sm no-underline'>
             Features
           </a>
           <a
             href='#compare'
-            className='text-text-muted hover:text-text text-[0.9375rem] no-underline'>
+            className='text-gray-500 hover:text-gray-900 text-sm no-underline'>
             vs docsify
           </a>
           <a
             href='#quickstart'
-            className='text-text-muted hover:text-text text-[0.9375rem] no-underline'>
+            className='text-gray-500 hover:text-gray-900 text-sm no-underline'>
             Quickstart
           </a>
           <Link
             href='/docs/'
-            className='text-text-muted hover:text-text text-[0.9375rem] no-underline'>
+            className='text-gray-500 hover:text-gray-900 text-sm no-underline'>
             Docs
           </Link>
         </nav>
@@ -113,14 +167,14 @@ const LandingPage = (): JSX.Element => (
     <main id='top'>
       {/* hero */}
       <section className='pt-20 pb-16'>
-        <div className='mx-auto grid w-full max-w-[72rem] items-center gap-12 px-5 text-left lg:grid-cols-[1.05fr_1fr]'>
+        <div className='mx-auto grid w-full max-w-6xl items-center gap-12 px-5 text-left lg:grid-cols-[1.05fr_1fr]'>
           <div>
-            <h1>
-              Markdown docs, <span className='text-accent'>compiled to static HTML</span> — in one
+            <h1 className='m-0 mb-2 text-3xl md:text-5xl leading-tight font-bold tracking-tight text-gray-900'>
+              Markdown docs, <span className='text-primary'>compiled to static HTML</span> — in one
               Rust binary
             </h1>
-            <p className='text-text-muted mt-6 max-w-xl text-[1.1875rem]'>
-              pagers turns a folder of <code>.md</code> files into a fast, self-contained static
+            <p className='text-gray-500 mt-6 max-w-xl text-xl'>
+              pagers turns a folder of <code className='rounded border border-gray-200 bg-gray-50 px-1.5 py-0.5 font-mono text-sm'>.md</code> files into a fast, self-contained static
               site: navigation, themes, clean URLs and a page graph included. No Node, no runtime,
               no server.
             </p>
@@ -128,22 +182,22 @@ const LandingPage = (): JSX.Element => (
               <Link href='/docs/getting-started/' className='btn btn-primary btn-lg'>
                 Get started
               </Link>
-              <a href={GITHUB} target='_blank' rel='noreferrer' className='btn btn-ghost btn-lg'>
+              <a href={GITHUB} target='_blank' rel='noreferrer' className='btn btn-outline btn-lg'>
                 View on GitHub
               </a>
             </div>
             <dl className='mt-10 grid grid-cols-3 gap-6'>
               <div>
                 <dt className='text-2xl font-bold tabular-nums'>1</dt>
-                <dd className='text-text-muted m-0 text-sm'>Rust binary</dd>
+                <dd className='text-gray-500 m-0 text-sm'>Rust binary</dd>
               </div>
               <div>
                 <dt className='text-2xl font-bold tabular-nums'>8</dt>
-                <dd className='text-text-muted m-0 text-sm'>built-in themes</dd>
+                <dd className='text-gray-500 m-0 text-sm'>built-in themes</dd>
               </div>
               <div>
                 <dt className='text-2xl font-bold tabular-nums'>0</dt>
-                <dd className='text-text-muted m-0 text-sm'>JavaScript required</dd>
+                <dd className='text-gray-500 m-0 text-sm'>JavaScript required</dd>
               </div>
             </dl>
           </div>
@@ -179,29 +233,33 @@ const LandingPage = (): JSX.Element => (
       </section>
 
       {/* features */}
-      <Features />
+      <Features
+        title="Everything a docs site needs."
+        description="Sensible defaults, real output — each feature is one flag or zero flags away."
+        features={FEATURES}
+      />
 
       {/* comparison */}
-      <section id='compare' className='bg-bg-alt py-20'>
-        <div className='mx-auto w-full max-w-[72rem] px-5'>
-          <div className='mx-auto mb-12 max-w-[44rem] text-center'>
-            <h2>pagers vs docsify.</h2>
-            <p className='text-text-muted mt-3 text-[1.0625rem]'>
+      <section id='compare' className='bg-gray-50 py-20'>
+        <div className='mx-auto w-full max-w-6xl px-5'>
+          <div className='mx-auto mb-12 max-w-2xl text-center'>
+            <h2 className='m-0 mb-2 text-2xl sm:text-3xl lg:text-4xl leading-tight font-bold tracking-tight text-gray-900'>pagers vs docsify.</h2>
+            <p className='text-gray-500 mt-3 text-lg'>
               Same Markdown-in, docs-out idea — opposite rendering model.
             </p>
           </div>
-          <div className='border-border overflow-x-auto rounded-[var(--radius-card)] border'>
-            <table className='w-full border-collapse text-[0.9375rem] [&_tbody_tr:last-child>td]:border-b-0'>
+          <div className='border-gray-200 overflow-x-auto rounded-2xl border'>
+            <table className='w-full border-collapse text-sm [&_tbody_tr:last-child>td]:border-b-0'>
               <thead>
                 <tr>
-                  <th className='border-border bg-bg-alt w-44 border-b px-5 py-3.5 text-left align-bottom font-semibold' />
-                  <th className='border-border bg-bg-alt border-b border-l px-5 py-3.5 text-left align-bottom font-semibold'>
+                  <th className='border-gray-200 bg-gray-50 w-44 border-b px-5 py-3.5 text-left align-bottom font-semibold' />
+                  <th className='border-gray-200 bg-gray-50 border-b border-l px-5 py-3.5 text-left align-bottom font-semibold'>
                     docsify
                   </th>
-                  <th className='border-border bg-accent-soft border-b border-l px-5 py-3.5 text-left align-bottom'>
-                    <span className='text-accent flex items-center gap-2 font-bold'>
+                  <th className='border-gray-200 bg-primary/10 border-b border-l px-5 py-3.5 text-left align-bottom'>
+                    <span className='text-primary flex items-center gap-2 font-bold'>
                       pagers
-                      <span className='bg-accent rounded-full px-2 py-0.5 text-[0.6875rem] font-semibold tracking-wide text-white uppercase'>
+                      <span className='badge badge-primary uppercase'>
                         pick
                       </span>
                     </span>
@@ -211,13 +269,13 @@ const LandingPage = (): JSX.Element => (
               <tbody>
                 {COMPARISON.map((row) => (
                   <tr key={row.feature} className='group'>
-                    <td className='border-border text-text-muted border-b px-5 py-3.5 align-top font-medium'>
+                    <td className='border-gray-200 text-gray-500 border-b px-5 py-3.5 align-top font-medium'>
                       {row.feature}
                     </td>
-                    <td className='border-border text-text-muted border-b border-l px-5 py-3.5 align-top'>
+                    <td className='border-gray-200 text-gray-500 border-b border-l px-5 py-3.5 align-top'>
                       {row.docsify}
                     </td>
-                    <td className='border-border bg-accent-soft/50 text-text group-hover:bg-accent-soft border-b border-l px-5 py-3.5 align-top font-medium'>
+                    <td className='border-gray-200 bg-primary/5 text-gray-900 group-hover:bg-primary/10 border-b border-l px-5 py-3.5 align-top font-medium'>
                       {row.pagers}
                     </td>
                   </tr>
@@ -230,12 +288,12 @@ const LandingPage = (): JSX.Element => (
 
       {/* quickstart */}
       <section id='quickstart' className='py-20'>
-        <div className='mx-auto w-full max-w-[72rem] px-5'>
-          <div className='mx-auto mb-12 max-w-[44rem] text-center'>
-            <h2>Up and running in under a minute.</h2>
-            <p className='text-text-muted mt-3 text-[1.0625rem]'>
+        <div className='mx-auto w-full max-w-6xl px-5'>
+          <div className='mx-auto mb-12 max-w-2xl text-center'>
+            <h2 className='m-0 mb-2 text-2xl sm:text-3xl lg:text-4xl leading-tight font-bold tracking-tight text-gray-900'>Up and running in under a minute.</h2>
+            <p className='text-gray-500 mt-3 text-lg'>
               Install the binary, point it at a Markdown folder, serve the result — or scaffold a
-              landing page with <code>pagers landing new</code>.
+              landing page with <code className='rounded border border-gray-200 bg-gray-50 px-1.5 py-0.5 font-mono text-sm'>pagers landing new</code>.
             </p>
           </div>
           <div className='grid grid-cols-1 gap-6 md:grid-cols-2'>
@@ -296,10 +354,10 @@ const LandingPage = (): JSX.Element => (
               ]}
             />
           </div>
-          <p className='text-text-muted mt-8 text-center text-[0.9375rem]'>
-            Or generate a landing page: <code>pagers landing new --type product</code> →{' '}
-            <code>pagers landing build -o public/</code>. Full walkthrough in{' '}
-            <Link href='/docs/guide/getting-started/' className='text-accent'>
+          <p className='text-gray-500 mt-8 text-center text-sm'>
+            Or generate a landing page: <code className='rounded border border-gray-200 bg-gray-50 px-1.5 py-0.5 font-mono text-sm'>pagers landing new --type product</code> →{' '}
+            <code className='rounded border border-gray-200 bg-gray-50 px-1.5 py-0.5 font-mono text-sm'>pagers landing build -o public/</code>. Full walkthrough in{' '}
+            <Link href='/docs/guide/getting-started/' className='text-primary'>
               getting started
             </Link>
             .
@@ -307,7 +365,21 @@ const LandingPage = (): JSX.Element => (
         </div>
       </section>
 
-      <CTA />
+      <CTA
+        title="Ship your docs anywhere."
+        description={
+          <>
+            One binary, one{' '}
+            <code className='rounded border border-gray-200 bg-gray-50 px-1 py-px font-mono text-sm'>
+              pagers build
+            </code>
+            , one static folder — ready for GitHub Pages, any CDN, or a plain web
+            server.
+          </>
+        }
+        primary={{ label: 'Deploy guide', href: '/docs/deploy/' }}
+        secondary={{ label: 'Browse the docs', href: '/docs/' }}
+      />
     </main>
 
     <Footer />

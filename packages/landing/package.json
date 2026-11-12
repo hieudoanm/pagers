@@ -14,6 +14,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "daisyui": "5.7.50",
     "marked": "18.2.0",
     "next": "16.4.6",
     "react": "19.3.1",

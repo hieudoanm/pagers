@@ -118,6 +118,31 @@ const addHeadingIds = (html: string): string => {
 
 const ALERT = /^\s*<p>\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*(<\/p>)?/;
 
+const ALERT_STYLES: Record<string, string> = {
+  note: 'border-l-info bg-info/10',
+  tip: 'border-l-success bg-success/10',
+  important: 'border-l-secondary bg-secondary/10',
+  warning: 'border-l-warning bg-warning/10',
+  caution: 'border-l-error bg-error/10',
+};
+
+const ALERT_BASE =
+  'my-4 rounded-r-lg border border-l-4 border-base-300 px-4 py-3 text-sm [&_p]:my-1';
+
+/** Generated SVG diagrams can't take utilities — frame them via class injection. */
+const SVG_CLASS =
+  'my-4 max-w-full rounded-2xl border border-gray-200 bg-gray-50 p-4';
+
+const frameSvgs = (html: string): string => {
+  return html.replace(/<svg\b([^>]*)>/g, (match, attrs: string) => {
+    const cls = attrs.match(/class="([^"]*)"/);
+    if (cls) {
+      return match.replace(`class="${cls[1]}"`, `class="${SVG_CLASS} ${cls[1]}"`);
+    }
+    return `<svg class="${SVG_CLASS}"${attrs}>`;
+  });
+};
+
 /** Convert `> [!KIND]` blockquotes into styled alert boxes. */
 const rewriteAlerts = (html: string): string => {
   return html.replace(/<blockquote>([\s\S]*?)<\/blockquote>/g, (match, inner: string) => {
@@ -126,7 +151,7 @@ const rewriteAlerts = (html: string): string => {
     const body = inner.slice(m[0].length);
     const open = m[2] ? '' : '<p>';
     const kind = m[1].toLowerCase();
-    return `<aside class="docs-alert docs-alert-${kind}">${open}${body}</aside>`;
+    return `<aside class="${ALERT_BASE} ${ALERT_STYLES[kind] ?? ''}">${open}${body}</aside>`;
   });
 };
 
@@ -148,7 +173,7 @@ export const getDocPages = (): DocPage[] => {
       section: slug.split('/')[0] ?? '',
       title: titleFor(fm, markdown, file),
       order: fm.order,
-      html: rewriteAlerts(addHeadingIds(rewriteLinks(raw, slug))),
+      html: frameSvgs(rewriteAlerts(addHeadingIds(rewriteLinks(raw, slug)))),
     };
   });
   entries.sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
