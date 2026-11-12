@@ -18,8 +18,8 @@ cd pagers
 ./scripts/install-local.sh
 ```
 
-Builds the release binaries and installs them into `~/.local/bin` (override
-with `PREFIX=/path`). Requires a Rust toolchain.
+Builds the release binaries and installs them into `~/.local/bin` (override with
+`PREFIX=/path`). Requires a Rust toolchain.
 
 ### From anywhere, via curl
 
@@ -27,9 +27,9 @@ with `PREFIX=/path`). Requires a Rust toolchain.
 curl -fsSL https://raw.githubusercontent.com/hieudoanm/pagers/main/scripts/install.sh | sh
 ```
 
-Downloads the source, builds it, and installs the binaries — same result as
-the local script. See [Scripts](../project/scripts.md) for `PAGERS_REF`, `PAGERS_REPO`
-and `PREFIX` options.
+Downloads the source, builds it, and installs the binaries — same result as the
+local script. See [Scripts](../project/scripts.md) for `PAGERS_REF`,
+`PAGERS_REPO` and `PREFIX` options.
 
 ### With Cargo
 
@@ -54,7 +54,7 @@ pagers build my-site/docs
 pagers build my-site/docs --output my-site/dist
 ```
 
-The directory layout *is* the configuration:
+The directory layout _is_ the configuration:
 
 ```text
 my-site/docs/
@@ -65,8 +65,8 @@ my-site/docs/
 └── assets/logo.png    → copied through as an asset
 ```
 
-Open `dist/index.html` in a browser, or run `pagers serve my-site/docs` to
-build and serve it on `localhost:8080`.
+Open `dist/index.html` in a browser, or run `pagers serve my-site/docs` to build
+and serve it on `localhost:8080`.
 
 ## What's next
 

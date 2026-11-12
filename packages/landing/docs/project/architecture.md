@@ -75,9 +75,9 @@ concern. The dependency direction is acyclic:
 | `pagers-wiki`     | Wikipedia: URL parse → REST fetch → extract → convert → normalize         | reqwest, scraper, htmd, … |
 
 `pagers-build` exists so both the CLI and the MCP server share one pipeline;
-`pagers-wiki` is deliberately independent of the site crates — its stages
-(url → client → extractor → converter → normalizer → metadata) are reusable
-for other content sources.
+`pagers-wiki` is deliberately independent of the site crates — its stages (url →
+client → extractor → converter → normalizer → metadata) are reusable for other
+content sources.
 
 ## Build pipeline
 
@@ -118,13 +118,13 @@ Everything is deterministic and offline — no network access during a build.
 
 ## Conventions
 
-- Edition 2021/2024 idioms, `thiserror` for library errors, `clap` derive
-  for the CLI.
+- Edition 2021/2024 idioms, `thiserror` for library errors, `clap` derive for
+  the CLI.
 - No `unsafe`, no `unwrap()`/`expect()` on fallible paths in library code.
 - Small focused modules: `pagers-wiki` splits url/client/extractor/
   converter/normalizer/metadata/error into separate files.
-- Tests live beside the code (`#[cfg(test)]`) plus `tests/` integration
-  suites with local fixtures — **no live network in tests**.
+- Tests live beside the code (`#[cfg(test)]`) plus `tests/` integration suites
+  with local fixtures — **no live network in tests**.
 
 ## Developing
 
@@ -136,7 +136,7 @@ cargo clippy --workspace --all-targets -- -D warnings
 cargo fmt --check
 ```
 
-CI (`.github/workflows/ci.yaml`) runs fmt/clippy/tests on every push and PR.
-On `master` it also builds the release binary, builds the landing site in
+CI (`.github/workflows/ci.yaml`) runs fmt/clippy/tests on every push and PR. On
+`master` it also builds the release binary, builds the landing site in
 `packages/landing` (Next.js static export rendering these docs at `/docs`),
 deploys it to GitHub Pages, and publishes the rolling `latest` release.

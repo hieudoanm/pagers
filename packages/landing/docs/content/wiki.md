@@ -5,9 +5,9 @@ order: 7
 
 # Wikipedia → Markdown
 
-`pagers wiki` turns a Wikipedia article URL into clean, well-structured
-Markdown — useful for archiving articles into a `pagers` site or feeding
-them to an LLM. No API key required; it uses the public MediaWiki REST API.
+`pagers wiki` turns a Wikipedia article URL into clean, well-structured Markdown
+— useful for archiving articles into a `pagers` site or feeding them to an LLM.
+No API key required; it uses the public MediaWiki REST API.
 
 ```bash
 pagers wiki convert "https://en.wikipedia.org/wiki/Rust_(programming_language)"
@@ -30,10 +30,10 @@ stages could serve other sites later:
 3. **Extraction** — `scraper` isolates `.mw-parser-output`, discarding
    navigation, sidebar, edit links and other site chrome.
 4. **Conversion** — a mutable DOM cleanup pass (noise removal, section
-   unwrapping, link absolutizing, `utm_*` stripping, MathML→LaTeX) then
-   `htmd` HTML→Markdown.
-5. **Normalization** — whitespace collapse, heading/list/table cleanup,
-   GFM table re-padding, empty-element removal, optional paragraph dedupe.
+   unwrapping, link absolutizing, `utm_*` stripping, MathML→LaTeX) then `htmd`
+   HTML→Markdown.
+5. **Normalization** — whitespace collapse, heading/list/table cleanup, GFM
+   table re-padding, empty-element removal, optional paragraph dedupe.
 
 ## Output
 
@@ -55,13 +55,13 @@ references**. `--include-references` keeps the citations section.
 }
 ```
 
-`revision_id`/`revision_timestamp` come from the API — they're `null` when
-the endpoint doesn't provide them, never invented. `file_name` is the
-suggested on-disk name, derived from the title (`Rust (programming
-language)` → `rust_programming_language.md`).
+`revision_id`/`revision_timestamp` come from the API — they're `null` when the
+endpoint doesn't provide them, never invented. `file_name` is the suggested
+on-disk name, derived from the title (`Rust (programming language)` →
+`rust_programming_language.md`).
 
-`-o` accepts a file **or a directory** — a directory gets the suggested
-filename appended:
+`-o` accepts a file **or a directory** — a directory gets the suggested filename
+appended:
 
 ```bash
 pagers wiki convert "<url>" -o ./articles/   # → ./articles/rust_programming_language.md
@@ -69,19 +69,20 @@ pagers wiki convert "<url>" -o ./articles/   # → ./articles/rust_programming_l
 
 ## Preserved vs. removed
 
-**Preserved:** headings, paragraphs, nested lists, tables/infoboxes (as
-compact GFM tables), images with captions, internal links (rewritten to
-local `<slug>.md` filenames with the source URL kept in the link title —
+**Preserved:** headings, paragraphs, nested lists, tables/infoboxes (as compact
+GFM tables), images with captions, internal links (rewritten to local
+`<slug>.md` filenames with the source URL kept in the link title —
 `[t](concurrent_computing.md "https://…")`; `--wiki-links` keeps absolute
-`https://<lang>.wikipedia.org/wiki/…` URLs instead), external links, math
-(`$…$` / `$$…$$`), code blocks.
+`https://<lang>.wikipedia.org/wiki/…` URLs instead), external links, math (`$…$`
+/ `$$…$$`), code blocks.
 
 **Removed:** scripts/styles, edit links, navigation, hidden UI, maintenance
 messages, tracking parameters, reference markers (unless requested).
 
 ## Errors
 
-Invalid URL, unsupported domain, missing article, rate limiting, timeouts
-and empty content all exit non-zero with a descriptive `pagers wiki:` error.
-Be polite: the [examples.sh crawler](../project/scripts.md#examplessh--wikipedia-crawler--demo-site)
+Invalid URL, unsupported domain, missing article, rate limiting, timeouts and
+empty content all exit non-zero with a descriptive `pagers wiki:` error. Be
+polite: the
+[examples.sh crawler](../project/scripts.md#examplessh--wikipedia-crawler--demo-site)
 spaces requests 1s apart by default.

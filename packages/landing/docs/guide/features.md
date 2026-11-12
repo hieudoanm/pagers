@@ -26,31 +26,31 @@ docs/
 ## Clean URLs, zero rewrite rules
 
 Every page publishes at a trailing-slash URL (`/guide/install/` →
-`guide/install/index.html`), so the output works on **any** static host —
-GitHub Pages, Cloudflare Pages, Netlify, S3, a plain `python3 -m http.server`
-— with no `_redirects` file or server config. See
+`guide/install/index.html`), so the output works on **any** static host — GitHub
+Pages, Cloudflare Pages, Netlify, S3, a plain `python3 -m http.server` — with no
+`_redirects` file or server config. See
 [Commands](commands.md#pagers-build-content).
 
 ## File-tree navigation
 
-The sidebar is generated from the directory structure: folders become
-groups, `index.md`/`README.md` become landing pages, frontmatter `order`
-sorts siblings, `label` overrides the nav text, and `draft: true` hides a
-page without deleting it. See [Configuration](configuration.md#frontmatter).
+The sidebar is generated from the directory structure: folders become groups,
+`index.md`/`README.md` become landing pages, frontmatter `order` sorts siblings,
+`label` overrides the nav text, and `draft: true` hides a page without deleting
+it. See [Configuration](configuration.md#frontmatter).
 
 ## GitHub-flavoured Markdown, extended
 
 Tables, task lists, footnotes, strikethrough, code blocks, raw HTML — plus
-heading `{#custom-ids}` and GitHub-style alerts (`> [!NOTE]`). Internal
-`.md` links are rewritten to clean URLs at build time; broken links stay
-visible. See [Markdown](../content/markdown.md).
+heading `{#custom-ids}` and GitHub-style alerts (`> [!NOTE]`). Internal `.md`
+links are rewritten to clean URLs at build time; broken links stay visible. See
+[Markdown](../content/markdown.md).
 
 ## Themes out of the box
 
-Eight palettes ship inside the binary — light, dark, crimson, cerulean,
-emerald, saffron, lagoon, fuchsia — plus a light/dark toggle that persists
-in `localStorage` and respects `prefers-color-scheme`. No CDN, no runtime
-fetches: built sites are fully self-contained. See [Theming](../content/theming.md).
+Eight palettes ship inside the binary — light, dark, crimson, cerulean, emerald,
+saffron, lagoon, fuchsia — plus a light/dark toggle that persists in
+`localStorage` and respects `prefers-color-scheme`. No CDN, no runtime fetches:
+built sites are fully self-contained. See [Theming](../content/theming.md).
 
 ## The graph page
 
@@ -61,29 +61,27 @@ standalone HTML, JSON or Graphviz DOT. See [Graph](../content/graph.md).
 
 ## Landing pages
 
-`pagers landing` builds a complete single-page site — marketing page,
-waitlist, docs hub, linktree — from one `landify.yaml`. Twelve page
-types, 64 themes (or eight explicit colors expanded into a full
-contrast-checked token set), an OG social card, and a full metadata set
-(`styles.css`, favicon, robots, sitemap, humans, manifest, llms.txt).
-Pure static HTML + CSS, zero JavaScript. See
+`pagers landing` builds a complete single-page site — marketing page, waitlist,
+docs hub, linktree — from one `landify.yaml`. Twelve page types, 64 themes (or
+eight explicit colors expanded into a full contrast-checked token set), an OG
+social card, and a full metadata set (`styles.css`, favicon, robots, sitemap,
+humans, manifest, llms.txt). Pure static HTML + CSS, zero JavaScript. See
 [Landing pages](landing.md).
 
 ## `basePath` for sub-path hosting
 
-One field (`basePath: /pagers`) prefixes every generated URL — links,
-assets, the graph page — so the same `dist/` deploys correctly under a
-project path or a custom domain path. See
-[Configuration](configuration.md#pagersyaml).
+One field (`basePath: /pagers`) prefixes every generated URL — links, assets,
+the graph page — so the same `dist/` deploys correctly under a project path or a
+custom domain path. See [Configuration](configuration.md#pagersyaml).
 
 ## Wikipedia → Markdown
 
 `pagers wiki convert` turns any `*.wikipedia.org/wiki/…` article into clean
-Markdown through the MediaWiki REST API — metadata, references, MathML,
-internal links rewritten to local `.md` filenames. `pagers wiki info`
-returns title, description, revision id and timestamp as JSON.
-`scripts/examples.sh` crawls a whole link graph from a seed article. See
-[Wikipedia](../content/wiki.md) and [Scripts](../project/scripts.md).
+Markdown through the MediaWiki REST API — metadata, references, MathML, internal
+links rewritten to local `.md` filenames. `pagers wiki info` returns title,
+description, revision id and timestamp as JSON. `scripts/examples.sh` crawls a
+whole link graph from a seed article. See [Wikipedia](../content/wiki.md) and
+[Scripts](../project/scripts.md).
 
 ## MCP server
 
@@ -95,5 +93,5 @@ inspect sites directly. See [MCP server](../project/mcp.md).
 ## One binary, no runtime
 
 Rust, std-heavy dependencies, fully static output. `cargo install`, a curl
-installer, or `cargo build --release` — then it runs anywhere a static
-server does. See [Architecture](../project/architecture.md).
+installer, or `cargo build --release` — then it runs anywhere a static server
+does. See [Architecture](../project/architecture.md).

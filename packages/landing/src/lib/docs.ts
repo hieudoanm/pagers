@@ -82,7 +82,9 @@ const resolveHref = (href: string, fromSlug: string): string => {
     return `${REPO_BLOB}/${repoPath}${suffix}`;
   }
   const resolved = stack.join('/').replace(/\.md$/, '');
-  const prefix = resolved ? `${BASE_PATH}/docs/${resolved}/` : `${BASE_PATH}/docs/`;
+  const prefix = resolved
+    ? `${BASE_PATH}/docs/${resolved}/`
+    : `${BASE_PATH}/docs/`;
   return `${prefix}${suffix}`;
 };
 
@@ -106,14 +108,17 @@ const slugify = (text: string): string => {
 /** Add id attributes to h1–h6; strip pagers' `{#custom-id}` syntax. */
 const addHeadingIds = (html: string): string => {
   const used = new Map<string, number>();
-  return html.replace(/<h([1-6])>([\s\S]*?)<\/h\1>/g, (match, level: string, inner: string) => {
-    const text = inner.replace(/\s*\{#[^}]+\}\s*$/, '');
-    let id = slugify(text);
-    const n = used.get(id) ?? 0;
-    used.set(id, n + 1);
-    if (n > 0) id = `${id}-${n}`;
-    return `<h${level} id="${id}">${text}</h${level}>`;
-  });
+  return html.replace(
+    /<h([1-6])>([\s\S]*?)<\/h\1>/g,
+    (match, level: string, inner: string) => {
+      const text = inner.replace(/\s*\{#[^}]+\}\s*$/, '');
+      let id = slugify(text);
+      const n = used.get(id) ?? 0;
+      used.set(id, n + 1);
+      if (n > 0) id = `${id}-${n}`;
+      return `<h${level} id="${id}">${text}</h${level}>`;
+    }
+  );
 };
 
 const ALERT = /^\s*<p>\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*(<\/p>)?/;
@@ -137,7 +142,10 @@ const frameSvgs = (html: string): string => {
   return html.replace(/<svg\b([^>]*)>/g, (match, attrs: string) => {
     const cls = attrs.match(/class="([^"]*)"/);
     if (cls) {
-      return match.replace(`class="${cls[1]}"`, `class="${SVG_CLASS} ${cls[1]}"`);
+      return match.replace(
+        `class="${cls[1]}"`,
+        `class="${SVG_CLASS} ${cls[1]}"`
+      );
     }
     return `<svg class="${SVG_CLASS}"${attrs}>`;
   });
@@ -145,14 +153,17 @@ const frameSvgs = (html: string): string => {
 
 /** Convert `> [!KIND]` blockquotes into styled alert boxes. */
 const rewriteAlerts = (html: string): string => {
-  return html.replace(/<blockquote>([\s\S]*?)<\/blockquote>/g, (match, inner: string) => {
-    const m = inner.match(ALERT);
-    if (!m) return match;
-    const body = inner.slice(m[0].length);
-    const open = m[2] ? '' : '<p>';
-    const kind = m[1].toLowerCase();
-    return `<aside class="${ALERT_BASE} ${ALERT_STYLES[kind] ?? ''}">${open}${body}</aside>`;
-  });
+  return html.replace(
+    /<blockquote>([\s\S]*?)<\/blockquote>/g,
+    (match, inner: string) => {
+      const m = inner.match(ALERT);
+      if (!m) return match;
+      const body = inner.slice(m[0].length);
+      const open = m[2] ? '' : '<p>';
+      const kind = m[1].toLowerCase();
+      return `<aside class="${ALERT_BASE} ${ALERT_STYLES[kind] ?? ''}">${open}${body}</aside>`;
+    }
+  );
 };
 
 interface DocEntry extends DocPage {

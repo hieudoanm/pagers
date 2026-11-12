@@ -5,27 +5,27 @@ order: 6
 
 # The graph page
 
-Every `pagers build` writes **`graph.html`** at the site root — an
-interactive, dependency-free force-directed map of how pages link to each
-other. It's linked from the site header on every page.
+Every `pagers build` writes **`graph.html`** at the site root — an interactive,
+dependency-free force-directed map of how pages link to each other. It's linked
+from the site header on every page.
 
 ## What it shows
 
 - One node per content page, sized/labelled by title.
 - Directed edges for internal Markdown links (`[x](other.md)` and resolved
   clean-URL links).
-- Drag nodes to rearrange; click a node for its title, URL and outgoing
-  links; "Open page" jumps to the page.
+- Drag nodes to rearrange; click a node for its title, URL and outgoing links;
+  "Open page" jumps to the page.
 - Dark/light theming follows the site toggle.
 
-The renderer (`crates/pagers-graph`) extracts edges during the build from
-the same link-resolution pass that rewrites URLs, so the graph always
-matches what readers can actually click.
+The renderer (`crates/pagers-graph`) extracts edges during the build from the
+same link-resolution pass that rewrites URLs, so the graph always matches what
+readers can actually click.
 
 ## Standalone graph
 
-`pagers graph` scans a directory and writes the same data without building
-the site — useful for auditing link structure or embedding elsewhere:
+`pagers graph` scans a directory and writes the same data without building the
+site — useful for auditing link structure or embedding elsewhere:
 
 ```bash
 pagers graph ./docs
@@ -40,7 +40,13 @@ pagers graph ./docs
 
 ```json
 {
-  "nodes": [{ "id": "/guide/install/", "title": "Installation", "source": "guide/install.md" }],
+  "nodes": [
+    {
+      "id": "/guide/install/",
+      "title": "Installation",
+      "source": "guide/install.md"
+    }
+  ],
   "edges": [{ "from": "/", "to": "/guide/install/" }],
   "stats": { "pages": 12, "edges": 30, "orphaned": 1 }
 }
