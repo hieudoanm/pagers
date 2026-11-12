@@ -12,6 +12,7 @@ import {
   LuWorkflow,
   LuZap,
 } from 'react-icons/lu';
+import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: { absolute: 'pagers — static site generator for Markdown docs' },
@@ -400,21 +401,7 @@ const LandingPage = (): JSX.Element => (
       </section>
     </main>
 
-    <footer className='border-border text-text-muted border-t py-10 text-sm'>
-      <div className='mx-auto flex w-full max-w-[72rem] flex-wrap items-center gap-x-8 gap-y-4 px-5'>
-        <span>pagers — static sites from Markdown, in one Rust binary</span>
-        <span className='ml-auto'>
-          Rust · static HTML · MIT ·{' '}
-          <a
-            href={GITHUB}
-            target='_blank'
-            rel='noreferrer'
-            className='text-text-muted hover:text-text no-underline'>
-            GitHub
-          </a>
-        </span>
-      </div>
-    </footer>
+    <Footer />
   </>
 );
 
