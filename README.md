@@ -2,6 +2,8 @@
 
 [![CI](https://github.com/hieudoanm/pagers/actions/workflows/ci.yaml/badge.svg?branch=master)](https://github.com/hieudoanm/pagers/actions/workflows/ci.yaml?branch=master)  [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
+keywords: `static-site-generator`, `markdown`, `rust`, `documentation`, `cli`
+
 
 > Write Markdown. Run one command. Get a website — and a map of how it links together.
 
@@ -20,6 +22,10 @@ No configuration, no Node.js, no runtime dependencies — one Rust binary.
 <p align="center">
   <img src="assets/branding/png/og.png" alt="pagers — write Markdown, get a website" width="720">
 </p>
+
+**Live demo:** <https://hieudoanm.github.io/pagers/>
+
+![pagers demo](assets/demo/gif/demo.gif)
 
 ## Table of Contents
 
