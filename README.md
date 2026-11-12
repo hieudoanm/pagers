@@ -17,6 +17,27 @@ pagers build ./docs
 
 No configuration, no Node.js, no runtime dependencies — one Rust binary.
 
+<p align="center">
+  <img src="assets/branding/png/og.png" alt="pagers — write Markdown, get a website" width="720">
+</p>
+
+## Table of Contents
+
+- [Features](#features)
+- [pagers vs docsify](#pagers-vs-docsify)
+- [Get Started](#get-started)
+- [Commands](#commands)
+- [Zero configuration](#zero-configuration)
+- [Frontmatter](#frontmatter)
+- [Markdown features](#markdown-features)
+- [The graph page](#the-graph-page)
+- [Documentation](#documentation)
+- [Theming](#theming)
+- [Output](#output)
+- [Development](#development)
+- [Layout](#layout)
+- [License](#license)
+
 ## Features
 
 - **Zero configuration** — the directory layout is the config; `index.md`
@@ -59,7 +80,7 @@ to literally any static host.
 | Page-link graph | —                 | built-in `graph.html`   |
 | Language        | JavaScript        | Rust (one binary)       |
 
-## Install
+## Get Started
 
 ```bash
 cargo install --path .
@@ -244,3 +265,7 @@ client at the binary to let it build sites and inspect content:
 
 Tools: `pagers_build` (build a site), `pagers_list_pages`,
 `pagers_render_markdown`, `pagers_site_graph`, `pagers_site_config`.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
