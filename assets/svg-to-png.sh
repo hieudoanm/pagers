@@ -1,30 +1,56 @@
 #!/usr/bin/env bash
-# Convert every SVG in assets/branding/svg/ to a sibling PNG in
-# assets/branding/png/ using librsvg (rsvg-convert).
+# Convert every SVG under assets/**/svg/ to a sibling PNG under assets/**/png/.
+# Output keeps each SVG's intrinsic size and aspect ratio.
 #
-#   ./assets/svg-to-png.sh              # convert branding/svg → branding/png
-#   ./assets/svg-to-png.sh <base_dir>   # convert <base_dir>/svg → <base_dir>/png
-#
-# Requires: brew install librsvg
+# Usage: assets/svg-to-png.sh
+
 set -euo pipefail
 
-BASE_DIR="${1:-$(cd "$(dirname "${BASH_SOURCE[0]}")/branding" && pwd)}"
-SVG_DIR="$BASE_DIR/svg"
-PNG_DIR="$BASE_DIR/png"
+ASSETS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+JOBS="${JOBS:-4}"
 
-if ! command -v rsvg-convert >/dev/null 2>&1; then
-  echo "rsvg-convert not found. Install librsvg: brew install librsvg" >&2
+command -v rsvg-convert >/dev/null 2>&1 || {
+  echo "rsvg-convert is required but not installed" >&2
+  echo "  macOS:  brew install librsvg" >&2
+  echo "  Debian: sudo apt-get install librsvg2-bin" >&2
+  echo "  Arch:   sudo pacman -S librsvg" >&2
   exit 1
-fi
+}
 
-[ -d "$SVG_DIR" ] || { echo "no svg dir: $SVG_DIR" >&2; exit 1; }
-mkdir -p "$PNG_DIR"
+pids=()
+count=0
+while IFS= read -r -d '' svg; do
+  (
+    png="$(dirname "$svg" | sed 's|/svg$|/png|')/$(basename "${svg%.svg}").png"
 
-shopt -s nullglob
-for svg in "$SVG_DIR"/*.svg; do
-  png="$PNG_DIR/$(basename "${svg%.svg}").png"
-  echo "Converting $svg -> $png"
-  rsvg-convert -o "$png" "$svg"
+    if [ ! -s "$svg" ]; then
+      echo "skip (empty): $svg" >&2
+      exit 0
+    fi
+
+    mkdir -p "$(dirname "$png")"
+    if rsvg-convert -o "$png" "$svg"; then
+      echo "converted $svg -> $png"
+    else
+      echo "failed: $svg" >&2
+      exit 1
+    fi
+  ) &
+  pids+=("$!")
+  count=$((count + 1))
+  if [ "${#pids[@]}" -ge "$JOBS" ]; then
+    wait "${pids[0]}" || true
+    pids=("${pids[@]:1}")
+  fi
+done < <(find "$ASSETS_DIR" -type f -path '*/svg/*.svg' -print0)
+
+status=0
+for pid in "${pids[@]}"; do
+  wait "$pid" || status=1
 done
 
-echo "Done."
+if [ "$count" -eq 0 ]; then
+  echo "no svg files found under $ASSETS_DIR/*/svg" >&2
+fi
+
+exit "$status"
