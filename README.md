@@ -19,9 +19,7 @@ pagers build ./docs
 
 No configuration, no Node.js, no runtime dependencies — one Rust binary.
 
-<p align="center">
-  <img src="assets/branding/png/og.png" alt="pagers — write Markdown, get a website" width="720">
-</p>
+![pagers — write Markdown, get a website](assets/branding/png/og.png)
 
 **Live demo:** <https://hieudoanm.github.io/pagers/>
 
@@ -29,20 +27,23 @@ No configuration, no Node.js, no runtime dependencies — one Rust binary.
 
 ## Table of Contents
 
-- [Features](#features)
-- [pagers vs docsify](#pagers-vs-docsify)
-- [Get Started](#get-started)
-- [Commands](#commands)
-- [Zero configuration](#zero-configuration)
-- [Frontmatter](#frontmatter)
-- [Markdown features](#markdown-features)
-- [The graph page](#the-graph-page)
-- [Documentation](#documentation)
-- [Theming](#theming)
-- [Output](#output)
-- [Development](#development)
-- [Layout](#layout)
-- [License](#license)
+- [pagers](#pagers)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+  - [pagers vs docsify](#pagers-vs-docsify)
+  - [Get Started](#get-started)
+  - [Commands](#commands)
+  - [Zero configuration](#zero-configuration)
+  - [Frontmatter](#frontmatter)
+  - [Markdown features](#markdown-features)
+  - [The graph page](#the-graph-page)
+  - [Documentation](#documentation)
+  - [Theming](#theming)
+  - [Output](#output)
+  - [Development](#development)
+  - [Layout](#layout)
+    - [MCP server](#mcp-server)
+  - [License](#license)
 
 ## Features
 
