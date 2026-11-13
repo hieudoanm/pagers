@@ -8,6 +8,15 @@ const REPO_BLOB = 'https://github.com/hieudoanm/pagers/blob/master';
 // Used in raw HTML hrefs, so basePath is not applied automatically.
 const BASE_PATH = process.env.NODE_ENV === 'production' ? '/pagers' : '';
 
+export interface DocHeading {
+  /** Anchor id added by addHeadingIds */
+  id: string;
+  /** Heading text with HTML tags stripped */
+  text: string;
+  /** Heading level 1–6 */
+  level: number;
+}
+
 export interface DocPage {
   /** URL slug, e.g. "guide/commands"; "" for docs/README.md */
   slug: string;
@@ -17,6 +26,10 @@ export interface DocPage {
   title: string;
   /** Rendered HTML */
   html: string;
+  /** h2+ headings for the "On this page" TOC */
+  toc: DocHeading[];
+  /** Plain text (tags stripped) for full-text search */
+  text: string;
 }
 
 const walk = (dir: string, prefix: string, out: string[]): void => {
@@ -166,6 +179,41 @@ const rewriteAlerts = (html: string): string => {
   );
 };
 
+const ENTITIES: Record<string, string> = {
+  '&amp;': '&',
+  '&lt;': '<',
+  '&gt;': '>',
+  '&quot;': '"',
+  '&#39;': "'",
+  '&nbsp;': ' ',
+};
+
+/** HTML → plain text for the search index. */
+const toPlainText = (html: string): string => {
+  return html
+    .replace(/<script[\s\S]*?<\/script>/g, ' ')
+    .replace(/<style[\s\S]*?<\/style>/g, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&(?:amp|lt|gt|quot|#39|nbsp);/g, (e) => ENTITIES[e] ?? e)
+    .replace(/\s+/g, ' ')
+    .trim();
+};
+
+/** Pull h2+ headings (with their ids) out of rendered HTML for the TOC. */
+const extractToc = (html: string): DocHeading[] => {
+  const toc: DocHeading[] = [];
+  for (const m of html.matchAll(/<h([1-6]) id="([^"]*)">([\s\S]*?)<\/h\1>/g)) {
+    const level = Number(m[1]);
+    if (level < 2) continue;
+    toc.push({
+      level,
+      id: m[2],
+      text: m[3].replace(/<[^>]+>/g, ''),
+    });
+  }
+  return toc;
+};
+
 interface DocEntry extends DocPage {
   order: number;
 }
@@ -179,12 +227,17 @@ export const getDocPages = (): DocPage[] => {
     const markdown = readFileSync(path.join(DOCS_DIR, file), 'utf8');
     const fm = parseFrontmatter(markdown);
     const raw = marked.parse(fm.body, { async: false }) as string;
+    const html = frameSvgs(
+      rewriteAlerts(addHeadingIds(rewriteLinks(raw, slug)))
+    );
     return {
       slug,
       section: slug.split('/')[0] ?? '',
       title: titleFor(fm, markdown, file),
       order: fm.order,
-      html: frameSvgs(rewriteAlerts(addHeadingIds(rewriteLinks(raw, slug)))),
+      html,
+      toc: extractToc(html),
+      text: toPlainText(html),
     };
   });
   entries.sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
@@ -195,13 +248,4 @@ export const getDocPages = (): DocPage[] => {
   });
 };
 
-export interface DocSection {
-  id: string;
-  label: string;
-}
-
-export const DOC_SECTIONS: DocSection[] = [
-  { id: 'guide', label: 'Guide' },
-  { id: 'content', label: 'Content' },
-  { id: 'project', label: 'Project' },
-];
+export { DOC_SECTIONS, sectionLabel } from './sections';
